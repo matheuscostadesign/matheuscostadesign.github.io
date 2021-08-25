@@ -22,3 +22,12 @@ body {
   }
 }
 ```
+
+### Redirecionamento personalizado IIS (web.config)
+
+```xml
+<httpErrors errorMode="Custom" existingResponse="Replace">
+<clear />
+<error statusCode="404" path="http://www.bing.com" responseMode="Redirect"/>
+</httpErrors>
+```
