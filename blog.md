@@ -44,3 +44,9 @@ body {
 - Abrir o projeto individualmente
 - Executar o projeto pelo terminal: `dotnet run`
 - Limpar projeto: `dotnet clean`
+
+### Atalhos VSCode
+
+- <kbd>ctrl</kbd> + <kbd>;</kbd> = Comentar código
+- <kbd>ctrl</kbd> + <kbd>'</kbd> = Abrir/fechar terminal
+- <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> = Configurações rápidas
