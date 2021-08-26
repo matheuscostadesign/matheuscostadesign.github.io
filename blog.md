@@ -50,3 +50,9 @@ body {
 - <kbd>ctrl</kbd> + <kbd>;</kbd> = Comentar código
 - <kbd>ctrl</kbd> + <kbd>'</kbd> = Abrir/fechar terminal
 - <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> = Configurações rápidas
+
+### Forçar execução dos scripts somente após leitura de todo código HTML
+
+```js
+<script src="scripts.js" defer></script>
+```
