@@ -56,3 +56,13 @@ body {
 ```js
 <script src="scripts.js" defer></script>
 ```
+
+### Referencias/Estudar
+
+- https://swiperjs.com/
+- https://animejs.com/
+- https://threejs.org/
+- https://tympanus.net/codrops/category/tutorials/
+- https://tympanus.net/Development/PageTransitions/
+- https://tobiasahlin.com/moving-letters/
+- https://tympanus.net/Tutorials/RotatedRevealers/index.html#
