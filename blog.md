@@ -23,6 +23,36 @@ body {
 }
 ```
 
+### Alterando a cor do texto selecionado
+```css
+::-moz-selection {
+  color: var(--white);
+  background-color: var(--color-primary);
+}
+::selection {
+  color: var(--white);
+  background-color: var(--color-primary);
+}
+```
+
+### Personalizando barra de rolagem
+```css
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--black);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--color-primary);
+}
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
