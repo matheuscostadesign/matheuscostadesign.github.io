@@ -53,6 +53,16 @@ body::-webkit-scrollbar-thumb {
 }
 ```
 
+### Estilizar validações dos inputs/campos obrigatórios
+```css
+input:invalid {
+  border: 2px dashed red;
+}
+input:valid {
+  border: 2px solid green;
+}
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
