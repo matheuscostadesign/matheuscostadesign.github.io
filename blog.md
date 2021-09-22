@@ -53,6 +53,12 @@ body::-webkit-scrollbar-thumb {
 }
 ```
 
+### Campo de preenchimento obrigatório em HTML
+
+```html
+<input type="email" required>
+```
+
 ### Estilizar validações dos inputs/campos obrigatórios
 ```css
 input:invalid {
