@@ -59,6 +59,21 @@ body::-webkit-scrollbar-thumb {
 <input type="email" required>
 ```
 
+### Tamanho máximo de caracteres em HTML
+```html
+<input type="text" maxlength="40">
+```
+
+### Tamanho mínimo de caracteres em HTML
+```html
+<input type="text" minlength="5">
+```
+
+### Expressão regular em HTML (Regex)
+```html
+<input type="text" size="1" maxlength="1" pattern="A|E|I|O|U|a|e|i|o|u" required>
+```
+
 ### Estilizar validações dos inputs/campos obrigatórios
 ```css
 input:invalid {
