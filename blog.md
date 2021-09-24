@@ -84,6 +84,21 @@ input:valid {
 }
 ```
 
+### Personalizar grid Bootstrap
+
+```css
+/* Grid Container Bootstrap */
+@media (min-width: 1280px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1220px !important;
+  }
+}
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
