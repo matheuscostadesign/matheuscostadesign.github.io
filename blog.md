@@ -116,6 +116,20 @@ input:valid {
 </httpErrors>
 ```
 
+### Configurações CSS personalizadas para impressao (Ctrl + P)
+```css
+@page {
+  -webkit-print-color-adjust: exact;
+  size: A4;
+  margin: 0
+}
+@media print {
+  border: none;
+  box-shadow: initial;
+  page-break-after: always
+}
+```
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
