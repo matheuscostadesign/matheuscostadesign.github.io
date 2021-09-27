@@ -103,7 +103,7 @@ input:valid {
 
 ```css
 ::marker {
-color: #pink;
+  color: #pink;
 }
 ```
 
