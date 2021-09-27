@@ -99,6 +99,14 @@ input:valid {
 }
 ```
 
+### Mudar a cor do marcador de um item da lista
+
+```css
+::marker {
+color: #pink;
+}
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
