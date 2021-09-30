@@ -1,5 +1,5 @@
-url: "https://billraymond.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/jekyll-new-blank" # the subpath of your site, e.g. /blog
+url: "https://matheuscostadesign.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 
 title: "Site title" # the name of your site, e.g. ACME Corp.
 description: >- # this means to ignore newlines until "baseurl:"
@@ -8,10 +8,9 @@ description: >- # this means to ignore newlines until "baseurl:"
   We specialize in agile transformation, coaching, and training.
 
 plugins:
-    - jekyll-feed
+  - jekyll-feed
 
 # Remove the error "GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data."
 github: [metadata]
-
 # GitHub repo
 # repository: BillRaymond/jekyll-new-blank
