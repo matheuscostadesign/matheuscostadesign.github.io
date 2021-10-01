@@ -26,12 +26,12 @@ body {
 ### Alterando a cor do texto selecionado
 ```css
 ::-moz-selection {
-  color: var(--white);
-  background-color: var(--color-primary);
+  color: #fff;
+  background-color: #BF4B8A;
 }
 ::selection {
-  color: var(--white);
-  background-color: var(--color-primary);
+  color: #fff;
+  background-color: #BF4B8A;
 }
 ```
 
