@@ -35,6 +35,14 @@ body {
 }
 ```
 
+### Alterando a cor do texto selecionado
+```css
+::selection {
+  color: var(--white);
+  background-color: var(--color-primary);
+}
+```
+
 ### Personalizando barra de rolagem
 ```css
 body::-webkit-scrollbar-track {
