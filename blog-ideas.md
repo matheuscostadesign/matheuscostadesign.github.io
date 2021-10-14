@@ -186,6 +186,10 @@ input:valid {
 - Display flex
 - Media queries
 - SASS
+- Botao Whatsapp
+- Link para abrir email
+- Link para abrir telefone
+- 
 
 ### Processo
 - Escrever conteúdo blog
