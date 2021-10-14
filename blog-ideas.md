@@ -172,6 +172,9 @@ input:valid {
 - Como alterar fonte padrão
 - Box-sizing
 - Z-index
+- Display flex
+- Media queries
+- SASS
 
 ### Processo
 - Escrever conteúdo blog
