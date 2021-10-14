@@ -170,7 +170,6 @@ input:valid {
 - Como configurar OG Image
 - Como enviar formularios
 
-
 ### Processo
 - Escrever conteúdo blog
 - Codificar conteúdo
