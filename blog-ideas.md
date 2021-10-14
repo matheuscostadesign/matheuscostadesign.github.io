@@ -107,6 +107,12 @@ input:valid {
 }
 ```
 
+### Forçar execução dos scripts somente após leitura de todo código HTML
+
+```js
+<script src="scripts.js" defer></script>
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
@@ -149,12 +155,6 @@ input:valid {
 - <kbd>ctrl</kbd> + <kbd>'</kbd> = Abrir/fechar terminal
 - <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> = Configurações rápidas
 
-### Forçar execução dos scripts somente após leitura de todo código HTML
-
-```js
-<script src="scripts.js" defer></script>
-```
-
 ### Referencias/Estudar
 
 - https://swiperjs.com/
@@ -164,3 +164,16 @@ input:valid {
 - https://tympanus.net/Development/PageTransitions/
 - https://tobiasahlin.com/moving-letters/
 - https://tympanus.net/Tutorials/RotatedRevealers/index.html#
+
+### Ideias
+- Rodar VSCode dentro do navegador
+- Como configurar OG Image
+- Como enviar formularios
+
+
+### Processo
+- Escrever conteúdo blog
+- Codificar conteúdo
+- Design Figma
+- Gravar/editar video
+- Publicar conteudo (redes sociais/video)
