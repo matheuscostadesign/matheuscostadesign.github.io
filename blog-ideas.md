@@ -169,6 +169,9 @@ input:valid {
 - Rodar VSCode dentro do navegador
 - Como configurar OG Image
 - Como enviar formularios
+- Como alterar fonte padrão
+- Box-sizing
+- Z-index
 
 ### Processo
 - Escrever conteúdo blog
