@@ -136,6 +136,13 @@ input:valid {
 }
 ```
 
+### Circulo
+```css
+.circulo {
+  clip-path: circle();
+}
+```
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
