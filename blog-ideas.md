@@ -165,8 +165,19 @@ input:valid {
 - https://tobiasahlin.com/moving-letters/
 - https://tympanus.net/Tutorials/RotatedRevealers/index.html#
 
-### Ideias
-- Rodar VSCode dentro do navegador
+### Projetos
+- Instalar VSCode
+- Plugins essenciais
+- Iniciando projeto HTML/CSS
+- Imagens
+- Frameworks
+- Menu fixo
+- Scroll suave
+- Subir ao topo
+- Efeito hover
+- Animações CSS
+- Links em nova aba
+- Rodar VSCode dentro do navegador com Github
 - Como configurar OG Image
 - Como enviar formularios
 - Como alterar fonte padrão
