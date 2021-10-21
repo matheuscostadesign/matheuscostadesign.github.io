@@ -143,6 +143,10 @@ input:valid {
 }
 ```
 
+### VSCode Online
+https://vscode.dev/
+(.) no repositorio
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
@@ -196,7 +200,6 @@ input:valid {
 - Botao Whatsapp
 - Link para abrir email
 - Link para abrir telefone
-- 
 
 ### Processo
 - Escrever conteúdo blog
