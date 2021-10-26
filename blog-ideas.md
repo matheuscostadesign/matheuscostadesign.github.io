@@ -113,6 +113,18 @@ input:valid {
 <script src="scripts.js" defer></script>
 ```
 
+### Breakpoints
+
+```´txt
+1. Resolution - 1920x1000
+2. Resolution - 1440x900
+3. Resolution - 1366x768
+4. Resolution - 1280x650
+5. Resolution - 1150x700
+6. Resolution - 810x700
+7. Resolution - 600x700
+```
+
 ### Redirecionamento personalizado IIS (web.config)
 
 ```xml
