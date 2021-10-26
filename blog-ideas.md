@@ -121,8 +121,10 @@ input:valid {
 3. Resolution - 1366x768
 4. Resolution - 1280x650
 5. Resolution - 1150x700
-6. Resolution - 810x700
-7. Resolution - 600x700
+6. Resolution - 1024x1000
+7. Resolution - 810x700
+8. Resolution - 600x700
+9. Resolution - 480x850
 ```
 
 ### Redirecionamento personalizado IIS (web.config)
