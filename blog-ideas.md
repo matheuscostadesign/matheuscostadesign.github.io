@@ -113,29 +113,6 @@ input:valid {
 <script src="scripts.js" defer></script>
 ```
 
-### Breakpoints
-
-```´txt
-1. Resolution - 1920x1000
-2. Resolution - 1440x900
-3. Resolution - 1366x768
-4. Resolution - 1280x650
-5. Resolution - 1150x700
-6. Resolution - 1024x1000
-7. Resolution - 810x700
-8. Resolution - 600x700
-9. Resolution - 480x850
-```
-
-### Redirecionamento personalizado IIS (web.config)
-
-```xml
-<httpErrors errorMode="Custom" existingResponse="Replace">
-<clear />
-<error statusCode="404" path="http://www.bing.com" responseMode="Redirect"/>
-</httpErrors>
-```
-
 ### Configurações CSS personalizadas para impressao (Ctrl + P)
 ```css
 @page {
@@ -164,9 +141,34 @@ ul li {
  }
 ```
 
+### Breakpoints
+
+```´txt
+1. Resolution - 1920x1000
+2. Resolution - 1440x900
+3. Resolution - 1366x768
+4. Resolution - 1280x650
+5. Resolution - 1150x700
+6. Resolution - 1024x1000
+7. Resolution - 810x700
+8. Resolution - 600x700
+9. Resolution - 480x850
+```
+
+### Redirecionamento personalizado IIS (web.config)
+
+```xml
+<httpErrors errorMode="Custom" existingResponse="Replace">
+<clear />
+<error statusCode="404" path="http://www.bing.com" responseMode="Redirect"/>
+</httpErrors>
+```
+
 ### VSCode Online
+```txt
 https://vscode.dev/
 (.) no repositorio
+```
 
 ### Como executar projetos C# em localhost:127.0.0.1
 
