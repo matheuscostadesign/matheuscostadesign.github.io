@@ -157,6 +157,13 @@ input:valid {
 }
 ```
 
+### Adicionar icone/imagem no item da lista
+```css
+ul li {
+  list-style-image: url(../assets/images/icon-check.svg);
+ }
+```
+
 ### VSCode Online
 https://vscode.dev/
 (.) no repositorio
