@@ -170,6 +170,9 @@ https://vscode.dev/
 (.) no repositorio
 ```
 
+### Lottie
+<iframe src="https://embed.lottiefiles.com/animation/54425"></iframe>
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
