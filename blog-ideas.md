@@ -172,6 +172,8 @@ https://vscode.dev/
 
 ### Lottie
 <iframe src="https://embed.lottiefiles.com/animation/54425"></iframe>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wuuqhfmi.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
 
 ### Como executar projetos C# em localhost:127.0.0.1
 
