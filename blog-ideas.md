@@ -181,14 +181,14 @@ https://vscode.dev/
 - https://www.youtube.com/watch?v=ES84srKq-jo (Como gerar o token direto no FB)
 ```js
 var feed = new Instafeed({
-  accessToken: "IGQVJXXzJnOGZAuZAHVTX1ZABV3huX3NrLTRWZA3NxTnhoNmZArNkJUYlc3blhtbk9Kbi1VQjRWb1RweTRjaUNRY3hvVGVEeTV3QjZAmcTA4ZADZAydkVCMlFZARGV6WENWbml2WlB1Ykc3S253",
+  accessToken: "YOUR_TOKEN",
   limit: 4,
   template: '<a href="{{link}}" target="_blank"><img title="{{caption}}" src="{{image}}" /></a>',
 });
 feed.run();
 ```
 
-### Instafeed.js (via Access Token)
+### Instafeed.js (via Instant Token)
 - https://www.instant-tokens.com/ 
 ```js
 fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/instagram/17841400298060176/token?userSecret=gtkme08n3roi4wvg0cb6gr")
