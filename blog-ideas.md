@@ -175,6 +175,33 @@ https://vscode.dev/
 <iframe src="https://embed.lottiefiles.com/animation/54425"></iframe>
 ```
 
+### Instafeed.js
+- https://instafeedjs.com/
+- https://github.com/stevenschobert/instafeed.js
+```js
+var feed = new Instafeed({
+  accessToken: "IGQVJXXzJnOGZAuZAHVTX1ZABV3huX3NrLTRWZA3NxTnhoNmZArNkJUYlc3blhtbk9Kbi1VQjRWb1RweTRjaUNRY3hvVGVEeTV3QjZAmcTA4ZADZAydkVCMlFZARGV6WENWbml2WlB1Ykc3S253",
+  limit: 4,
+  template: '<a href="{{link}}" target="_blank"><img title="{{caption}}" src="{{image}}" /></a>',
+});
+feed.run();
+```
+
+### Instafeed.js (via Access Token)
+- https://www.instant-tokens.com/
+```js
+fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/instagram/17841400298060176/token?userSecret=gtkme08n3roi4wvg0cb6gr")
+  .then((e) => e.json())
+  .then((e) => {
+    var t = new Instafeed({
+      accessToken: e.Token,
+      limit: 4,
+      template: '<a href="{{link}}" target="_blank"><img title="{{caption}}" src="{{image}}" /></a>',
+    });
+    t.run();
+  });
+```
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
