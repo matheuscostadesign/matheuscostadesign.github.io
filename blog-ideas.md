@@ -203,6 +203,14 @@ fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/
   });
 ```
 
+### Convertendo imagens para WEBP com Photoshop
+- Baixar o plugin: WebPShop.8bi
+  - https://developers.google.com/speed/webp/docs/webpshop#windows_installation_steps
+  - https://github.com/webmproject/WebPShop/releases 
+- Inserir o arquivo `WebPShop.8bi` no pasta Plugins do Photoshop
+  -  Ex: `Photoshop18\App\Ps\Plug-ins` 
+- Para exportar a imagem como WEBP basta clicar em Save As e selecionar o tipo: `WEBP`
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
