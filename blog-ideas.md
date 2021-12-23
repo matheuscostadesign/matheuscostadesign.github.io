@@ -4,6 +4,12 @@
 <img src="imagem.png" alt="Texto alternativo" loading="lazy" />
 ```
 
+### Forçar execução dos scripts somente após leitura de todo código HTML
+
+```js
+<script src="scripts.js" defer></script>
+```
+
 ### Dark Mode
 ```css
 body {
@@ -107,11 +113,7 @@ input:valid {
 }
 ```
 
-### Forçar execução dos scripts somente após leitura de todo código HTML
 
-```js
-<script src="scripts.js" defer></script>
-```
 
 ### Configurações CSS personalizadas para impressao (Ctrl + P)
 ```css
