@@ -214,12 +214,20 @@ fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/
 - Para exportar a imagem como WEBP basta clicar em Save As e selecionar o tipo: `WEBP`
 
 ### Usando imagens WEBP no HTML
+- https://ole.michelsen.dk/blog/using-webp-images-html-css/
+
 ```html
 <picture>
   <source type="image/webp" srcset="flower.webp">
   <source type="image/jpeg" srcset="flower.jpg">
   <img src="flower.jpg" alt="">
 </picture>
+```
+
+### WebP em imagens no background CSS
+```css
+  background: url("../assets/images/bg-info.jpg");
+  background: -webkit-image-set(url("../assets/images/bg-info.webp") 1x) no-repeat;
 ```
 
 ### Como executar projetos C# em localhost:127.0.0.1
