@@ -230,6 +230,17 @@ fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/
   background: -webkit-image-set(url("../assets/images/bg-info.webp") 1x) no-repeat;
 ```
 
+### Atualizar ano atual automaticamente com Javascript
+```html
+<p><span id="ano">2021</span> - Todos os direitos reservados</p>
+```
+
+```js
+const ano = document.getElementById("ano");
+const anoAtual = new Date();
+ano.innerHTML = anoAtual.getFullYear();
+```
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
