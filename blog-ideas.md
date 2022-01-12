@@ -181,25 +181,28 @@ https://vscode.dev/
 - https://instafeedjs.com/
 - https://github.com/stevenschobert/instafeed.js
 - https://www.youtube.com/watch?v=ES84srKq-jo (Como gerar o token direto no FB)
+- Em 60 dias o token expira***
 ```js
 var feed = new Instafeed({
-  accessToken: "YOUR_TOKEN",
+  accessToken: "accessToken: "YOUR_TOKEN",",
   limit: 4,
-  template: '<a href="{{link}}" target="_blank"><img title="{{caption}}" src="{{image}}" /></a>',
+  template: '<div class="img-insta"><a href="{{link}}" target="_blank" rel="noopener noreferrer"><img title="{{caption}}" src="{{image}}"/></a></div>',
 });
 feed.run();
 ```
 
 ### Instafeed.js (via Instant Token)
 - https://www.instant-tokens.com/ 
+- Adicionar na URL o caminho do JSON (JSON Response)
+- A ferramenta faz a atualização do token automaticamente (Teste dia 12/01/2022)
 ```js
-fetch("https://ig.instant-tokens.com/users/82e27c32-9ed6-4476-a559-0f25e0b2eb98/instagram/17841400298060176/token?userSecret=gtkme08n3roi4wvg0cb6gr")
+fetch("https://ig.instant-tokens.com/users/8a1e4632-5d4f-41fb-8743-85765acf0fd5/instagram/17841451041903700/token?userSecret=sxreus18hblqmqwpi8djjj")
   .then((e) => e.json())
   .then((e) => {
     var t = new Instafeed({
       accessToken: e.Token,
       limit: 4,
-      template: '<a href="{{link}}" target="_blank"><img title="{{caption}}" src="{{image}}" /></a>',
+      template: '<div class="img-insta"><a href="{{link}}" target="_blank" rel="noopener noreferrer"><img title="{{caption}}" src="{{image}}"/></a></div>',
     });
     t.run();
   });
