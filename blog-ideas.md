@@ -244,6 +244,9 @@ const anoAtual = new Date();
 ano.innerHTML = anoAtual.getFullYear();
 ```
 
+### Otimização imagens JPEG
+- https://jpeg.rocks/
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
