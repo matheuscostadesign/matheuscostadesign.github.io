@@ -247,6 +247,10 @@ ano.innerHTML = anoAtual.getFullYear();
 ### Otimização imagens JPEG
 - https://jpeg.rocks/
 
+### Transformar site em PWA
+- https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/
+- https://github.com/codepo8/github-page-pwa
+
 ### Como executar projetos C# em localhost:127.0.0.1
 
 #### Visual Studio
