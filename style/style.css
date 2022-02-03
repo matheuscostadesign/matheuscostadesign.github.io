@@ -54,12 +54,12 @@ h2 {
 }
 
 span {
-  color: white;
+  color: #fff;
 }
 
 .btn-whatsapp {
-  background-color: #25d366;
-  color: white;
+  background-color: #1fa350;
+  color: #fff;
   display: inline-block;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
@@ -70,11 +70,11 @@ span {
 }
 
 .btn-whatsapp:hover {
-  background-color: darken(#25d366, 10%);
+  background-color: darken(#1fa350, 10%);
 }
 
 .btn-whatsapp:focus {
-  background-color: darken(#25d366, 15%);
+  background-color: darken(#1fa350, 15%);
 }
 
 .icons {
