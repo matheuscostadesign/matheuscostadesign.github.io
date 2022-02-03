@@ -32,10 +32,10 @@ img {
   max-width: 100%;
   height: auto;
   clip-path: circle();
-}
 
-img:hover {
-  filter: grayscale();
+  &:hover {
+    filter: brightness(0.8);
+  }
 }
 
 h1 {
@@ -66,44 +66,44 @@ span {
   padding: 1rem 1.6rem;
   border-radius: 4px;
   margin-top: 1rem;
-}
 
-.btn-whatsapp:hover {
-  background-color: darken(#1fa350, 10%);
-}
+  &:hover {
+    background-color: darken(#1fa350, 10%);
+  }
 
-.btn-whatsapp:focus {
-  background-color: darken(#1fa350, 15%);
+  &:focus {
+    background-color: darken(#1fa350, 15%);
+  }
 }
 
 .icons {
   margin-top: 1rem;
   display: flex;
   gap: 10px;
-}
 
-.icons a {
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+  }
 
-.icons .icon {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
+  .icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
 
-.icons .icon:hover {
-  filter: brightness(0.8);
-}
+    &:hover {
+      filter: brightness(0.8);
+    }
 
-.icon i {
-  color: #fff;
-  font-size: 20px;
+    i {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
 }
 
 @media (max-width: 700px) {
