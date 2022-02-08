@@ -238,14 +238,14 @@ fetch("https://ig.instant-tokens.com/users/8a1e4632-5d4f-41fb-8743-85765acf0fd5/
 <p><span id="ano">2021</span> - Todos os direitos reservados</p>
 ```
 
-### Ferramentas WEB
-- https://webcode.tools/
-
 ```js
 const ano = document.getElementById("ano");
 const anoAtual = new Date();
 ano.innerHTML = anoAtual.getFullYear();
 ```
+
+### Ferramentas WEB
+- https://webcode.tools/
 
 ### Otimização imagens JPEG
 - https://jpeg.rocks/
