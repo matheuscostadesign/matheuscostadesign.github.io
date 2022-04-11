@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(18, 18, 18);
+  background-color: #16161a;
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -29,7 +29,7 @@ main {
   justify-content: center;
 }
 
-img {
+main img {
   max-width: 100%;
   height: auto;
   clip-path: circle();
@@ -40,15 +40,14 @@ img {
 }
 
 h1 {
-  color: rgba(255, 255, 255, 0.8);
+  color: #fffffe;
   font-size: 4rem;
   text-align: center;
   font-weight: bold;
 }
 
 h2 {
-  font-family: sans-serif;
-  color: rgba(255, 255, 255, 0.2);
+  color: #94a1b2;
   font-size: 1.5rem;
   font-weight: 400;
 }
@@ -59,7 +58,7 @@ span {
 
 .btn-whatsapp {
   background-color: #1fa350;
-  color: #fff;
+  color: #fffffe;
   display: inline-block;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
@@ -74,6 +73,26 @@ span {
 
   &:focus {
     background-color: darken(#1fa350, 15%);
+  }
+}
+
+.btn-projetos {
+  background-color: #7f5af0;
+  color: #fffffe;
+  display: inline-block;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.1rem;
+  padding: 1rem 1.6rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: darken(#7f5af0, 10%);
+  }
+
+  &:focus {
+    background-color: darken(#7f5af0, 15%);
   }
 }
 
@@ -108,7 +127,7 @@ span {
 }
 
 @media (max-width: 700px) {
-  img {
+  main img {
     width: 300px;
   }
 
@@ -123,4 +142,28 @@ span {
     text-align: center;
     margin-top: 1rem;
   }
+}
+
+// Swiper
+
+.swiper {
+  width: 100%;
+  max-width: 440px;
+  background: transparent;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

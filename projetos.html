@@ -34,18 +34,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="preload" href="assets/fonts/style.css" as="style" onload="this.rel='stylesheet'">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.min.css">
 
+  <style>
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+
 </head>
 
 <body>
+
   <main>
     <div id="particles-js"></div>
-    <a href="https://linkedin.com/in/mattheuscosta" target="_blank" rel="noopener noreferrer">
+    <a href=".\">
       <picture>
         <source type="image/webp" srcset="assets/mc.webp" />
         <source type="image/jpeg" srcset="assets/mc.jpg" />
@@ -53,55 +77,51 @@
       </picture>
     </a>
     <h1>Matheus Costa</h1>
-    <h2>Desenvolvedor Frontend | UI Designer</h2>
-    <div class="icons">
-      <a href="https://linkedin.com/in/mattheuscosta" target="_blank" rel="noopener noreferrer" title="Linkedin">
-        <div class="icon">
-          <i class="icon-linkedin"></i>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/matheuscosta.design/" target="_blank" rel="noopener noreferrer"
-        title="Instagram">
-        <div class="icon">
-          <i class="icon-instagram"></i>
-        </div>
-      </a>
-      <a href="https://github.com/matheuscostadesign" target="_blank" rel="noopener noreferrer" title="Github">
-        <div class="icon">
-          <i class="icon-github"></i>
-        </div>
-      </a>
-      <a href="https://dribbble.com/matheuscostadesign" target="_blank" rel="noopener noreferrer" title="Dribble">
-        <div class="icon">
-          <i class="icon-dribbble"></i>
-        </div>
-      </a>
-      <a href="https://www.behance.net/matheuscostadesign" target="_blank" rel="noopener noreferrer" title="Behance">
-        <div class="icon">
-          <i class="icon-behance"></i>
-        </div>
-      </a>
-      <a href="https://matheuscostadesign.github.io/blog/" target="_blank" rel="noopener noreferrer"
-        title="Blog Pessoal">
-        <div class="icon">
-          <i class="icon-blog"></i>
-        </div>
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=+5517992143072&amp;text=Fala Matheus, entrou entrando em contato através do seu portfolio..."
-        target="_blank" rel="noopener noreferrer" title="Blog Pessoal">
-        <div class="icon">
-          <i class="icon-whatsapp"></i>
-        </div>
-      </a>
-    </div>
-    <a href="projetos.html" class="btn-projetos">
-      Projetos/Portfolio
-    </a>
+    <h2>Projetos Desenvolvidos</h2><br>
   </main>
 
-  <!-- Scripts -->
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a href="http://" target="_blank" rel="noopener noreferrer">
+          <img src="assets/projetos/projeto-01.jpg" alt="Projeto 01">
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="http://" target="_blank" rel="noopener noreferrer">
+          <img src="assets/projetos/projeto-01.jpg" alt="Projeto 01">
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="http://" target="_blank" rel="noopener noreferrer">
+          <img src="assets/projetos/projeto-01.jpg" alt="Projeto 01">
+        </a>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/particles.min.js" defer></script>
   <script src="js/particlesjs-config.min.js" defer></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 
 </body>
 
