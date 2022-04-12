@@ -1,6 +1,6 @@
 // Botões style-btn($height, $bg, $colorText, $hoverBg, $hoverText)
 .btn-primary {
-  @include style-btn(50px, $color-primary, $white, $color-secondary, $white);
+  @include style-btn(50px, $color-primary, $white, $color-tertiary, $white);
 }
 
 // .btn-neutral {

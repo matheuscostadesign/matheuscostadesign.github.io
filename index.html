@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="assets/fonts/style.css">
 
   <!-- Styles -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/main.min.css">
 
 </head>
@@ -105,9 +106,34 @@
       </div>
     </section>
 
-    <section class="s-projetos">
+    <section class="s-projetos" id="projetos">
       <div class="container">
-        <h1>Teste</h1>
+        <h2>Projetos desenvolvidos</h2>
+
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="projeto">
+                <div class="img">
+                  <img src="assets/projetos/projeto-01.jpg" alt="Projeto 01">
+                </div>
+                <div class="text">
+                  <h3>myFreedom</h3>
+                  <p style="color: #fff;">Landing-page desenvolvida para o aplicativo myFreedom</p>
+                  <a href="http://myfreedom.com.br" target="_blank" rel="noopener noreferrer"
+                    class="btn-primary">Acessar o case</a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
       </div>
     </section>
 
@@ -116,6 +142,33 @@
   <!-- Scripts -->
   <script src="js/particles.min.js" defer></script>
   <script src="js/particlesjs-config.min.js" defer></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+        clickable: true,
+      },
+      loop: true,
+      keyboard: {
+        enabled: true,
+      },
+      // autoplay: {
+      //   delay: 9500,
+      //   disableOnInteraction: true,
+      // },
+      slidesPerView: "2",
+      centeredSlides: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 
 </body>
 
