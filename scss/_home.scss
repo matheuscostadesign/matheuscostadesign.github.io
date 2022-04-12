@@ -1,0 +1,97 @@
+.s-hero {
+  background-color: $gray-600;
+  width: 100vw;
+  height: 100vh;
+  @include flex(row, center, center);
+
+  #particles-js {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .container {
+    @include flex(column, center, center);
+    z-index: 2;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      clip-path: circle();
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+    h1 {
+      color: $white;
+      font-weight: 600;
+    }
+
+    h2 {
+      color: $color-text;
+    }
+
+    .icons {
+      margin: 1.8rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      a {
+        text-decoration: none;
+      }
+
+      .icon {
+        padding: 1.4rem;
+        background-color: #454548;
+        border-radius: 0.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: darken($color-primary, 10%);
+        }
+
+        i {
+          color: #fff;
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
+
+  @include responsive(780px) {
+    .container {
+      img {
+        width: 24rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .icons {
+        .icon {
+          width: 100%;
+          min-width: 100%;
+        }
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+  }
+}

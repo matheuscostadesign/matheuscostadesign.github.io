@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  max-width: 124.6rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0;
+}
+
+@include responsive(1024px) {
+  .container {
+    padding: 0 1.6rem;
+  }
+}
