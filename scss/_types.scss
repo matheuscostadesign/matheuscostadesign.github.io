@@ -27,6 +27,7 @@ h2,
 h3 {
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
+  color: $white;
 }
 
 p,
@@ -35,7 +36,7 @@ a,
 blockquote,
 cite {
   font-size: 1.6rem;
-  color: $gray-600;
+  color: $color-text;
 }
 
 @include responsive(480px) {
