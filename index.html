@@ -206,7 +206,20 @@
         delay: 5000,
         disableOnInteraction: true,
       },
-      slidesPerView: "3",
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 16,
+        },
+        600: {
+          slidesPerView: 2.5,
+          spaceBetween: 32,
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 32,
+        }
+      },
       centeredSlides: true,
       spaceBetween: 30,
       grabCursor: true,
