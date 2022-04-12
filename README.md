@@ -1,2 +1,6 @@
 # matheuscostadesign.github.io
-Portfolio no Github
+
+- Ideias e melhorias
+- [ ] Adicionar formulário de contato
+- [ ] Adicionar footer
+- [ ] Adicionar menu mobile
