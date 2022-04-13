@@ -84,14 +84,6 @@
         width: 24rem;
       }
 
-      h1 {
-        font-size: 3.6rem;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-      }
-
       .icons {
         gap: 1.6rem;
 
@@ -116,7 +108,6 @@
 
     h2 {
       color: $white;
-      font-size: 3.6rem;
       text-align: center;
     }
 
@@ -164,5 +155,11 @@
         margin-top: 3.2rem;
       }
     }
+  }
+
+  @include responsive(820px) {
+   .container {
+    max-width: 100%;
+   }
   }
 }
