@@ -19,7 +19,7 @@ $('.s-hero a[href^="#"]').on("click", function (e) {
     targetOffset = $(id).offset().top;
   $("html, body").animate(
     {
-      scrollTop: targetOffset - 80, // margin-top (altura do header)
+      scrollTop: targetOffset - 0, // margin-top (altura do header)
     },
     400 // velocidade transição
   );

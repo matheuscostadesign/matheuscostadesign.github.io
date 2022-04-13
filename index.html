@@ -100,13 +100,13 @@
       </div>
     </section>
 
-    <section class="s-projetos" id="projetos-frontend">
+    <section class="s-projetos front" id="projetos-frontend">
       <div class="container">
         <h2>Projetos Front-end</h2>
         <p>Desenvolvimento web de sites e landing pages utilizando diversas tecnologias como: HTML, CSS, SASS,
           Javascript,
           Bootstrap, Jekyll, Markdown, Wordpress, Elementor, React e Next.js.</p>
-        <div class="swiper mySwiper">
+        <div class="swiper slides-frontend">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="projeto">
@@ -115,7 +115,7 @@
                 </div>
                 <div class="text">
                   <h3>myFreedom - LP</h3>
-                  <p>Landing-page/One-page desenvolvido para o aplicativo para condomínios myFreedom</p>
+                  <p>Landing-page desenvolvido para o aplicativo para condomínios myFreedom</p>
                   <a href="https://myfreedom.com.br" target="_blank" rel="noopener noreferrer"
                     class="btn-primary">Acessar o case</a>
                 </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="text">
                   <h3>Proansi Tecnologia</h3>
-                  <p>Site institucional desenvolvido para a empresa Proansi Tecnologia em HTML, CSS e JS</p>
+                  <p>Site desenvolvido para a empresa Proansi Tecnologia em HTML, CSS e JS</p>
                   <a href="https://proansi.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
                     o case</a>
                 </div>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="text">
                   <h3>Marconni Energia Solar</h3>
-                  <p>Site institucional desenvolvido para a empresa Marconni em Wordpress com Elementor</p>
+                  <p>Site institucional para a empresa Marconni em Wordpress com Elementor</p>
                   <a href="https://marconni.com.br" target="_blank" rel="noopener noreferrer"
                     class="btn-primary">Acessar o case</a>
                 </div>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="text">
                   <h3>Spotify (Case de Estudo)</h3>
-                  <p>Projeto para colocar em praticar conhecimentos em HTML e CSS, deploy feito na Netlify</p>
+                  <p>Projeto para praticar conhecimentos em HTML e CSS, deploy feito na Netlify</p>
                   <a href="https://spotify-site.netlify.app/" target="_blank" rel="noopener noreferrer"
                     class="btn-primary">Acessar o case</a>
                 </div>
@@ -259,19 +259,42 @@
                 </div>
                 <div class="text">
                   <h3>Nubank (Case de Estudo)</h3>
-                  <p>Projeto para praticar conhecimentos utilizando o framework Bootstrap, deploy no Netlify</p>
+                  <p>Projeto para praticar conhecimentos utilizando o Bootstrap, deploy no Netlify</p>
                   <a href="https://nubank-site.netlify.app/" target="_blank" rel="noopener noreferrer"
                     class="btn-primary">Acessar o case</a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div> -->
-          <!-- <div class="swiper-pagination"></div> -->
         </div>
       </div>
     </section>
+
+    <!-- <section class="s-projetos ui">
+      <div class="container">
+        <h2>Projetos UX/UI Design</h2>
+        <p>Criação de interfaces mobile, desktop e web. Protótipos navegáveis, wireframes, mockups e ícones. Ferramentas
+          utilizadas: Figma, Adobe XD e Adobe Photoshop.</p>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="projeto">
+                <div class="img">
+                  <img src="assets/projetos/myfreedom.jpg" alt="myFreedom">
+                </div>
+                <div class="text">
+                  <h3>myFreedom - LP</h3>
+                  <p>Landing-page/One-page desenvolvido para o aplicativo para condomínios myFreedom</p>
+                  <a href="https://myfreedom.com.br" target="_blank" rel="noopener noreferrer"
+                    class="btn-primary">Acessar o case</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </section> -->
+
   </main>
 
   <footer class="footer">
@@ -294,7 +317,7 @@
 
   <!-- Swiper -->
   <script>
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".slides-frontend", {
       pagination: {
         el: ".swiper-pagination",
         type: "fraction",
