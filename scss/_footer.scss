@@ -1,6 +1,7 @@
 .footer {
   @include flex(row, center, center);
   padding: 2.4rem 0;
+  background-color: $black;
 
   .container {
     @include flex(row, center, space-between);
