@@ -1,15 +1,15 @@
 // Mostrar ano atual footer
-// const ano = document.getElementById("mostrarAnoAtual");
-// const anoAtual = new Date();
-// ano.innerHTML = anoAtual.getFullYear();
+const ano = document.getElementById("mostrarAnoAtual");
+const anoAtual = new Date();
+ano.innerHTML = anoAtual.getFullYear();
 
 // // Voltar ao topo suave (jQuery)
-// $(document).ready(function () {
-//   $(".voltar-topo").click(function () {
-//     $("html, body").animate({ scrollTop: 0 }, "slow");
-//     return false;
-//   });
-// });
+$(document).ready(function () {
+  $(".voltar-topo").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+});
 
 // Scroll suave nos links section Hero
 $('.s-hero a[href^="#"]').on("click", function (e) {

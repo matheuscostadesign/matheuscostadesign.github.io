@@ -2,5 +2,7 @@
 
 - Ideias e melhorias
 - [ ] Adicionar formulário de contato
-- [ ] Adicionar footer
+- [x] Adicionar footer
 - [ ] Adicionar menu mobile
+- [ ] Adicionar sessão projetos UI
+- [ ] Adicionar animações após scroll
