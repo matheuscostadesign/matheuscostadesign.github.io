@@ -102,6 +102,7 @@
 .s-projetos {
   background-color: $gray-500;
   @include flex(row, center, center);
+  padding: 10rem 0;
 
   .container {
     @include flex(column, center, center);
@@ -158,9 +159,9 @@
   }
 
   @include responsive(820px) {
-   .container {
-    max-width: 100%;
-   }
+    .container {
+      max-width: 100%;
+    }
   }
 
   &.ui {
