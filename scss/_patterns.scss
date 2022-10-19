@@ -3,6 +3,13 @@
   @include style-btn(50px, $color-primary, $white, $color-secondary, $white);
 }
 
+.btn-whatsapp {
+  @include style-btn(50px, #25d366, $white, #075e54, $white);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 // .btn-neutral {
 //   @include style-btn(50px, $white, $color-primary, $color-primary, $white);
 // }

@@ -168,3 +168,35 @@
     background-color: $gray-600;
   }
 }
+
+.s-contato {
+  background-color: $gray-700;
+  @include flex(row, center, center);
+  padding: 10rem 0;
+
+  .container {
+    @include flex(column, center, center);
+
+    h2 {
+      color: $white;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      margin: 2.4rem auto 2.4rem auto;
+      width: 100%;
+      max-width: 70rem;
+    }
+
+    i {
+      font-size: 2.4rem;
+    }
+
+    @include responsive(820px) {
+      .container {
+        max-width: 100%;
+      }
+    }
+  }
+}
