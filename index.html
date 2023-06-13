@@ -7,22 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary Meta Tags -->
-  <title>Matheus Costa - UI Designer e Desenvolvedor Front-end</title>
-  <meta name="title" content="Matheus Costa - UI Designer e Desenvolvedor Front-end">
-  <meta name="description" content="Olá, seja muito bem-vindo ao meu portfolio! Vamos conversar?">
+  <title>Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP</title>
+  <meta name="title" content="Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto">
+  <meta name="description" content="Profissional especializado em criação de sites em São José do Rio Preto/SP">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://matheuscostadesign.github.io/">
-  <meta property="og:title" content="Matheus Costa - UI Designer e Desenvolvedor Front-end">
-  <meta property="og:description" content="Olá, seja muito bem-vindo ao meu portfolio! Vamos conversar?">
+  <meta property="og:title" content="Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto">
+  <meta property="og:description" content="Profissional especializado em criação de sites em São José do Rio Preto/SP">
   <meta property="og:image" content="https://matheuscostadesign.github.io/assets/ogimage.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://matheuscostadesign.github.io/">
-  <meta property="twitter:title" content="Matheus Costa - UI Designer e Desenvolvedor Front-end">
-  <meta property="twitter:description" content="Olá, seja muito bem-vindo ao meu portfolio! Vamos conversar?">
+  <meta property="twitter:title" content="Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto">
+  <meta property="twitter:description" content="Profissional especializado em criação de sites em São José do Rio Preto/SP">
   <meta property="twitter:image" content="https://matheuscostadesign.github.io/assets/ogimage.jpg">
 
   <!-- Favicon -->
@@ -86,7 +86,7 @@
               <i class="icon-blog"></i>
             </div>
           </a>
-          <a href="https://api.whatsapp.com/send?phone=+5517992143072&amp;text=Fala Matheus, entrou entrando em contato através do seu portfolio..."
+          <a href="https://wa.me/5517992143072"
             target="_blank" rel="noopener noreferrer" title="Blog Pessoal">
             <div class="icon">
               <i class="icon-whatsapp"></i>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="text">
                   <h3>Planetseg</h3>
-                  <a href="https://matheuscostadesign.github.io/codeboost/projeto03-neon/" target="_blank"
+                  <a href="https://www.planetsegseguranca.com.br/" target="_blank"
                     rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
                 </div>
               </div>
@@ -310,7 +310,7 @@
         <h2>Projetos UX/UI Design</h2>
         <p>Criação de interfaces mobile, desktop e web. Protótipos navegáveis, wireframes, mockups e ícones. Ferramentas
           utilizadas: Figma, Adobe XD e Adobe Photoshop.</p>
-        <div class="swiper slides-frontend">
+        <div class="swiper slides-uxdesign">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="projeto">
@@ -369,7 +369,7 @@
       <div class="container">
         <h2>Vamos começar um projeto?</h2>
         <p>Me conte como posso te ajudar!</p>
-        <a href="https://api.whatsapp.com/send?phone=+5517992143072&amp;text=Fala Matheus, entrou entrando em contato através do seu portfolio e gostaria de começar um projeto..."
+        <a href="https://wa.me/5517992143072"
           target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
           Começar projeto
           <i class="icon-whatsapp"></i>
@@ -409,6 +409,43 @@
       },
       autoplay: {
         delay: 5000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 16,
+        },
+        600: {
+          slidesPerView: 2.5,
+          spaceBetween: 32,
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 32,
+        }
+      },
+      centeredSlides: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    var swiper = new Swiper(".slides-uxdesign", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+        clickable: true,
+      },
+      loop: true,
+      keyboard: {
+        enabled: true,
+      },
+      autoplay: {
+        delay: 6000,
         disableOnInteraction: false,
       },
       breakpoints: {
