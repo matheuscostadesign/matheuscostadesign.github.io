@@ -200,3 +200,48 @@
     }
   }
 }
+
+.s-blog {
+  background-color: $gray-700;
+  @include flex(row, center, center);
+  padding: 10rem 0;
+
+  .container {
+    @include flex(column, center, center);
+
+    h3 {
+      font-weight: bold;
+    }
+
+    p {
+      margin: 2.4rem 0;
+    }
+
+    .blog-list {
+      margin-top: 3.2rem;
+      display: flex;
+      gap: 3.2rem;
+
+      .blog-article {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        img {
+          max-width: 60rem;
+          height: 30rem;
+          border-radius: 2.4rem;
+          object-fit: cover;
+          display: block;
+          margin-bottom: 3.2rem;
+        }
+      }
+    }
+
+    @include responsive(820px) {
+      .container {
+        max-width: 100%;
+      }
+    }
+  }
+}

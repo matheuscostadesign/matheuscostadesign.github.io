@@ -4,7 +4,7 @@
 }
 
 .btn-whatsapp {
-  @include style-btn(50px, #25d366, $white, #075e54, $white);
+  @include style-btn(50px, #075e54, $white, #25d366, $white);
   display: flex;
   align-items: center;
   gap: 0.7rem;
