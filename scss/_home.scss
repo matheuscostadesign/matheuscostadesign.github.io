@@ -3,6 +3,7 @@
   height: 100vh;
   @include flex(row, center, center);
   padding: 0;
+  background-color: $gray-800;
 
   #particles-js {
     height: 100%;
@@ -84,8 +85,9 @@
       max-width: 30rem;
       margin: 0 auto;
 
-      img {
-        width: 24rem;
+      .img-profile {
+        width: 20rem;
+        margin-bottom: 1.6rem;
       }
 
       .icons {
