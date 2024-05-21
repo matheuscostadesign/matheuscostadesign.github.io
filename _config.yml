@@ -1,20 +1,21 @@
-title: Meu site
-email: matheuscostadosantos@hotmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+title: Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP
+description: Profissional especializado em criação de sites em São José do Rio Preto/SP
+
+baseurl: ""
+url: "https://matheuscostadesign.github.io"
+
 twitter_username: jekyllrb
 github_username: jekyll
+email: matheuscostadosantos@hotmail.com
 
 # Build settings
 # theme: minima
 #permalink: /blog/:categories/:title/
 permalink: /blog/:title/
+
 sass:
   style: compressed
+
 plugins:
   - jekyll-feed
 # Exclude from processing.
