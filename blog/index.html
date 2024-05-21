@@ -1,0 +1,22 @@
+---
+layout: default
+title: Blog
+---
+
+<section class="s-blog" id="blog">
+  <div class="container">
+    <h2>Últimos artigos no blog</h2>
+    <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
+    <div class="blog-list">
+      {% for post in site.posts limit:3 %}
+      <a href="{{ post.url }}" class="blog-article">
+        <img class="" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <br>
+    <a href="/blog/" class="btn-primary">Ver todos artigos</a>
+  </div>
+</section>
