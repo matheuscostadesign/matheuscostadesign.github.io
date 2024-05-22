@@ -13,17 +13,17 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:image" content="https://matheuscostadesign.github.io/assets/ogimage.jpg">
+  <meta property="og:image" content="{{ site.url }}/{{ page.image }}">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://matheuscostadesign.github.io/">
+  <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
   <meta property="twitter:title" content="{{ page.title }}">
   <meta property="twitter:description" content="{{ page.description }}">
-  <meta property="twitter:image" content="https://matheuscostadesign.github.io/assets/ogimage.jpg">
+  <meta property="twitter:image" content="{{ site.url }}/{{ page.image }}">
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="57x57" href="{{'/assets/favicon/apple-icon-57x57.png' | prepend: site.baseurl}}">

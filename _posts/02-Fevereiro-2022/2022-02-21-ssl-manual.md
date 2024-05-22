@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Como gerar o certificado SSL/HTTPS de forma manual"
+description: "Veja neste artigo como gerar os arquivos de certificado SSL da Let's Encrypt para seu site de forma manual e gratuita."
 slug: como-gerar-o-certificado-ssl-https-de-forma-manual
 author: Matheus Costa
 categories: Front-end, Deploy

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Como fazer o efeito voltar ao topo suave com jQuery"
+description: "Veja neste artigo como fazer o efeito voltar ao topo da página de forma suave (smooth scrolling) utilizando a biblioteca jQuery"
 slug: como-fazer-o-efeito-de-voltar-ao-topo-suave-com-jquery
 author: Matheus Costa
 categories: Front-end

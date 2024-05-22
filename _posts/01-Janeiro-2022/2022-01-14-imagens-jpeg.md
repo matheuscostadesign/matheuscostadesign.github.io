@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Otimização imagens JPEG"
+description: "Ferramenta útil para otimizar imagens em JPG/JPEG"
 slug: como-otimizar-imagens-jpeg
 author: Matheus Costa
 categories: Front-end, UX/UI

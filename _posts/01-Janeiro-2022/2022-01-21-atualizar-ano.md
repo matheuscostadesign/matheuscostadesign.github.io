@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Atualizar ano atual automaticamente com Javascript"
+description: "Veja neste artigo como mostrar o ano atual automaticamente no footer do site"
 slug: como-atualizar-ano-atual-do-site-automaticamente-com-javascript
 author: Matheus Costa
 categories: Front-end

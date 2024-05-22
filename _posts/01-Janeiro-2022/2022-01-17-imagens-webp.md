@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Disponibilize imagens em formatos de última geração"
+description: "Veja neste artigo como resolver o problema no resultado do Google Pagespeed: Disponibilize imagens em formatos de última geração"
 slug: como-resolver-o-erro-disponibilize-imagens-em-formatos-de-ultima-geracao
 author: Matheus Costa
 categories: Front-end

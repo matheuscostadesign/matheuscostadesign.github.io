@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Como alterar menu header após scroll com Javascript"
+description: "Veja neste artigo como alterar o menu/cabeçalho/header do site após scroll na página com Vanilla Javascript (Pure JS)."
 slug: como-alterar-menu-header-apos-scroll-com-javascript
 author: Matheus Costa
 categories: Front-end
