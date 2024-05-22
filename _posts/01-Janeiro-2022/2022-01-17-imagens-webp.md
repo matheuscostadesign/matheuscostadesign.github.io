@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Disponibilize imagens em formatos de última geração"
-author: matheus
-categories: [Front-end]
+slug: como-resolver-o-erro-disponibilize-imagens-em-formatos-de-ultima-geracao
+author: Matheus Costa
+categories: Front-end
 image: assets/images/posts/converter-imagem-webp.jpg
 comments: true
 ---

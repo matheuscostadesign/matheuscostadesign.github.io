@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Atualizar ano atual automaticamente com Javascript "
-author: matheus
-categories: [Front-end]
+title: "Atualizar ano atual automaticamente com Javascript"
+slug: como-atualizar-ano-atual-do-site-automaticamente-com-javascript
+author: Matheus Costa
+categories: Front-end
 image: assets/images/posts/mostrar-ano-atual-com-javascript.jpg
 comments: true
 ---

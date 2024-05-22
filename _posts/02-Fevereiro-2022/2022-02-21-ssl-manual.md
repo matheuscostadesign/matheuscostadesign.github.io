@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Como gerar o certificado SSL/HTTPS de forma manual"
-author: matheus
-categories: [Front-end, Deploy]
+slug: como-gerar-o-certificado-ssl-https-de-forma-manual
+author: Matheus Costa
+categories: Front-end, Deploy
 image: assets/images/posts/como-gerar-certificado-ssl-https-de-forma-manual.jpg
 comments: true
 ---

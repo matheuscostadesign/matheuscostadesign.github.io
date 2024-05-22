@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Como alterar menu header após scroll com Javascript"
-author: matheus
-categories: [Front-end]
+slug: como-alterar-menu-header-apos-scroll-com-javascript
+author: Matheus Costa
+categories: Front-end
 image: assets/images/posts/como-alterar-menu-header-apos-scroll.jpg
 comments: true
 ---

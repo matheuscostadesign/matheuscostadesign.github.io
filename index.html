@@ -62,10 +62,9 @@ description: Profissional especializado em criação de sites em São José do R
       <div class="blog-list">
         {% for post in site.posts limit:2 %}
         <a href="{{ post.url }}" class="blog-article">
-
-          <img class="" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
-          <h3>{{ post.title | truncate: 46 }}</h3>
-          <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          <img class="img-post-home" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+          <h3>{{ post.title | truncate: 48 }}</h3>
+          <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
         </a>
         {% endfor %}
       </div>

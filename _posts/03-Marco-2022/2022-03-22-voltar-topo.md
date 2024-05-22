@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Como fazer o efeito voltar ao topo suave com jQuery"
-author: matheus
-categories: [Front-end]
+slug: como-fazer-o-efeito-de-voltar-ao-topo-suave-com-jquery
+author: Matheus Costa
+categories: Front-end
 image: assets/images/posts/botao-voltar-ao-topo-suave-jquery.jpg
 comments: true
 ---
