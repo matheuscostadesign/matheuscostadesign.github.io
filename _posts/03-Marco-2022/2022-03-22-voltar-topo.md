@@ -14,7 +14,7 @@ Veja neste artigo como fazer o efeito voltar ao topo da página de forma suave (
 
 - Primeiramente faça o download da biblioteca jQuery (ou utilize via CDN):
 
-  - <a href="https://jquery.com/download/" target="_blank" rel="noopener noreferrer">https://jquery.com/download/</a>
+- <a href="https://jquery.com/download/" target="_blank" rel="noopener noreferrer">https://jquery.com/download/</a>
 
 - Referencie a biblioteca jQuery em seu HTML, antes do fechamento da tag `</body>`
 

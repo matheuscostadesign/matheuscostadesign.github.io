@@ -31,6 +31,7 @@ h3 {
 }
 
 p,
+ul,
 li,
 a,
 blockquote,
@@ -56,10 +57,16 @@ cite {
   h4 {
     font-size: 1.8rem;
   }
+
   p,
-  a {
-    font-size: 1.6rem;
+  ul,
+  li,
+  a,
+  blockquote,
+  cite {
+    font-size: 1.7rem;
   }
+
   .subtitle {
     font-size: 1.8rem;
   }

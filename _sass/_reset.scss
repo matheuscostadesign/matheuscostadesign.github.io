@@ -4,8 +4,8 @@
   box-sizing: border-box;
   border: none;
   outline: none;
-  list-style: none;
-  list-style-position: inside;
+  // list-style: none;
+  // list-style-position: inside;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
 }
@@ -62,6 +62,15 @@ ul {
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: $color-secondary;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+  background-color: $gray-600;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  background: $color-secondary;
+  border-radius: 10px;
 }
 
 // Cor texto selecionado
