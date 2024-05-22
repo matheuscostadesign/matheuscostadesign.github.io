@@ -10,26 +10,8 @@
   gap: 0.7rem;
 }
 
-// .btn-neutral {
-//   @include style-btn(50px, $white, $color-primary, $color-primary, $white);
-// }
-
-// .btn-outline-white {
-//   @include style-btn(50px, transparent, $white, $white, $color-secondary);
-//   border: 2px solid $white;
-// }
-
-// .btn-outline-primary {
-//   @include style-btn(50px, transparent, $color-primary, $color-primary, $white);
-//   border: 2px solid $color-primary;
-// }
-
 @include responsive(480px) {
   .btn-primary {
-    // .btn-neutral,
-    // .btn-whatsapp,
-    // .btn-outline-white,
-    // .btn-outline-primary
     font-size: 1.8rem;
     padding: 0 5rem;
   }
@@ -39,7 +21,6 @@
   }
 }
 
-// Cor dos links
 a {
   color: $color-primary;
 }
