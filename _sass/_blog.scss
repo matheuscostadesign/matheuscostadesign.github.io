@@ -1,0 +1,44 @@
+.s-all-blog {
+  //padding: 0;
+
+  .container {
+    .title {
+      margin-bottom: 6.4rem;
+
+      h1,
+      p {
+        text-align: center;
+      }
+    }
+
+    .all-posts {
+      display: flex;
+      gap: 2.4rem;
+      flex-wrap: wrap;
+
+      .post-single {
+        max-width: 380px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+
+        h3,
+        p {
+          text-align: left;
+        }
+      }
+
+      .img-single {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+        border-radius: 1.6rem;
+        transition: all 0.3s;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

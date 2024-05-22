@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Otimização imagens JPEG"
+title: "Ferramenta online para otimização de imagens JPEG"
 description: "Ferramenta útil para otimizar imagens em JPG/JPEG"
 slug: como-otimizar-imagens-jpeg
 author: Matheus Costa
