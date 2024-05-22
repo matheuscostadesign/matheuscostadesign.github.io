@@ -5,12 +5,17 @@ description: Profissional especializado em criação de sites em São José do R
 image: assets/ogimage.jpg
 ---
 
+{% include header.html %}
+
+<div class="banner-blog">
+  <div class="title">
+    <h1>Todos artigos no blog</h1>
+    <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
+  </div>
+</div>
+
 <section class="s-all-blog">
   <div class="container">
-    <div class="title">
-      <h1>Todos artigos no blog</h1>
-      <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
-    </div>
     <div class="all-posts">
       {% for post in site.posts %}
       <a href="{{ post.url }}" class="post-single">

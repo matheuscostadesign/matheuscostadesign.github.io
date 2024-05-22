@@ -241,6 +241,11 @@
           object-fit: cover;
           display: block;
           margin-bottom: 3.2rem;
+          transition: all 0.3s;
+
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
     }
