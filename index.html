@@ -72,7 +72,10 @@ image: assets/ogimage.jpg
         {% endfor %}
       </div>
       <br>
-      <a href="/blog/" class="btn-primary">Ver todos artigos</a>
+      <a href="/blog/" class="btn-primary">
+        <span>Ver todos artigos</span>
+        <img src="assets/icons/arrow-right.svg" alt="Icone Link" width="24" height="24">
+      </a>
     </div>
   </section>
 
@@ -82,187 +85,22 @@ image: assets/ogimage.jpg
       <p>Desenvolvimento de sites utilizando as tecnologias mais modernas do mercado.</p>
       <div class="swiper slides-frontend">
         <div class="swiper-wrapper">
+          {% for projeto in site.data.projetos-front %}
           <div class="swiper-slide">
             <div class="projeto">
               <div class="img">
-                <img src="assets/projetos/pedu.jpg" alt="Pedu App">
+                <img src="{{ projeto.image }}" alt="{{ projeto.alt }}">
               </div>
               <div class="text">
-                <h3>PEdu App</h3>
-                <a href="https://peduapp.com.br/" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
-                  o case</a>
+                <h3>{{ projeto.title }}</h3>
+                <a href="{{ projeto.link }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>Acessar o case</span>
+                  <img src="assets/icons/arrow-right-up.svg" alt="Icone Link" width="24" height="24">
+                </a>
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/solarcunha.jpg" alt="Solar Cunha">
-              </div>
-              <div class="text">
-                <h3>Solar Cunha</h3>
-                <a href="https://solarcunha.com.br/" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/proansi.jpg" alt="Proansi Tecnologia">
-              </div>
-              <div class="text">
-                <h3>Proansi Tecnologia</h3>
-                <a href="https://proansi.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
-                  o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/safebras.jpg" alt="Safebras">
-              </div>
-              <div class="text">
-                <h3>Safebras</h3>
-                <a href="https://safebras.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
-                  o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/argus.jpg" alt="Argus do Brasil">
-              </div>
-              <div class="text">
-                <h3>Argus do Brasil</h3>
-                <a href="https://argusdobrasil.com.br" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar
-                  o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/marconni.jpg" alt="Marconni">
-              </div>
-              <div class="text">
-                <h3>Marconni Energia Solar</h3>
-                <a href="https://marconni.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
-                  o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/igrejayadah.jpg" alt="Igreja Yadah">
-              </div>
-              <div class="text">
-                <h3>Igreja Yadah</h3>
-                <a href="https://igrejayadah.com.br" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/myfreedom.jpg" alt="myFreedom">
-              </div>
-              <div class="text">
-                <h3>myFreedom - LP</h3>
-                <a href="https://myfreedom.com.br" target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar
-                  o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/marconni-lp.jpg" alt="Marconni">
-              </div>
-              <div class="text">
-                <h3>Marconni - LP</h3>
-                <a href="https://marconni.com.br/landing" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/proansi-lp.jpg" alt="Landing Proansi Tecnologia">
-              </div>
-              <div class="text">
-                <h3>Proansi Tecnologia</h3>
-                <a href="https://landing.proansi.com.br" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/navis.jpg" alt="Sistema Navis">
-              </div>
-              <div class="text">
-                <h3>Sistema Navis</h3>
-                <a href="https://sistemanavis.com.br" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/planetseg.jpg" alt="Planetseg">
-              </div>
-              <div class="text">
-                <h3>Planetseg</h3>
-                <a href="https://www.planetsegseguranca.com.br/" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/menosdomesmo.png" alt="Menos do Mesmo">
-              </div>
-              <div class="text">
-                <h3>Menos do Mesmo</h3>
-                <a href="https://menosdomesmo.vercel.app/" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/neon.jpg" alt="Banco Neon">
-              </div>
-              <div class="text">
-                <h3>Banco Neon (Case de Estudo)</h3>
-                <a href="https://matheuscostadesign.github.io/codeboost/projeto03-neon/" target="_blank"
-                  rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/prof-valmara.jpg" alt="Professora Valmara">
-              </div>
-              <div class="text">
-                <h3>Profª Valmara</h3>
-                <a href="https://prof-valmara.vercel.app/" target="_blank" rel="noopener noreferrer"
-                  class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -274,54 +112,22 @@ image: assets/ogimage.jpg
       <p>Criação de produtos digitais focados na melhor experiência para o usuário.</p>
       <div class="swiper slides-uxdesign">
         <div class="swiper-wrapper">
+          {% for projeto in site.data.projetos-ux %}
           <div class="swiper-slide">
             <div class="projeto">
               <div class="img">
-                <img src="assets/projetos/mockup-samsumg.webp" alt="Mockup Samsung Galaxy Tab A">
+                <img src="{{ projeto.image }}" alt="{{ projeto.alt }}">
               </div>
               <div class="text">
-                <h3>Mockup Samsung Galaxy Tab A</h3>
-                <a href="https://www.behance.net/gallery/110947529/Free-Mockup-Samsung-Galaxy-Tab-A" target="_blank"
-                  rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
+                <h3>{{ projeto.title }}</h3>
+                <a href="{{ projeto.link }}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  <span>Acessar o case</span>
+                  <img src="assets/icons/arrow-right-up.svg" alt="Icone Link" width="24" height="24">
+                </a>
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/freedom-correio.jpg" alt="App Freedom Correio">
-              </div>
-              <div class="text">
-                <h3>App Freedom Correio</h3>
-                <a href="https://play.google.com/store/apps/details?id=br.com.proansi.FreedomCorreio" target="_blank"
-                  rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/alugue-facil.jpg" alt="Alugue Fácil">
-              </div>
-              <div class="text">
-                <h3>Alugue Fácil</h3>
-                <a href="https://www.behance.net/gallery/171355811/Alugue-Facil-Identidade-Visual-e-Wireframe-(UXUI)"
-                  target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="projeto">
-              <div class="img">
-                <img src="assets/projetos/visage-plus.jpg" alt="Redesign Visage Plus">
-              </div>
-              <div class="text">
-                <h3>Redesign Visage Plus</h3>
-                <a href="https://www.behance.net/gallery/171357763/Visage-Plus-Redesign-%28Modulo-PDV%29"
-                  target="_blank" rel="noopener noreferrer" class="btn-primary">Acessar o case</a>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
