@@ -5,7 +5,7 @@ description: "Veja neste artigo como mostrar o ano atual automaticamente no foot
 slug: como-atualizar-ano-atual-do-site-automaticamente-com-javascript
 author: Matheus Costa
 categories: Front-end
-image: assets/images/posts/mostrar-ano-atual-com-javascript.jpg
+image: assets/images/posts/2022/mostrar-ano-atual-com-javascript.jpg
 comments: true
 ---
 

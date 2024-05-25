@@ -5,7 +5,7 @@ description: "Veja neste artigo como alterar o menu/cabeçalho/header do site ap
 slug: como-alterar-menu-header-apos-scroll-com-javascript
 author: Matheus Costa
 categories: Front-end
-image: assets/images/posts/como-alterar-menu-header-apos-scroll.jpg
+image: assets/images/posts/2022/como-alterar-menu-header-apos-scroll.jpg
 comments: true
 ---
 

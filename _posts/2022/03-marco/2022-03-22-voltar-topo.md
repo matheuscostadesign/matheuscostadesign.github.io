@@ -5,7 +5,7 @@ description: "Veja neste artigo como fazer o efeito voltar ao topo da página de
 slug: como-fazer-o-efeito-de-voltar-ao-topo-suave-com-jquery
 author: Matheus Costa
 categories: Front-end
-image: assets/images/posts/botao-voltar-ao-topo-suave-jquery.jpg
+image: assets/images/posts/2022/botao-voltar-ao-topo-suave-jquery.jpg
 comments: true
 ---
 

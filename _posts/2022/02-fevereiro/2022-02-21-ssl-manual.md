@@ -5,7 +5,7 @@ description: "Veja neste artigo como gerar os arquivos de certificado SSL da Let
 slug: como-gerar-o-certificado-ssl-https-de-forma-manual
 author: Matheus Costa
 categories: Front-end, Deploy
-image: assets/images/posts/como-gerar-certificado-ssl-https-de-forma-manual.jpg
+image: assets/images/posts/2022/como-gerar-certificado-ssl-https-de-forma-manual.jpg
 comments: true
 ---
 
@@ -76,7 +76,7 @@ E de 3 em 3 meses será necessário refazer todo processo.
 - `C:\Certbot\live\dominio.com.br\fullchain.pem`
 - `C:\Certbot\live\dominio.com.br\privkey.pem`
 
-![ssl.png]({{ site.baseurl }}/assets/images/posts/2022-02-Fevereiro/ssl.png)
+![ssl.png]({{ site.baseurl }}/assets/images/posts/2022/ssl.png)
 
 ## Enviando certificado para a empresa de hospedagem
 

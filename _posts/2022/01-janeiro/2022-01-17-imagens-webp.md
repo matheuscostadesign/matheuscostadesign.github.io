@@ -5,7 +5,7 @@ description: "Veja neste artigo como resolver o problema no resultado do Google 
 slug: como-resolver-o-erro-disponibilize-imagens-em-formatos-de-ultima-geracao
 author: Matheus Costa
 categories: Front-end
-image: assets/images/posts/converter-imagem-webp.jpg
+image: assets/images/posts/2022/converter-imagem-webp.jpg
 comments: true
 ---
 
