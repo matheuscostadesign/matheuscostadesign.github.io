@@ -9,6 +9,7 @@ Portfolio e blog pessoal
 Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pessoal, a fim de compartilhar novos conhecimentos adquiridos em desenvolvimento web e design. O site foi construído inicialmente apenas com HTML, CSS e JavaScript. Com a necessidade de criação de um blog, foi implementado o Jekyll para gerenciar a criação dos artigos em Markdown, mantendo a simplicidade e desempenho do site.
 
 ## Tecnologias envolvidas
+
 - HTML
 - CSS
 - JavaScript
@@ -33,6 +34,7 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 - [ ] Criar efeito menu header apos scroll
 - [ ] Corrigir estilização h1, h2, h3, h4 do markdown no blog
 - [ ] Diminuir tamanho foto perfil no mobile
+- [ ] Implementar Notion como CMS: https://github.com/emoriarty/jekyll-notion
 
 ## Como executar blog Jekyll
 
