@@ -10,6 +10,12 @@
   <title>{{ page.title }}</title>
   <meta name="title" content="{{ page.title }}">
   <meta name="description" content="{{ page.description | strip_html | strip_newlines | truncate: 160 }}">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Matheus Costa">
+  <meta name="copyright" content="Matheus Costa" />
+  <meta name="keywords"
+    content="matheus costa, matheuscostadesign, matheus costa design, matheus costa ux, matheus costa dev, matheus costa designer, criação de sites, criar site em rio preto, profissional para criar site">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -63,6 +69,26 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ '/css/swiper-bundle.min.css' | prepend: site.baseurl }}" />
   <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+
+  <!-- Schema - Person -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Matheus Costa",
+      "url": "https://matheuscostadesign.github.io/",
+      "image": "https://matheuscostadesign.github.io/assets/matheus.jpg",
+      "sameAs": [
+        "https://www.facebook.com/matheuscostadev",
+        "https://x.com/matheuscdesign",
+        "https://www.instagram.com/matheuscosta.design/",
+        "https://www.linkedin.com/in/mattheuscosta",
+        "https://github.com/matheuscostadesign",
+        "https://matheuscostadesign.github.io/"
+      ],
+      "jobTitle": "UX/UI Designer | Desenvolvedor Front-end"  
+    }
+    </script>
 
   <meta name="google-site-verification" content="BLM8JkaGm0f3prLH3_m0eWhv1nM3kWGvJhgCr6kcxiA" />
 
