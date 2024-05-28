@@ -77,6 +77,15 @@
     }
   }
 
+  @include responsive(1366px) {
+    .container {
+      .img-profile {
+        width: 18rem;
+        margin-bottom: 1.6rem;
+      }
+    }
+  }
+
   @include responsive(780px) {
     //height: 100%;
     //padding: 6.4rem 0;
@@ -86,7 +95,7 @@
       margin: 0 auto;
 
       .img-profile {
-        width: 20rem;
+        width: 16rem;
         margin-bottom: 1.6rem;
       }
 
@@ -100,6 +109,15 @@
 
       .btn-primary {
         width: 100%;
+      }
+    }
+  }
+
+  @include responsive(480px) {
+    .container {
+      .img-profile {
+        width: 16rem;
+        margin-bottom: 1.6rem;
       }
     }
   }
