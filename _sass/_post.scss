@@ -51,6 +51,11 @@ body {
     margin-left: 2rem;
   }
 
+  .container {
+    width: 100%;
+    max-width: 90rem;
+  }
+
   .post-info {
     display: flex;
     gap: 2.4rem;
