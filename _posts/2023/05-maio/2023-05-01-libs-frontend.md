@@ -13,7 +13,7 @@ Confira neste post alguns links de bibliotecas para estilização e construção
 
 ## Lista de bibliotecas Front-end
 
-- Veja a lista de algumas lbs
+- Veja a lista de algumas libs para usar no Front-end 
 
 ## 1) [Astro](https://astro.build/)
 
