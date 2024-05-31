@@ -39,5 +39,7 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 ## Como executar blog Jekyll
 
 - [Veja aqui como configurar o ambiente de desenvolvimento](https://github.com/matheuscostadesign/guia-jekyll/)
-- Rodar o comando: `jekyll serve --livereload`
+- Comandos de execução:
+  - `jekyll serve --livereload`
+  - `bundle exec jekyll serve --livereload`
 - O site será executado em: `http://127.0.0.1:4000/`
