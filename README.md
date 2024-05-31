@@ -24,7 +24,7 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 - [ ] Adicionar formulário de contato
 - [ ] Adicionar menu mobile
 - [ ] Adicionar animações após scroll
-- [ ] Ajustar layout para resolucao 1366x768
+- [x] Ajustar layout para resolucao 1366x768
 - [ ] Adicionar paginacao no blog
 - [ ] Converter todas imagens para webp
 - [ ] Adicionar fonte local (retirar do Google Fonts)
@@ -32,9 +32,10 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 - [ ] Especificar tamanho das imagens dos projetos
 - [ ] Reduzir javascript nao usado (Remover jQuery)
 - [ ] Criar efeito menu header apos scroll
-- [ ] Corrigir estilização h1, h2, h3, h4 do markdown no blog
-- [ ] Diminuir tamanho foto perfil no mobile
+- [x] Corrigir estilização h1, h2, h3, h4 do markdown no blog
+- [x] Diminuir tamanho foto perfil no mobile
 - [ ] Implementar Notion como CMS: https://github.com/emoriarty/jekyll-notion
+- [ ] Integrar comentários Disqus ou GitHub
 
 ## Como executar blog Jekyll
 
