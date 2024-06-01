@@ -36,6 +36,7 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 - [ ] Criar efeito menu header apos scroll
 - [ ] Implementar Notion como CMS: https://github.com/emoriarty/jekyll-notion
 - [ ] Integrar comentários Disqus ou GitHub
+- [ ] Fazer efeito background grid na hero section
 
 ## Como executar blog Jekyll
 
