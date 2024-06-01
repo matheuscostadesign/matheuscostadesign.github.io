@@ -31,6 +31,7 @@
   src: url("DM-Sans-700.woff2") format("woff2");
 }
 /* DM-Sans-800 */
+/*
 @font-face {
   font-display: swap;
   font-family: "DM Sans";
@@ -38,6 +39,7 @@
   font-weight: 800;
   src: url("DM-Sans-800.woff2") format("woff2");
 }
+/*
 /* Jetbrains-Mono-Regular */
 @font-face {
   font-display: swap;
