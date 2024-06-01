@@ -21,7 +21,7 @@ image: assets/ogimage.jpg
       <a href="{{ post.url }}" class="post-single">
         <img class="img-single" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
         <h3>{{ post.title | truncate: 48 }}</h3>
-        <p>{{ post.excerpt | strip_html | truncate: 78 }}</p>
+        <p>{{ post.description | strip_html | truncate: 78 }}</p>
       </a>
       {% endfor %}
     </div>

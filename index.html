@@ -67,7 +67,7 @@ image: assets/ogimage.jpg
         <a href="{{ post.url }}" class="blog-article">
           <img class="img-post-home" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
           <h3>{{ post.title | truncate: 60 }}</h3>
-          <p>{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          <p>{{ post.description | strip_html | truncate: 100 }}</p>
         </a>
         {% endfor %}
       </div>
