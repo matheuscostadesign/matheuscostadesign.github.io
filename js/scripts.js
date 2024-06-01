@@ -24,3 +24,19 @@ $('.s-hero a[href^="#"]').on("click", function (e) {
     400 // velocidade transição
   );
 });
+
+// Função para adicionar target_blank em links externos
+document.addEventListener("DOMContentLoaded", function () {
+  const currentDomain = window.location.hostname;
+
+  const links = document.querySelectorAll("a");
+
+  links.forEach((link) => {
+    const href = link.getAttribute("href");
+
+    if (href && !href.includes(currentDomain) && href.startsWith("http")) {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+});
