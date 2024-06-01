@@ -1,0 +1,48 @@
+/* DM-Sans-Regular */
+@font-face {
+  font-display: swap;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("DM-Sans-Regular.woff2") format("woff2");
+}
+/* DM-Sans-500 */
+@font-face {
+  font-display: swap;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("DM-Sans-500.woff2") format("woff2");
+}
+/* DM-Sans-600 */
+@font-face {
+  font-display: swap;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("DM-Sans-600.woff2") format("woff2");
+}
+/* DM-Sans-700 */
+@font-face {
+  font-display: swap;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("DM-Sans-700.woff2") format("woff2");
+}
+/* DM-Sans-800 */
+@font-face {
+  font-display: swap;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 800;
+  src: url("DM-Sans-800.woff2") format("woff2");
+}
+/* Jetbrains-Mono-Regular */
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("Jetbrains-Mono-Regular.woff2") format("woff2");
+}

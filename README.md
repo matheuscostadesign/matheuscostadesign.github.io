@@ -21,19 +21,19 @@ Este repositório foi criado com o objetivo de divulgar meu portfólio e blog pe
 ## Ideias, melhorias e ajustes
 
 - [x] Adicionar web-kit para blur Safari
+- [x] Adicionar fonte local (retirar do Google Fonts)
+- [x] Ajustar layout para resolucao 1366x768
+- [x] Corrigir estilização h1, h2, h3, h4 do markdown no blog
+- [x] Diminuir tamanho foto perfil no mobile
 - [ ] Adicionar formulário de contato
 - [ ] Adicionar menu mobile
 - [ ] Adicionar animações após scroll
-- [x] Ajustar layout para resolucao 1366x768
 - [ ] Adicionar paginacao no blog
 - [ ] Converter todas imagens para webp
-- [ ] Adicionar fonte local (retirar do Google Fonts)
 - [ ] Padronizar resolucao das imagens dos projetos
 - [ ] Especificar tamanho das imagens dos projetos
 - [ ] Reduzir javascript nao usado (Remover jQuery)
 - [ ] Criar efeito menu header apos scroll
-- [x] Corrigir estilização h1, h2, h3, h4 do markdown no blog
-- [x] Diminuir tamanho foto perfil no mobile
 - [ ] Implementar Notion como CMS: https://github.com/emoriarty/jekyll-notion
 - [ ] Integrar comentários Disqus ou GitHub
 
