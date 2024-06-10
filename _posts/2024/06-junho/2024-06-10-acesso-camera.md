@@ -5,7 +5,7 @@ description: "Aprenda neste post como habilitar acesso à câmera em sites sem c
 slug: como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl
 author: Matheus Costa
 categories: Tecnologia
-image: assets/images/posts/2024/06/como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl.jpg
+image: assets/images/posts/2024/06/como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl.webp
 comments: true
 ---
 
