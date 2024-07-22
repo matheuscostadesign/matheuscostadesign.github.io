@@ -58,12 +58,37 @@ image: assets/ogimage.jpg
     </div>
   </section>
 
-  <section class="s-blog" id="blog">
+  <section class="s-all-blog">
+    <div class="container">
+      <div class="title-home">
+        <h2>Últimos artigos no blog</h2>
+        <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
+      </div>
+      <div class="all-posts">
+        {% for post in site.posts limit:3 %}
+        <a href="{{ post.url }}" class="post-single">
+          <img class="img-single" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+          <h3>{{ post.title | truncate: 48 }}</h3>
+          <p>{{ post.description | strip_html | truncate: 64 }}</p>
+        </a>
+        {% endfor %}
+      </div>
+      <br>
+      <div class="btn-all-posts">
+        <a href="/blog/" class="btn-primary">
+          <span>Ver todos artigos</span>
+          <img src="assets/icons/arrow-right.svg" alt="Icone Link" width="24" height="24">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="s-blog" id="blog">
     <div class="container">
       <h2>Últimos artigos no blog</h2>
       <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
       <div class="blog-list">
-        {% for post in site.posts limit:2 %}
+        {% for post in site.posts limit:3 %}
         <a href="{{ post.url }}" class="blog-article">
           <img class="img-post-home" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
           <h3>{{ post.title | truncate: 60 }}</h3>
@@ -77,7 +102,7 @@ image: assets/ogimage.jpg
         <img src="assets/icons/arrow-right.svg" alt="Icone Link" width="24" height="24">
       </a>
     </div>
-  </section>
+  </section> -->
 
   <section class="s-projetos front" id="projetos-frontend">
     <div class="container">

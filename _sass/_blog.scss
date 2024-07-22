@@ -22,6 +22,24 @@
       }
     }
 
+    .title-home,
+    .btn-all-posts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+
+      p {
+        margin-top: 2.4rem;
+        margin-bottom: 4.8rem;
+      }
+
+      .btn-primary {
+        margin-top: 2.4rem;
+      }
+    }
+
     .all-posts {
       display: flex;
       gap: 2.4rem;
