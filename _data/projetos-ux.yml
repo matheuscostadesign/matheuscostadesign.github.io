@@ -1,3 +1,13 @@
+- title: "UX/UI FreedomNEO"
+  image: "assets/projetos/freedomneo.jpg"
+  alt: "UX/UI FreedomNEO"
+  link: "https://app.freedomneo.com.br/"
+
+- title: "Landing Page Food Delivery"
+  image: "assets/projetos/rappi.jpg"
+  alt: "Landing Page Food Delivery"
+  link: "https://dribbble.com/shots/21573542-Rappi-Delivery-Landing-Page-Food-Delivery-Web-App"
+
 - title: "Mockup Samsung Galaxy Tab"
   image: "assets/projetos/mockup-samsumg.webp"
   alt: "Mockup Samsung Galaxy Tab A"
@@ -17,3 +27,8 @@
   image: "assets/projetos/visage-plus.jpg"
   alt: "Redesign Visage Plus"
   link: "https://www.behance.net/gallery/171357763/Visage-Plus-Redesign-%28Modulo-PDV%29"
+
+- title: "UX/UI QR-Key App"
+  image: "assets/projetos/qrkey-app.jpg"
+  alt: "UX/UI QR-Key App"
+  link: "https://play.google.com/store/apps/details?id=br.com.proansi.qrkey&hl=pt_BR"
