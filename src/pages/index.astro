@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero';
+import ProjectCarousel from '../components/ProjectCarousel';
+import { getCollection } from 'astro:content';
+import projetosFront from '../data/projetos-front.json';
+import projetosUx from '../data/projetos-ux.json';
+
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.id.substring(0, 10)).getTime() - new Date(a.id.substring(0, 10)).getTime())
+  .slice(0, 3);
+
+const truncate = (str: string, length: number) => {
+  return str.length > length ? str.substring(0, length - 3) + '...' : str;
+};
+---
+
+<BaseLayout 
+  title="Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP"
+  description="Profissional especializado em criação de sites em São José do Rio Preto/SP"
+>
+  <main>
+    <Hero client:load />
+
+    <section class="s-all-blog">
+      <div class="container">
+        <div class="title-home">
+          <h2>Últimos artigos no blog</h2>
+          <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
+        </div>
+        <div class="all-posts">
+          {latestPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="post-single">
+              <img class="img-single" src={post.data.image} alt={post.data.title} />
+              <h3>{truncate(post.data.title, 48)}</h3>
+              <p>{truncate(post.data.description, 64)}</p>
+            </a>
+          ))}
+        </div>
+        <br />
+        <div class="btn-all-posts">
+          <a href="/blog/" class="btn-primary">
+            <span>Ver todos artigos</span>
+            <img src="/assets/icons/arrow-right.svg" alt="Icone Link" width="24" height="24" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-projetos front" id="projetos-frontend">
+      <div class="container">
+        <h2>Projetos Front-end</h2>
+        <p>Desenvolvimento de sites utilizando as tecnologias mais modernas do mercado.</p>
+        <div class="slides-frontend">
+          <ProjectCarousel client:load projects={projetosFront} autoplayDelay={4000} />
+        </div>
+      </div>
+    </section>
+
+    <section class="s-projetos ui">
+      <div class="container">
+        <h2>Projetos UX/UI Design</h2>
+        <p>Criação de produtos digitais focados na melhor experiência para o usuário.</p>
+        <div class="slides-uxdesign">
+          <ProjectCarousel client:load projects={projetosUx} autoplayDelay={5500} />
+        </div>
+      </div>
+    </section>
+
+    <section class="s-contato">
+      <div class="container">
+        <h2>Vamos começar um projeto?</h2>
+        <p>Me conte como posso te ajudar!</p>
+        <a href="https://wa.me/5517992143072" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          Começar projeto
+          <img src="/assets/icons/whatsapp.svg" alt="Icone Whatsapp" width="24" height="24" />
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

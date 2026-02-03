@@ -1,0 +1,44 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, author, categories, image } = post.data;
+
+const meses = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
+
+const date = new Date(post.id.substring(0, 10));
+const dia = date.getDate().toString().padStart(2, '0');
+const mes = meses[date.getMonth()];
+const ano = date.getFullYear();
+const dateString = `${dia} de ${mes} de ${ano}`;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  {image && (
+    <img class="banner-post" src={image} alt={title} />
+  )}
+  
+  <div class="article">
+    <div class="container">
+      <h1>{title}</h1>
+      <div class="post-info">
+        <img class="post-author" src="/assets/matheus.jpg" alt={author} />
+        <p>Autor: {author}</p>
+        <p>Postado em: <time datetime={date.toISOString()}>{dateString}</time></p>
+        <p>Categoria: <span class="categorie">{categories}</span></p>
+      </div>
+      <hr />
+      <article>
+        <slot />
+      </article>
+    </div>
+  </div>
+</BaseLayout>

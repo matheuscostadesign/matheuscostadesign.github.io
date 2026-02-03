@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.id.substring(0, 10)).getTime() - new Date(a.id.substring(0, 10)).getTime()
+);
+
+const truncate = (str: string, length: number) => {
+  return str.length > length ? str.substring(0, length - 3) + '...' : str;
+};
+---
+
+<BaseLayout 
+  title="Blog - Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP"
+  description="Profissional especializado em criação de sites em São José do Rio Preto/SP"
+>
+  <div class="banner-blog">
+    <div class="title">
+      <h1>Todos artigos no blog</h1>
+      <p>Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
+    </div>
+  </div>
+
+  <section class="s-all-blog">
+    <div class="container">
+      <div class="all-posts">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="post-single">
+            <img class="img-single" src={post.data.image} alt={post.data.title} />
+            <h3>{truncate(post.data.title, 48)}</h3>
+            <p>{truncate(post.data.description, 78)}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
