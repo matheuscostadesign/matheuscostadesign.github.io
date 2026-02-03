@@ -17,6 +17,10 @@ export default function ParticlesBackground() {
           value: "transparent",
         },
       },
+      fullScreen: {
+        enable: false,
+        zIndex: 0,
+      },
       fpsLimit: 120,
       interactivity: {
         events: {
@@ -81,5 +85,11 @@ export default function ParticlesBackground() {
     [],
   );
 
-  return <Particles id="particles-js" options={options} />;
+  return (
+    <Particles
+      id="particles-js"
+      options={options}
+      style={{ position: "absolute", width: "100%", height: "100%" }}
+    />
+  );
 }

@@ -59,16 +59,29 @@ export default function ProjectCarousel({
   }, [autoplayDelay]);
 
   return (
-    <div className="carousel-container">
-      <div className="carousel-track" ref={carouselRef}>
+    <div className="w-full max-w-[110rem] overflow-hidden py-8 mx-auto">
+      <div
+        className="flex gap-12 overflow-x-auto [scroll-snap-type:x_mandatory] py-8 scroll-smooth [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-[820px]:px-6"
+        ref={carouselRef}
+      >
         {projects.map((projeto, index) => (
-          <div key={index} className="carousel-item">
-            <div className="projeto">
-              <div className="img">
-                <img src={projeto.image} alt={projeto.alt} loading="lazy" />
+          <div
+            key={index}
+            className="[scroll-snap-align:start] flex-[0_0_auto] w-[385px] max-w-[90vw] max-[820px]:w-[300px]"
+          >
+            <div className="text-center w-full max-w-[385px]">
+              <div className="w-full h-[216px] overflow-hidden rounded-[0.8rem] mb-6">
+                <img
+                  src={projeto.image}
+                  alt={projeto.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
               </div>
               <div className="text">
-                <h3>{projeto.title}</h3>
+                <h3 className="my-6 text-white text-[2.4rem] font-semibold leading-tight">
+                  {projeto.title}
+                </h3>
                 <a
                   href={projeto.link}
                   target="_blank"

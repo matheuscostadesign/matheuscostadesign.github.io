@@ -23,19 +23,19 @@ const dateString = `${dia} de ${mes} de ${ano}`;
 
 <BaseLayout title={title} description={description} image={image}>
   {image && (
-    <img class="banner-post" src={image} alt={title} />
+    <img class="w-full max-h-[50rem] object-cover block" src={image} alt={title} />
   )}
   
-  <div class="article">
-    <div class="container">
-      <h1>{title}</h1>
-      <div class="post-info">
-        <img class="post-author" src="/assets/matheus.jpg" alt={author} />
-        <p>Autor: {author}</p>
-        <p>Postado em: <time datetime={date.toISOString()}>{dateString}</time></p>
-        <p>Categoria: <span class="categorie">{categories}</span></p>
+  <div class="bg-gray-700 py-24">
+    <div class="w-full max-w-[110rem] mx-auto px-6">
+      <h1 class="text-white text-[4.8rem] font-semibold leading-tight mb-10">{title}</h1>
+      <div class="flex items-center gap-6 flex-wrap mb-10">
+        <img class="w-20 h-20 rounded-full object-cover" src="/assets/matheus.jpg" alt={author} />
+        <p class="text-text-primary m-0">Autor: {author}</p>
+        <p class="text-text-primary m-0">Postado em: <time datetime={date.toISOString()}>{dateString}</time></p>
+        <p class="text-text-primary m-0">Categoria: <span class="text-primary font-semibold">{categories}</span></p>
       </div>
-      <hr />
+      <hr class="border-none border-t border-gray-400 my-12" />
       <article>
         <slot />
       </article>

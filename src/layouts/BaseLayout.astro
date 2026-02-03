@@ -37,16 +37,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <header>
-      <div class="container">
-        <a href="/" class="logo">
+    <header class="w-full max-w-[110rem] fixed left-0 right-0 z-[99] backdrop-blur-[10px] bg-black/35 mx-auto mt-6 rounded-[4.8rem] flex items-center justify-center px-12 py-6 max-[480px]:max-w-[36rem] max-[480px]:px-10">
+      <div class="w-full max-w-[110rem] mx-auto px-0 flex items-center justify-between">
+        <a href="/" class="flex items-center justify-center gap-4">
           <img src="/assets/favicon/apple-icon-precomposed.png" alt="Logo" width="32" height="32" />
-          <span>Matheus Costa</span>
+          <span class="text-text-post transition-all duration-300 hover:text-primary max-[480px]:hidden">Matheus Costa</span>
         </a>
         <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
+          <ul class="flex gap-12 list-none">
+            <li><a href="/" class="text-text-post transition-all duration-300 hover:text-primary no-underline">Home</a></li>
+            <li><a href="/blog" class="text-text-post transition-all duration-300 hover:text-primary no-underline">Blog</a></li>
           </ul>
         </nav>
       </div>
@@ -54,9 +54,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <slot />
     
-    <footer>
-      <div class="container">
-        <p>&copy; {new Date().getFullYear()} Matheus Costa. Todos os direitos reservados.</p>
+    <footer class="py-10 bg-black text-center relative z-10">
+      <div class="w-full max-w-[110rem] mx-auto px-6">
+        <p class="text-text-primary m-0">&copy; {new Date().getFullYear()} Matheus Costa. Todos os direitos reservados.</p>
       </div>
     </footer>
   </body>
