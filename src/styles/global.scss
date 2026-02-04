@@ -61,7 +61,7 @@ $whatsapp-light: #25d366;
       font-size: 2rem !important;
       height: 56px !important;
       padding: 0 3rem !important;
-      width: 100%;
+      width: auto;
       justify-content: center;
     }
   }
@@ -322,7 +322,7 @@ article {
 
     @media (max-width: 768px) {
       padding: 1.6rem;
-      margin: 2.4rem -1.6rem;
+      margin: 2.4rem 1.6rem;
       border-radius: 0.8rem;
       font-size: 1.4rem;
     }

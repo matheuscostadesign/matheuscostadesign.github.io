@@ -79,7 +79,7 @@ export default function ProjectCarousel({
                 />
               </div>
               <div className="text">
-                <h3 className="my-6 text-white text-[2.4rem] font-semibold leading-tight">
+                <h3 className="my-6 text-white text-[2.4rem] font-semibold leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                   {projeto.title}
                 </h3>
                 <a

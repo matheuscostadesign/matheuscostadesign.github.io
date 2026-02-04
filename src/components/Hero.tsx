@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="absolute top-0 left-0 w-full h-full z-[1] pointer-events-none [&>canvas]:pointer-events-auto">
         <ParticlesBackground />
       </div>
-      <div className="flex flex-col items-center justify-center z-[2] gap-2 w-full max-w-[110rem] mx-auto px-4">
+      <div className="flex flex-col items-center justify-center z-[2] gap-2 w-full max-w-[110rem] mx-auto px-8 md:px-12 lg:px-6">
         <picture>
           <source type="image/webp" srcSet="/assets/matheus.webp" />
           <source type="image/jpeg" srcSet="/assets/matheus.jpg" />
@@ -15,7 +15,7 @@ export default function Hero() {
             alt="Matheus Costa Design"
             width="250"
             height="250"
-            className="h-auto [clip-path:circle()] transition-[filter] duration-300 hover:brightness-75 md:w-[180px] 2xl:w-[250px]"
+            className="h-auto [clip-path:circle()] transition-[filter] duration-300 hover:brightness-75 w-[160px] md:w-[180px] 2xl:w-[250px]"
           />
         </picture>
         <h1 className="text-white font-semibold text-center m-0 text-[4.8rem] leading-tight max-[1366px]:max-[800px]:text-[3.2rem]">
@@ -24,7 +24,7 @@ export default function Hero() {
         <h2 className="text-text-primary text-[2.4rem] font-normal text-center m-0">
           UX/UI Designer | Desenvolvedor Front-end
         </h2>
-        <div className="my-7 flex gap-4 flex-wrap justify-center max-[780px]:gap-6">
+        <div className="my-7 grid grid-cols-3 gap-4 md:flex md:gap-4 md:flex-wrap md:justify-center max-[780px]:gap-6">
           <a
             href="https://linkedin.com/in/mattheuscosta"
             target="_blank"
