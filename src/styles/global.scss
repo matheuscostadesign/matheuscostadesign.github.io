@@ -1,0 +1,499 @@
+/* Import Local Fonts */
+@import url("/assets/fonts/style.css");
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SASS Variables */
+$primary-purple: #7f5af0;
+$secondary-purple: #a277ff;
+$dark-purple: #5b2bec;
+$bg-dark: #242629;
+$bg-darker: #15141b;
+$bg-darkest: #1e2022;
+$text-primary: #d4d4d4;
+$text-secondary: #94a1b2;
+$text-tertiary: #72757e;
+$text-white: #fffffe;
+$border-color: #72757e33;
+$whatsapp-dark: #075e54;
+$whatsapp-light: #25d366;
+
+/* Base Styles */
+@layer base {
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-gray-600 text-text-primary overflow-x-hidden;
+    font-size: 1.6rem;
+    line-height: 1.6;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-3 h-[50px] px-12 bg-primary text-white text-base font-semibold rounded-lg cursor-pointer transition-all duration-300 no-underline;
+
+    &:hover {
+      @apply bg-secondary text-white -translate-y-1;
+    }
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-3 h-[50px] px-12 text-white text-base font-semibold rounded-lg cursor-pointer transition-all duration-300 no-underline;
+    background-color: $whatsapp-dark;
+
+    &:hover {
+      @apply text-white -translate-y-1;
+      background-color: $whatsapp-light;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .btn-primary,
+    .btn-whatsapp {
+      font-size: 2rem !important;
+      height: 56px !important;
+      padding: 0 3rem !important;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+/* Article Content Styles - Modern Typography */
+article {
+  color: $text-primary;
+  font-size: 1.8rem;
+  line-height: 1.8;
+  max-width: 100%;
+  background-color: $bg-dark;
+  padding: 4rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.6rem;
+    border-radius: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.6rem 1.2rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+  }
+
+  /* Headings with modern hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $text-white;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 4rem;
+    margin-bottom: 1.6rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-top: 0;
+    padding-bottom: 1.6rem;
+    border-bottom: 2px solid $primary-purple;
+
+    @media (max-width: 768px) {
+      font-size: 2.4rem;
+    }
+  }
+
+  h2 {
+    font-size: 2.6rem;
+    margin-top: 5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  h3 {
+    font-size: 2.2rem;
+    color: $primary-purple;
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.9rem;
+    color: $text-secondary;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  h5 {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $text-secondary;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $text-tertiary;
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Paragraphs with better spacing */
+  p {
+    color: $text-primary;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  /* Links with modern styling */
+  a {
+    color: $primary-purple;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+
+    &:hover {
+      color: $secondary-purple;
+      border-bottom-color: $secondary-purple;
+    }
+  }
+
+  /* Images with modern presentation */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+    margin: 3.2rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      margin: 1rem auto;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  /* Handle flex containers with images */
+  div[style*="display: flex"],
+  div[style*="display:flex"] {
+    display: flex;
+    gap: 2.4rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column !important;
+      gap: 1.6rem !important;
+    }
+  }
+
+  /* Lists with better styling */
+  ul,
+  ol {
+    margin-left: 0;
+    padding-left: 3rem;
+    margin-bottom: 2.4rem;
+    color: $text-primary;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      position: relative;
+      margin-bottom: 1.2rem;
+      padding-left: 1.6rem;
+
+      &::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: $primary-purple;
+        font-weight: bold;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: item;
+    list-style: none;
+
+    li {
+      position: relative;
+      margin-bottom: 1.2rem;
+      padding-left: 1.6rem;
+      counter-increment: item;
+
+      &::before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0;
+        color: $primary-purple;
+        font-weight: bold;
+      }
+    }
+  }
+
+  /* Nested lists */
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Inline code with modern styling */
+  code {
+    background-color: $bg-dark;
+    color: $secondary-purple;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.6rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.5rem;
+    border: 1px solid $border-color;
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+      word-wrap: break-word;
+    }
+  }
+
+  /* Code blocks with enhanced presentation */
+  pre {
+    background-color: $bg-darker;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    overflow-x: auto;
+    margin: 3.2rem 0;
+    font-family: "JetBrains Mono", monospace;
+    border: 1px solid $border-color;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    code {
+      background: none;
+      padding: 0;
+      font-family: "JetBrains Mono", monospace;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1.7;
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 1.6rem;
+      margin: 2.4rem -1.6rem;
+      border-radius: 0.8rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Blockquotes with modern design */
+  blockquote {
+    border-left: 4px solid $primary-purple;
+    background-color: $bg-dark;
+    padding: 2rem 2.4rem;
+    margin: 3.2rem 0;
+    border-radius: 0 0.8rem 0.8rem 0;
+    font-style: italic;
+    color: $text-secondary;
+    position: relative;
+
+    &::before {
+      content: "\201C";
+      position: absolute;
+      top: -1rem;
+      left: 1.6rem;
+      font-size: 6rem;
+      color: $primary-purple;
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Tables with modern styling */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 3.2rem 0;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      margin: 2.4rem -1.6rem;
+      border-radius: 0.8rem;
+    }
+  }
+
+  th,
+  td {
+    padding: 1.6rem;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+
+    @media (max-width: 768px) {
+      padding: 1.2rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  th {
+    background-color: $primary-purple;
+    color: $text-white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.4rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  td {
+    background-color: $bg-dark;
+    color: $text-primary;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover td {
+    background-color: #2a2c30;
+  }
+
+  /* Horizontal rules with modern design */
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      $primary-purple,
+      transparent
+    );
+    margin: 4rem 0;
+  }
+
+  /* Strong and emphasis */
+  strong {
+    color: $text-white;
+    font-weight: 700;
+  }
+
+  em {
+    color: $secondary-purple;
+    font-style: italic;
+  }
+
+  /* Keyboard keys */
+  kbd {
+    background-color: $bg-dark;
+    border: 1px solid $text-tertiary;
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 0 $text-tertiary;
+  }
+
+  /* Mark/highlight */
+  mark {
+    background-color: $primary-purple;
+    color: $text-white;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.4rem;
+  }
+}
+
+/* Ensure JetBrains Mono is applied to ALL code blocks and elements */
+pre,
+pre code,
+pre code span,
+pre span,
+code,
+code span,
+.shiki,
+.shiki code,
+.shiki span,
+[class*="language-"],
+[class*="language-"] *,
+pre[class*="language-"],
+pre[class*="language-"] *,
+code[class*="language-"],
+code[class*="language-"] * {
+  font-family: "JetBrains Mono", monospace !important;
+}
+
+/* Scrollbar */
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $bg-darkest;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $dark-purple;
+  border-radius: 10px;
+}
+
+/* Selection */
+*::selection {
+  color: $text-white;
+  background-color: $dark-purple;
+}

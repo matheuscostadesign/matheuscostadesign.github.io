@@ -12,4 +12,13 @@ export default defineConfig({
       theme: "github-dark",
     },
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern-compiler",
+        },
+      },
+    },
+  },
 });
