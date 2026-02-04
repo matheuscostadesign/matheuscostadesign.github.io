@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="absolute top-0 left-0 w-full h-full z-[1] pointer-events-none [&>canvas]:pointer-events-auto">
         <ParticlesBackground />
       </div>
-      <div className="flex flex-col items-center justify-center z-[2] gap-6 w-full max-w-[110rem] mx-auto px-6">
+      <div className="flex flex-col items-center justify-center z-[2] gap-2 w-full max-w-[110rem] mx-auto px-4">
         <picture>
           <source type="image/webp" srcSet="/assets/matheus.webp" />
           <source type="image/jpeg" srcSet="/assets/matheus.jpg" />
@@ -15,7 +15,7 @@ export default function Hero() {
             alt="Matheus Costa Design"
             width="250"
             height="250"
-            className="max-w-[250px] h-auto [clip-path:circle()] transition-[filter] duration-300 hover:brightness-75 max-[1366px]:max-[800px]:max-w-[180px] max-[780px]:w-64"
+            className="h-auto [clip-path:circle()] transition-[filter] duration-300 hover:brightness-75 md:w-[180px] 2xl:w-[250px]"
           />
         </picture>
         <h1 className="text-white font-semibold text-center m-0 text-[4.8rem] leading-tight max-[1366px]:max-[800px]:text-[3.2rem]">
