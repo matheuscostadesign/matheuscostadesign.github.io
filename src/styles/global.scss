@@ -35,7 +35,6 @@ $whatsapp-light: #25d366;
   }
 }
 
-/* Custom Components */
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-3 h-[50px] px-12 bg-primary text-white text-base font-semibold rounded-lg cursor-pointer transition-all duration-300 no-underline;
@@ -182,6 +181,33 @@ article {
       color: $secondary-purple;
       border-bottom-color: $secondary-purple;
     }
+  }
+
+  /* Ensure links in lists, tables, and headings are also colored */
+  ul a,
+  ol a,
+  li a,
+  table a,
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  strong a,
+  em a {
+    color: $primary-purple !important;
+
+    &:hover {
+      color: $secondary-purple !important;
+    }
+  }
+
+  /* Force strong/em inside links to inherit color (fixes white text issue) */
+  a strong,
+  a em,
+  a code {
+    color: inherit !important;
   }
 
   /* Images with modern presentation */

@@ -59,6 +59,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <p class="text-text-primary m-0">&copy; {new Date().getFullYear()} Matheus Costa. Todos os direitos reservados.</p>
       </div>
     </footer>
+    <script>
+      function handleExternalLinks() {
+        const links = document.querySelectorAll('a');
+        const currentHost = window.location.hostname;
+
+        links.forEach((link) => {
+          if (link.hostname && link.hostname !== currentHost) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+        });
+      }
+
+      handleExternalLinks();
+      document.addEventListener('astro:page-load', handleExternalLinks);
+    </script>
   </body>
 </html>
 
