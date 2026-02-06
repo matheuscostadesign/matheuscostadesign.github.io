@@ -41,4 +41,25 @@ const dateString = `${dia} de ${mes} de ${ano}`;
       </article>
     </div>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "image": new URL(image, Astro.site),
+    "author": {
+      "@type": "Person",
+      "name": author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Matheus Costa Design",
+      "logo": {
+        "@type": "ImageObject",
+        "url": new URL("/assets/favicon/apple-icon-precomposed.png", Astro.site)
+      }
+    },
+    "datePublished": date.toISOString(),
+  })} />
 </BaseLayout>
