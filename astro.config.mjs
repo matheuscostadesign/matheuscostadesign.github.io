@@ -1,12 +1,12 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-// import sitemap from "@astrojs/sitemap"; // Temporarily disabled due to build error
+import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://matheuscostadesign.github.io",
-  integrations: [react(), tailwind()], // sitemap() temporarily removed
+  integrations: [react(), tailwind(), sitemap()],
   markdown: {
     shikiConfig: {
       theme: "github-dark",
