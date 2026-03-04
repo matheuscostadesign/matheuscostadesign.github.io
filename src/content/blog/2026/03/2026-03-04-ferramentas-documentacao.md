@@ -1,6 +1,6 @@
 ---
-title: "Melhores ferramentas para criar documentação em 2026"
-description: "Links de algumas ferramentas para criação de documentação de projetos"
+title: "Melhores ferramentas gratuitas para criar documentação em 2026"
+description: "Links de algumas ferramentas gratuitas para criação de documentação de projetos"
 slug: melhores-ferramentas-para-criar-documentacao-de-sistemas-e-sites
 author: Matheus Costa
 categories: Front-end
@@ -8,7 +8,7 @@ image: /assets/images/posts/2026/03/ferramentas-documentacao.jpg
 comments: true
 ---
 
-Confira neste post alguns links de ferramentas para criação e manutenção de documentações de projetos.
+Confira neste post alguns links de ferramentas gratuitas (open-source)para criação e manutenção de documentações de projetos.
 
 ## Lista de ferramentas de Documentação
 
