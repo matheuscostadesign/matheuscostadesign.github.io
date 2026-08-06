@@ -1,0 +1,289 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+
+const getPostDate = (id: string) => {
+  const match = id.match(/\d{4}-\d{2}-\d{2}/);
+  return match ? new Date(match[0]).getTime() : 0;
+};
+
+const latestPosts = allPosts
+  .sort((a, b) => getPostDate(b.id) - getPostDate(a.id))
+  .slice(0, 3);
+
+const getSlug = (post: any) => {
+  return post.data.slug || post.slug || post.id.split('/').pop()?.replace(/\.mdx?$/, '');
+};
+
+const truncate = (str: string, length: number) => {
+  return str.length > length ? str.substring(0, length - 3) + '...' : str;
+};
+---
+
+<section class="latest-posts-section">
+  <div class="latest-posts-container">
+    <div class="section-header">
+      <h2 class="section-title">Artigos & Insights</h2>
+      <p class="section-subtitle">
+        Conteúdos práticos sobre frontend, UI/UX e desenvolvimento web para elevar o nível dos seus projetos.
+      </p>
+    </div>
+
+    <div class="latest-posts-grid">
+      {latestPosts.map((post) => {
+        const slug = getSlug(post);
+        return (
+          <a href={`/blog/${slug}`} class="post-card">
+            <div class="card-image-wrap">
+              <img src={post.data.image} alt={post.data.title} class="card-image" loading="lazy" />
+              <span class="card-category">{post.data.categories}</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">{truncate(post.data.title, 52)}</h3>
+              <p class="card-description">{truncate(post.data.description, 75)}</p>
+              <div class="card-link">
+                <span>Ler artigo</span>
+                <span class="card-link-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="12" x2="18.5" y2="12"></line>
+                    <polyline points="12.5 6 19 12 12.5 18"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="section-actions">
+      <a href="/blog" class="all-posts-btn">
+        <span class="btn-arrow">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="4" y1="12" x2="18.5" y2="12"></line>
+            <polyline points="12.5 6 19 12 12.5 18"></polyline>
+          </svg>
+        </span>
+        <span>Ver todos os artigos</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .latest-posts-section {
+    padding: var(--spacing-section-py) var(--spacing-container-px);
+    background: var(--color-bg-surface);
+    position: relative;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .latest-posts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto 56px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: normal;
+    color: var(--color-text-main);
+    margin: 0 0 16px;
+    line-height: 1.1;
+  }
+
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .latest-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: clamp(16px, 3vw, 32px);
+    margin-bottom: clamp(32px, 5vw, 48px);
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .post-card:hover .card-image {
+    transform: scale(1.04);
+  }
+
+  .card-category {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: normal;
+    line-height: 1.3;
+    margin: 0 0 12px;
+    color: var(--color-text-main);
+  }
+
+  .card-description {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0 0 20px;
+    flex: 1;
+  }
+
+  .card-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 12px 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 240, 231, 0.18);
+    background: rgba(244, 240, 231, 0.03);
+    color: #f4f0e7;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .post-card:hover .card-link {
+    background: #f4f0e7;
+    color: #050505;
+    border-color: #f4f0e7;
+  }
+
+  .card-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    flex-shrink: 0;
+  }
+
+  .section-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .all-posts-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #f4f0e7;
+    color: #050505;
+    border-radius: 9999px;
+    padding: 10px 28px 10px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #f4f0e7;
+    transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+
+  .all-posts-btn:hover {
+    background: #18181c;
+    color: #ffffff;
+    border-color: #f4f0e7;
+    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .all-posts-btn .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #050505;
+    color: #f4f0e7;
+    flex-shrink: 0;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+
+  .all-posts-btn:hover .btn-arrow {
+    background: #f4f0e7;
+    color: #050505;
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 640px) {
+    .latest-posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

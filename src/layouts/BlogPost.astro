@@ -1,5 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import Layout from './Layout.astro';
+import Footer from '../components/Footer.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -14,52 +15,342 @@ const meses = [
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-const date = new Date(post.id.substring(0, 10));
+const match = post.id.match(/\d{4}-\d{2}-\d{2}/);
+const date = match ? new Date(match[0]) : new Date();
 const dia = date.getDate().toString().padStart(2, '0');
 const mes = meses[date.getMonth()];
 const ano = date.getFullYear();
 const dateString = `${dia} de ${mes} de ${ano}`;
 ---
 
-<BaseLayout title={title} description={description} image={image}>
-  {image && (
-    <img class="w-full max-h-[50rem] object-cover block" src={image} alt={title} />
-  )}
-  
-  <div class="bg-gray-700 py-24">
-    <div class="w-full max-w-[110rem] mx-auto px-8 md:px-12 lg:px-6">
-      <h1 class="text-white text-[4.8rem] font-semibold leading-tight mb-10">{title}</h1>
-      <div class="flex items-center gap-6 flex-wrap mb-10">
-        <img class="w-20 h-20 rounded-full object-cover" src="/assets/matheus.jpg" alt={author} />
-        <p class="text-text-primary m-0">Autor: {author}</p>
-        <p class="text-text-primary m-0">Postado em: <time datetime={date.toISOString()}>{dateString}</time></p>
-        <p class="text-text-primary m-0">Categoria: <span class="text-primary font-semibold">{categories}</span></p>
-      </div>
-      <hr class="border-none border-t border-gray-400 my-12" />
-      <article>
-        <slot />
+<Layout title={`${title} — Blog Matheus Costa`} description={description} image={image}>
+  <div class="post-page">
+
+    <main class="post-main">
+      <article class="post-article">
+        <div class="post-header">
+          <div class="post-meta-top">
+            <a href="/blog" class="back-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Voltar ao Blog</span>
+            </a>
+            <span class="category-badge">{categories}</span>
+          </div>
+
+          <h1 class="post-title">{title}</h1>
+
+          <div class="post-author-row">
+            <img class="author-avatar" src="/assets/matheus.jpg" alt={author} width="44" height="44" />
+            <div class="author-info">
+              <span class="author-name">{author}</span>
+              <span class="post-date">
+                <time datetime={date.toISOString()}>{dateString}</time>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {image && (
+          <div class="post-cover-wrapper">
+            <img class="post-cover" src={image} alt={title} />
+          </div>
+        )}
+
+        <div class="post-body">
+          <slot />
+        </div>
+
+        <div class="post-footer">
+          <a href="/blog" class="back-btn">
+            <span class="btn-arrow">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="12" x2="18.5" y2="12"></line>
+                <polyline points="12.5 6 19 12 12.5 18"></polyline>
+              </svg>
+            </span>
+            <span>Ver todos os artigos</span>
+          </a>
+        </div>
       </article>
-    </div>
+    </main>
+
+    <Footer />
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": title,
     "description": description,
-    "image": new URL(image, Astro.site),
+    "image": image,
     "author": {
       "@type": "Person",
       "name": author
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Matheus Costa Design",
+      "name": "Matheus Costa",
       "logo": {
         "@type": "ImageObject",
-        "url": new URL("/assets/favicon/apple-icon-precomposed.png", Astro.site)
+        "url": "/assets/favicon/apple-icon-precomposed.png"
       }
     },
-    "datePublished": date.toISOString(),
+    "datePublished": date.toISOString()
   })} />
-</BaseLayout>
+</Layout>
+
+<style>
+  .post-page {
+    min-height: 100vh;
+    background: radial-gradient(120% 90% at 50% 0%, var(--color-bg-surface) 0%, var(--color-bg-main) 60%);
+    color: var(--color-text-main);
+  }
+
+  .post-main {
+    max-width: var(--container-max-width, 1200px);
+    margin: 0 auto;
+    padding: 40px var(--spacing-container-px) var(--spacing-section-py);
+  }
+
+  .post-article {
+    width: 100%;
+  }
+
+  .post-header {
+    margin-bottom: 40px;
+  }
+
+  .post-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text-main);
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    background: rgba(244, 240, 231, 0.1);
+    border: 1px solid var(--color-border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 28px;
+    color: var(--color-text-main);
+  }
+
+  .post-author-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .author-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .author-name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text-main);
+  }
+
+  .post-date {
+    font-family: var(--font-body);
+    font-size: var(--text-mono);
+    color: var(--color-text-dimmed);
+  }
+
+  .post-cover-wrapper {
+    width: 100%;
+    max-height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .post-cover {
+    width: 100%;
+    height: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .post-body {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+  }
+
+  .post-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: normal;
+    line-height: 1.2;
+    color: var(--color-text-main);
+    margin: 44px 0 18px;
+  }
+
+  .post-body :global(h3) {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: normal;
+    line-height: 1.25;
+    color: var(--color-text-main);
+    margin: 32px 0 14px;
+  }
+
+  .post-body :global(p) {
+    margin: 0 0 24px;
+  }
+
+  .post-body :global(a) {
+    color: var(--color-text-main);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .post-body :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .post-body :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 24px 0;
+    display: block;
+  }
+
+  .post-body :global(ul), .post-body :global(ol) {
+    margin: 0 0 24px;
+    padding-left: 28px;
+  }
+
+  .post-body :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .post-body :global(code) {
+    background: rgba(244, 240, 231, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+  }
+
+  .post-body :global(pre) {
+    background: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+    border: 1px solid var(--color-border-subtle);
+    margin: 24px 0;
+  }
+
+  .post-body :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .post-footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border-subtle);
+    display: flex;
+    justify-content: center;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #f4f0e7;
+    color: #050505;
+    border-radius: 9999px;
+    padding: 10px 28px 10px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #f4f0e7;
+    transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+
+  .back-btn:hover {
+    background: #18181c;
+    color: #ffffff;
+    border-color: #f4f0e7;
+    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .back-btn .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #050505;
+    color: #f4f0e7;
+    flex-shrink: 0;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+
+  .back-btn:hover .btn-arrow {
+    background: #f4f0e7;
+    color: #050505;
+    transform: rotate(45deg);
+  }
+</style>

@@ -1,0 +1,409 @@
+---
+import { Image } from "astro:assets";
+import linkedinIcon from "../assets/icons/linkedin.svg";
+import instagramIcon from "../assets/icons/instagram.svg";
+import githubIcon from "../assets/icons/github.svg";
+import behanceIcon from "../assets/icons/behance.svg";
+import dribbbleIcon from "../assets/icons/dribbble.svg";
+import twitterIcon from "../assets/icons/twitter-x.svg";
+import whatsappIcon from "../assets/icons/whatsapp.svg";
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { name: "LinkedIn", url: "https://linkedin.com/in/mattheuscosta", icon: linkedinIcon },
+  { name: "GitHub", url: "https://github.com/matheuscostadesign", icon: githubIcon },
+  { name: "Instagram", url: "https://www.instagram.com/matheuscosta.design/", icon: instagramIcon },
+  { name: "Behance", url: "https://www.behance.net/matheuscostadesign", icon: behanceIcon },
+  { name: "Dribbble", url: "https://dribbble.com/matheuscostadesign", icon: dribbbleIcon },
+  { name: "Twitter / X", url: "https://x.com/matheuscdesign", icon: twitterIcon },
+  { name: "WhatsApp", url: "https://wa.me/5517991005132", icon: whatsappIcon },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-cta-card">
+      <div class="footer-cta-content">
+        <span class="footer-eyebrow">VAMOS CONVERSAR?</span>
+        <h2 class="footer-cta-title">
+          Pronto para transformar sua ideia em <span class="italic">realidade</span>?
+        </h2>
+        <p class="footer-cta-description">
+          Entre em contato para discutir seu novo projeto, solicitar um orçamento ou simplesmente trocar uma ideia sobre desenvolvimento e design.
+        </p>
+        <div class="footer-cta-action">
+          <a
+            href="https://wa.me/5517991005132"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-primary-btn"
+          >
+            <span class="btn-arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="12" x2="18.5" y2="12"></line>
+                <polyline points="12.5 6 19 12 12.5 18"></polyline>
+              </svg>
+            </span>
+            <span>Fazer orçamento no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main-grid">
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand-title">Matheus Costa</a>
+        <p class="footer-brand-bio">
+          Frontend Developer & UX/UI Designer criando interfaces modernas, intuitivas e de alta performance.
+        </p>
+        <div class="footer-location">
+          <span class="location-dot"></span>
+          <span>São José do Rio Preto, SP — Brasil</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <span class="footer-col-title">NAVEGAÇÃO</span>
+        <nav aria-label="Navegação do Rodapé">
+          <ul class="footer-link-list">
+            <li><a href="/">Início</a></li>
+            <li><a href="/#servicos">Serviços</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="https://wa.me/5517991005132" target="_blank" rel="noopener noreferrer">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-links-col">
+        <span class="footer-col-title">SERVIÇOS</span>
+        <ul class="footer-link-list">
+          <li><a href="https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20uma%20Landing%20Page." target="_blank" rel="noopener noreferrer">Landing Pages</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20tenho%20interesse%20em%20um%20Site." target="_blank" rel="noopener noreferrer">Sites Institucionais</a></li>
+          <li><a href="https://wa.me/5517991005132" target="_blank" rel="noopener noreferrer">Design UI/UX</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social-col">
+        <span class="footer-col-title">REDES SOCIAIS</span>
+        <div class="footer-social-grid">
+          {
+            socialLinks.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                class="footer-social-btn"
+                title={social.name}
+              >
+                <Image src={social.icon} alt={social.name} class="footer-social-icon" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p class="footer-copyright">
+        &copy; {currentYear} Matheus Costa. Todos os direitos reservados.
+      </p>
+      <a href="#top" class="footer-back-to-top" aria-label="Voltar ao topo da página">
+        <span>Voltar ao topo</span>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: clamp(60px, 8vw, 100px) var(--spacing-container-px) 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-cta-card {
+    background: linear-gradient(135deg, rgba(18, 18, 20, 0.9) 0%, rgba(10, 10, 12, 0.95) 100%);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 28px;
+    padding: clamp(28px, 5vw, 64px) clamp(18px, 4vw, 48px);
+    margin-bottom: clamp(48px, 7vw, 96px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.3s;
+  }
+
+  .footer-cta-card:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  .footer-cta-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-text-main);
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .footer-cta-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: normal;
+    line-height: 1.1;
+    color: var(--color-text-main);
+    margin: 0 0 20px;
+  }
+
+  .footer-cta-description {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+
+  .footer-cta-action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #f4f0e7;
+    color: #050505;
+    border-radius: 999px;
+    padding: 10px 28px 10px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #f4f0e7;
+    transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+
+  .footer-primary-btn:hover {
+    background: #18181c;
+    color: #ffffff;
+    border-color: #f4f0e7;
+    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #050505;
+    color: #f4f0e7;
+    flex-shrink: 0;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+
+  .footer-primary-btn:hover .btn-arrow {
+    background: #f4f0e7;
+    color: #050505;
+    transform: rotate(45deg);
+  }
+
+  .footer-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: clamp(32px, 5vw, 64px);
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+
+  .footer-brand-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--color-text-main);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand-bio {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 340px;
+    margin: 0 0 24px;
+  }
+
+  .footer-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-dimmed);
+    letter-spacing: 0.05em;
+  }
+
+  .location-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+  }
+
+  .footer-col-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-text-main);
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .footer-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-link-list a {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-text-muted);
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .footer-link-list a:hover {
+    color: var(--color-text-main);
+    transform: translateX(3px);
+  }
+
+  .footer-social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+
+  .footer-social-btn:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-elevated);
+    transform: translateY(-2px);
+  }
+
+  .footer-social-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .footer-bottom-bar {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-copyright {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-dimmed);
+    margin: 0;
+  }
+
+  .footer-back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .footer-back-to-top:hover {
+    color: var(--color-text-main);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .footer-main-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand-col {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-main-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

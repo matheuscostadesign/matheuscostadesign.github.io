@@ -1,30 +1,23 @@
 {
-  "name": "matheuscostadesign-blog",
+  "name": "matheuscosta.com.br",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.7.0",
-    "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.5.0",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "astro": "^5.17.1",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "typescript": "^5.5.0"
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "lenis": "^1.3.26",
+    "typescript": "latest"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^6.0.2",
-    "sass": "^1.97.3",
-    "tailwindcss": "^3.4.1"
+    "@types/node": "^22.0.0"
   }
 }

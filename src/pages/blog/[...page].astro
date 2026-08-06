@@ -1,0 +1,475 @@
+---
+import type { Page } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }: any) {
+  const allPosts = await getCollection("blog");
+  const getPostDate = (id: string) => {
+    const match = id.match(/\d{4}-\d{2}-\d{2}/);
+    return match ? new Date(match[0]).getTime() : 0;
+  };
+  const sortedPosts = allPosts.sort(
+    (a, b) => getPostDate(b.id) - getPostDate(a.id),
+  );
+
+  return paginate(sortedPosts, { pageSize: 9 });
+}
+
+const { page } = Astro.props as { page: Page<any> };
+
+const getSlug = (post: any) => {
+  return (
+    post.data.slug ||
+    post.slug ||
+    post.id
+      .split("/")
+      .pop()
+      ?.replace(/\.mdx?$/, "")
+  );
+};
+
+const truncate = (str: string, length: number) => {
+  return str.length > length ? str.substring(0, length - 3) + "..." : str;
+};
+---
+
+<Layout
+  title={`Blog (Página ${page.currentPage}) — Matheus Costa`}
+  description="Dicas e conhecimentos sobre desenvolvimento web, frontend, React, Astro e design UX/UI por Matheus Costa."
+>
+  <div class="blog-index-page">
+
+    <section class="blog-hero">
+      <div class="blog-hero-content">
+        <h1 class="blog-title">Todos os artigos no blog</h1>
+        <p class="blog-subtitle">
+          Dicas e novos conhecimentos adquiridos sobre desenvolvimento web e
+          design UX/UI 👊
+        </p>
+      </div>
+    </section>
+
+    <section class="blog-grid-section">
+      <div class="blog-container">
+        <div class="blog-grid">
+          {
+            page.data.map((post: any) => {
+              const slug = getSlug(post);
+              return (
+                <a href={`/blog/${slug}`} class="blog-card">
+                  <div class="card-image-wrap">
+                    <img
+                      src={post.data.image}
+                      alt={post.data.title}
+                      class="card-image"
+                      loading="lazy"
+                    />
+                    <span class="card-category">{post.data.categories}</span>
+                  </div>
+                  <div class="card-content">
+                    <h2 class="card-title">{truncate(post.data.title, 56)}</h2>
+                    <p class="card-description">
+                      {truncate(post.data.description, 85)}
+                    </p>
+                    <div class="card-link">
+                      <span>Ler artigo</span>
+                      <span class="card-link-icon">
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <line x1="4" y1="12" x2="18.5" y2="12" />
+                          <polyline points="12.5 6 19 12 12.5 18" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+
+        {
+          page.lastPage > 1 && (
+            <nav class="pagination-nav" aria-label="Navegação de páginas do blog">
+              <div class="pagination-info">
+                Página {page.currentPage} de {page.lastPage}
+              </div>
+
+              <div class="pagination-controls">
+                {page.url.prev ? (
+                  <a href={page.url.prev} class="pagination-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="19" y1="12" x2="5" y2="12" />
+                      <polyline points="12 19 5 12 12 5" />
+                    </svg>
+                    <span>Anterior</span>
+                  </a>
+                ) : (
+                  <span class="pagination-btn pagination-btn--disabled">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="19" y1="12" x2="5" y2="12" />
+                      <polyline points="12 19 5 12 12 5" />
+                    </svg>
+                    <span>Anterior</span>
+                  </span>
+                )}
+
+                <div class="pagination-numbers">
+                  {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+                    (pageNum) => {
+                      const isCurrent = pageNum === page.currentPage;
+                      const pageUrl = pageNum === 1 ? "/blog" : `/blog/${pageNum}`;
+                      return (
+                        <a
+                          href={pageUrl}
+                          class={`pagination-number ${isCurrent ? "is-active" : ""}`}
+                          aria-current={isCurrent ? "page" : undefined}
+                        >
+                          {pageNum}
+                        </a>
+                      );
+                    },
+                  )}
+                </div>
+
+                {page.url.next ? (
+                  <a href={page.url.next} class="pagination-btn">
+                    <span>Próxima</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </a>
+                ) : (
+                  <span class="pagination-btn pagination-btn--disabled">
+                    <span>Próxima</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                )}
+              </div>
+            </nav>
+          )
+        }
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .blog-index-page {
+    min-height: 100vh;
+    background: radial-gradient(
+      120% 90% at 50% 0%,
+      var(--color-bg-surface) 0%,
+      var(--color-bg-main) 60%
+    );
+    color: var(--color-text-main);
+  }
+
+  .blog-hero {
+    padding: var(--spacing-section-py) var(--spacing-container-px) 20px;
+    text-align: center;
+  }
+
+  .blog-hero-content {
+    max-width: var(--container-max-width, 1200px);
+    margin: 0 auto;
+  }
+
+  .blog-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    color: var(--color-text-main);
+  }
+
+  .blog-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .blog-grid-section {
+    padding: 20px var(--spacing-container-px) var(--spacing-section-py);
+  }
+
+  .blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: clamp(16px, 3vw, 32px);
+  }
+
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-card:hover .card-image {
+    transform: scale(1.04);
+  }
+
+  .card-category {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: normal;
+    line-height: 1.3;
+    margin: 0 0 12px;
+    color: var(--color-text-main);
+  }
+
+  .card-description {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0 0 20px;
+    flex: 1;
+  }
+
+  .card-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 12px 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 240, 231, 0.18);
+    background: rgba(244, 240, 231, 0.03);
+    color: #f4f0e7;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .blog-card:hover .card-link {
+    background: #f4f0e7;
+    color: #050505;
+    border-color: #f4f0e7;
+  }
+
+  .card-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    flex-shrink: 0;
+  }
+
+  .pagination-nav {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .pagination-info {
+    font-family: var(--font-mono);
+    font-size: var(--text-mono);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-dimmed);
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-main);
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+
+  .pagination-btn:not(.pagination-btn--disabled):hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-hover);
+    transform: translateY(-2px);
+  }
+
+  .pagination-btn--disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .pagination-numbers {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pagination-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-muted);
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+  }
+
+  .pagination-number:hover {
+    color: var(--color-text-main);
+    border-color: var(--color-border-hover);
+  }
+
+  .pagination-number.is-active {
+    background: var(--color-text-main);
+    border-color: var(--color-text-main);
+    color: var(--color-bg-main);
+  }
+
+  @media (max-width: 640px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

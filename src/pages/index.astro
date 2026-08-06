@@ -1,82 +1,29 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero';
-import ProjectCarousel from '../components/ProjectCarousel';
-import { getCollection } from 'astro:content';
-import projetosFront from '../data/projetos-front.json';
-import projetosUx from '../data/projetos-ux.json';
-
-const allPosts = await getCollection('blog');
-const latestPosts = allPosts
-  .sort((a, b) => new Date(b.id.substring(0, 10)).getTime() - new Date(a.id.substring(0, 10)).getTime())
-  .slice(0, 3);
-
-const truncate = (str: string, length: number) => {
-  return str.length > length ? str.substring(0, length - 3) + '...' : str;
-};
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ToolsMarquee from "../components/ToolsMarquee.astro";
+import Services from "../components/Services.astro";
+import LatestPosts from "../components/LatestPosts.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout 
-  title="Matheus Costa - UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP"
-  description="Profissional especializado em criação de sites em São José do Rio Preto/SP"
+<Layout
+  title="Matheus Costa — UX/UI Designer e Desenvolvedor Front-end"
+  description="UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza."
 >
-  <main>
-    <Hero client:load />
-
-    <section class="bg-gray-600 py-32">
-      <div class="w-full max-w-[110rem] mx-auto px-8 md:px-12 lg:px-6">
-        <div class="flex items-center justify-center flex-col text-center mb-20">
-          <h2 class="text-white text-[3.6rem] font-semibold leading-tight mb-6">Últimos artigos no blog</h2>
-          <p class="mt-10 max-w-[70rem] text-text-primary text-base mb-6">Neste blog compartilho dicas e novos conhecimentos adquiridos sobre desenvolvimento web e design UX/UI 👊</p>
-        </div>
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-12 mb-20 max-[820px]:grid-cols-1">
-          {latestPosts.map((post) => (
-            <a href={`/blog/${post.slug}`} class="flex flex-col bg-gray-500 rounded-[1.6rem] overflow-hidden transition-transform duration-300 no-underline hover:-translate-y-3">
-              <img class="w-full h-80 object-cover block" src={post.data.image} alt={post.data.title} />
-              <h3 class="text-white text-[2rem] px-8 md:px-6 pt-6 pb-3 m-0">{truncate(post.data.title, 48)}</h3>
-              <p class="text-text-primary px-8 md:px-6 pb-6 m-0">{truncate(post.data.description, 64)}</p>
-            </a>
-          ))}
-        </div>
-        <br />
-        <div class="flex items-center justify-center">
-          <a href="/blog/" class="btn-primary">
-            <span>Ver todos artigos</span>
-            <img src="/assets/icons/arrow-right.svg" alt="Icone Link" width="24" height="24" />
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-gray-500 flex items-center justify-center py-40 overflow-hidden" id="projetos-frontend">
-      <div class="flex flex-col items-center justify-center w-full max-w-[110rem] px-8 md:px-12 lg:px-6">
-        <h2 class="text-white text-center text-[3.6rem] font-semibold leading-tight mb-6">Projetos Front-end</h2>
-        <p class="text-center my-10 max-w-[70rem] text-text-primary text-base mb-6">Desenvolvimento de sites utilizando as tecnologias mais modernas do mercado.</p>
-        <div class="slides-frontend w-full">
-          <ProjectCarousel client:load projects={projetosFront} autoplayDelay={4000} />
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-gray-600 flex items-center justify-center py-40 overflow-hidden">
-      <div class="flex flex-col items-center justify-center w-full max-w-[110rem] px-8 md:px-12 lg:px-6">
-        <h2 class="text-white text-center text-[3.6rem] font-semibold leading-tight mb-6">Projetos UX/UI Design</h2>
-        <p class="text-center my-10 max-w-[70rem] text-text-primary text-base mb-6">Criação de produtos digitais focados na melhor experiência para o usuário.</p>
-        <div class="slides-uxdesign w-full">
-          <ProjectCarousel client:load projects={projetosUx} autoplayDelay={5500} />
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-gray-700 flex items-center justify-center py-40">
-      <div class="flex flex-col items-center justify-center w-full max-w-[110rem] px-8 md:px-12 lg:px-6">
-        <h2 class="text-white text-center text-[3.6rem] font-semibold leading-tight mb-6">Vamos começar um projeto?</h2>
-        <p class="text-center my-10 max-w-[70rem] text-text-primary text-base mb-6">Me conte como posso te ajudar!</p>
-        <a href="https://wa.me/5517992143072" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-          Começar projeto
-          <img src="/assets/icons/whatsapp.svg" alt="Icone Whatsapp" width="24" height="24" />
-        </a>
-      </div>
-    </section>
+  <main class="site-main">
+    <Hero />
+    <ToolsMarquee />
+    <Services />
+    <LatestPosts />
   </main>
-</BaseLayout>
+  <Footer />
+</Layout>
+
+<style>
+  .site-main {
+    min-width: 320px;
+    background: #050505;
+    overflow: hidden;
+  }
+</style>

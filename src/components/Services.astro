@@ -1,0 +1,497 @@
+---
+import { Image } from "astro:assets";
+import landingPage from "../assets/services/landing-page.webp";
+import site from "../assets/services/site.webp";
+import ux01 from "../assets/services/ux-01.webp";
+import ux02 from "../assets/services/ux-02.webp";
+import ux03 from "../assets/services/ux-03.webp";
+import ux04 from "../assets/services/ux-04.webp";
+import ux05 from "../assets/services/ux-05.webp";
+
+interface ServiceCardProps {
+  href: string;
+  label: string;
+  title: string;
+  description: string;
+  ctaText: string;
+  imageTop?: {
+    blur: ImageMetadata;
+    main?: ImageMetadata;
+    video?: string;
+    slides?: ImageMetadata[];
+    alt: string;
+  };
+  imageBottom?: {
+    blur: ImageMetadata;
+    main?: ImageMetadata;
+    video?: string;
+    slides?: ImageMetadata[];
+    alt: string;
+    wide?: boolean;
+  };
+}
+
+const services: ServiceCardProps[] = [
+  {
+    href: "https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site!%20Tenho%20interesse%20em%20uma%20Landing%20Page.%20Pode%20me%20ajudar%3F",
+    label: "uma Landing Page",
+    title: "Landing Page",
+    description:
+      "Página única de alta conversão, feita sob medida para anúncios, tráfego pago e captação de leads.",
+    ctaText: "Quero uma LP",
+    imageBottom: {
+      blur: landingPage,
+      main: landingPage,
+      alt: "Landing Page",
+    },
+  },
+  {
+    href: "https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site!%20Tenho%20interesse%20em%20um%20Site.%20Pode%20me%20ajudar%3F",
+    label: "um Site",
+    title: "Site",
+    description:
+      "Site institucional completo e dinâmico, desenvolvido  para transmitir autoridade e fortalecer sua marca.",
+    ctaText: "Quero um site",
+    imageTop: {
+      blur: site,
+      main: site,
+      alt: "Site",
+    },
+  },
+  {
+    href: "https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site!%20Tenho%20interesse%20em%20Design%20UI%2FUX.%20Pode%20me%20ajudar%3F",
+    label: "Design UI/UX",
+    title: "Design UI/UX",
+    description:
+      "Prototipagem, pesquisa de usuários, design system e interfaces navegáveis com foco em usabilidade e estética moderna.",
+    ctaText: "Quero Design UI/UX",
+    imageBottom: {
+      blur: ux01,
+      slides: [ux01, ux02, ux03, ux04, ux05],
+      alt: "Design UI/UX",
+    },
+  },
+];
+
+const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="18.5" y2="12"></line><polyline points="12.5 6 19 12 12.5 18"></polyline></svg>`;
+---
+
+<section id="servicos" data-screen-label="Serviços" class="services">
+  <div class="services-container">
+    <div class="services-header">
+      <h2 class="services-title">O que vamos criar juntos?</h2>
+      <p class="section-subtitle">
+        Landing pages e sites institucionais sob medida, unindo design
+        intuitivo, alta velocidade e a melhor experiência para o usuário.
+      </p>
+    </div>
+
+    <div class="svc-grid">
+      {
+        services.map((svc) => (
+          <a
+            data-service={svc.label}
+            data-wa=""
+            href={svc.href}
+            target="_blank"
+            rel="noopener"
+            class="svc-card"
+          >
+            {svc.imageTop && (
+              <div class="svc-preview svc-preview--top">
+                <Image
+                  src={svc.imageTop.blur}
+                  alt=""
+                  aria-hidden="true"
+                  class="svc-preview-blur"
+                />
+                <div class="svc-preview-frame">
+                  <div class="svc-preview-inner">
+                    {svc.imageTop.slides ? (
+                      <div class="svc-preview-slides">
+                        {svc.imageTop.slides.map((img, idx) => (
+                          <Image
+                            src={img}
+                            alt={svc.imageTop!.alt}
+                            class="svc-preview-slide"
+                            style={`animation-delay: ${idx * 2.5}s;`}
+                          />
+                        ))}
+                      </div>
+                    ) : svc.imageTop.video ? (
+                      <video
+                        src={svc.imageTop.video}
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="svc-preview-video"
+                      />
+                    ) : (
+                      svc.imageTop.main && (
+                        <Image
+                          data-autoscroll=""
+                          src={svc.imageTop.main}
+                          alt={svc.imageTop.alt}
+                          class="svc-preview-img"
+                        />
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <h3 class="svc-title">{svc.title}</h3>
+            <p class="svc-desc">{svc.description}</p>
+
+            <div class="svc-cta-wrap">
+              <span class="svc-cta">
+                {svc.ctaText}
+                <span class="svc-cta-icon" set:html={ArrowIcon} />
+              </span>
+            </div>
+
+            {svc.imageBottom && (
+              <div class="svc-preview svc-preview--bottom">
+                <Image
+                  src={svc.imageBottom.blur}
+                  alt=""
+                  aria-hidden="true"
+                  class="svc-preview-blur svc-preview-blur--top"
+                />
+                <div class="svc-preview-frame">
+                  <div class="svc-preview-inner">
+                    {svc.imageBottom.slides ? (
+                      <div class="svc-preview-slides">
+                        {svc.imageBottom.slides.map((img, idx) => (
+                          <Image
+                            src={img}
+                            alt={svc.imageBottom!.alt}
+                            class="svc-preview-slide"
+                            style={`animation-delay: ${idx * 2.5}s;`}
+                          />
+                        ))}
+                      </div>
+                    ) : svc.imageBottom.video ? (
+                      <video
+                        src={svc.imageBottom.video}
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="svc-preview-video"
+                      />
+                    ) : (
+                      svc.imageBottom.main && (
+                        <Image
+                          data-autoscroll=""
+                          src={svc.imageBottom.main}
+                          alt={svc.imageBottom.alt}
+                          class={`svc-preview-img${svc.imageBottom.wide ? " svc-preview-img--wide" : ""}`}
+                        />
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: var(--spacing-section-py) var(--spacing-container-px);
+    background: radial-gradient(ellipse at 50% 30%, #121216 0%, #060608 100%);
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+    position: relative;
+  }
+
+  .services-container {
+    max-width: var(--container-max-width, 1200px);
+    margin: 0 auto;
+  }
+
+  .services-header {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto clamp(44px, 6vw, 72px);
+  }
+
+  .services-header .section-subtitle {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1200px) {
+    .services-header .section-subtitle {
+      white-space: normal;
+    }
+  }
+
+  .services-title {
+    margin: 0 0 16px;
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: var(--text-h2);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--color-text-main);
+  }
+
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 960px) {
+    .svc-grid {
+      grid-template-columns: 1fr;
+      max-width: 540px;
+    }
+  }
+
+  .svc-card {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(20px, 4vw, 30px) clamp(16px, 3.5vw, 26px) clamp(18px, 3.5vw, 26px);
+    border-radius: 20px;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    color: var(--color-text-main);
+    overflow: hidden;
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .svc-card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-elevated);
+    box-shadow: 0 0 40px rgba(207, 211, 217, 0.14);
+  }
+
+  .svc-title {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: var(--text-h3);
+    line-height: 1.15;
+    color: var(--color-text-main);
+  }
+
+  .svc-desc {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .svc-cta-wrap {
+    margin-top: 24px;
+  }
+
+  .svc-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 12px 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(244, 240, 231, 0.18);
+    background: rgba(244, 240, 231, 0.03);
+    color: #f4f0e7;
+    font-weight: 500;
+    font-size: 14.5px;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .svc-card:hover .svc-cta {
+    background: #f4f0e7;
+    color: #050505;
+    border-color: #f4f0e7;
+  }
+
+  .svc-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    flex-shrink: 0;
+  }
+
+  .svc-preview {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 11;
+    background: #0a0a0b;
+    border-radius: 0;
+  }
+
+  .svc-preview--top {
+    margin: calc(-1 * clamp(20px, 4vw, 30px)) calc(-1 * clamp(16px, 3.5vw, 26px)) 24px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .svc-preview--bottom {
+    margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+    border-radius: 0 0 20px 20px;
+    flex: 1;
+    aspect-ratio: auto;
+    min-height: 220px;
+  }
+
+  .svc-preview-blur {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(32px) brightness(0.55) saturate(1.15);
+    transform: scale(1.3);
+  }
+
+  .svc-preview-blur--top {
+    object-position: top;
+  }
+
+  .svc-preview-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+  }
+
+  .svc-preview-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+    background: #0e0e10;
+  }
+
+  .svc-preview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .svc-preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .svc-preview-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .svc-preview-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: svcSlideShow 12.5s infinite linear;
+  }
+
+  @keyframes svcSlideShow {
+    0% {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    3% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    23% {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .svc-preview-img--wide {
+    width: 108%;
+    height: auto;
+    margin-left: -4%;
+  }
+
+  @media (max-width: 1100px) {
+    .svc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const setupAutoScroll = () => {
+    document.querySelectorAll("[data-autoscroll]").forEach((imgElement) => {
+      const img = imgElement as HTMLImageElement & {
+        _anim?: Animation;
+        _run?: () => void;
+      };
+      const run = () => {
+        const vp = img.parentElement;
+        if (!vp) return;
+        const vh = vp.clientHeight,
+          ih = img.clientHeight;
+        const shift = Math.max(0, ih - vh);
+        if (img._anim) {
+          img._anim.cancel();
+          img._anim = undefined;
+        }
+        if (shift < 4) return;
+        img._anim = img.animate(
+          [
+            { transform: "translateY(0)" },
+            { transform: `translateY(${-shift}px)` },
+          ],
+          {
+            duration: Math.max(22000, shift * 26),
+            direction: "alternate",
+            iterations: Infinity,
+            easing: "cubic-bezier(0.37,0,0.63,1)",
+          },
+        );
+      };
+      if (img.complete && img.naturalWidth) run();
+      else img.addEventListener("load", run, { once: true });
+      img._run = run;
+    });
+  };
+  setupAutoScroll();
+  window.addEventListener("resize", setupAutoScroll);
+</script>

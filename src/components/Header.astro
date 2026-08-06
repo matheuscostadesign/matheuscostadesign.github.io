@@ -1,0 +1,539 @@
+---
+import { Image } from "astro:assets";
+import linkedinIcon from "../assets/icons/linkedin.svg";
+import instagramIcon from "../assets/icons/instagram.svg";
+import githubIcon from "../assets/icons/github.svg";
+import behanceIcon from "../assets/icons/behance.svg";
+import whatsappIcon from "../assets/icons/whatsapp.svg";
+---
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="/" class="brand-link">
+      <img
+        src="/assets/favicon/apple-icon-precomposed.png"
+        alt="Matheus Costa"
+        class="brand-icon"
+        width="28"
+        height="28"
+      />
+      <span class="brand-name">Matheus Costa</span>
+    </a>
+
+    <nav class="site-nav">
+      <ul class="nav-list">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+        <li><a href="/#servicos" class="nav-link">Serviços</a></li>
+      </ul>
+    </nav>
+
+    <a
+      href="https://wa.me/5517991005132"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="header-cta"
+    >
+      <span>Contato</span>
+      <img
+        src="/assets/icons/whatsapp.svg"
+        alt="WhatsApp"
+        class="header-cta-icon"
+        width="16"
+        height="16"
+      />
+    </a>
+
+    <button
+      class="mobile-toggle"
+      aria-label="Alternar menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu-drawer"
+      type="button"
+    >
+      <span class="toggle-line line-1"></span>
+      <span class="toggle-line line-2"></span>
+      <span class="toggle-line line-3"></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-menu-drawer" class="mobile-menu-overlay" aria-hidden="true">
+  <div class="mobile-menu-content">
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item" style="--delay: 0.05s;">
+          <a href="/" class="mobile-nav-link">
+            <span>Início</span>
+            <span class="link-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mobile-nav-item" style="--delay: 0.1s;">
+          <a href="/blog" class="mobile-nav-link">
+            <span>Blog & Insights</span>
+            <span class="link-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mobile-nav-item" style="--delay: 0.15s;">
+          <a href="/#servicos" class="mobile-nav-link">
+            <span>Serviços</span>
+            <span class="link-arrow">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-menu-footer" style="--delay: 0.2s;">
+      <a
+        href="https://wa.me/5517991005132"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-cta-btn"
+      >
+        <span>Fazer orçamento no WhatsApp</span>
+        <Image src={whatsappIcon} alt="WhatsApp" class="mobile-cta-icon" />
+      </a>
+
+      <div class="mobile-socials">
+        <a
+          href="https://linkedin.com/in/mattheuscosta"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          class="mobile-social-btn"
+        >
+          <Image src={linkedinIcon} alt="LinkedIn" class="social-icon" />
+        </a>
+        <a
+          href="https://github.com/matheuscostadesign"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          class="mobile-social-btn"
+        >
+          <Image src={githubIcon} alt="GitHub" class="social-icon" />
+        </a>
+        <a
+          href="https://www.instagram.com/matheuscosta.design/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          class="mobile-social-btn"
+        >
+          <Image src={instagramIcon} alt="Instagram" class="social-icon" />
+        </a>
+        <a
+          href="https://www.behance.net/matheuscostadesign"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Behance"
+          class="mobile-social-btn"
+        >
+          <Image src={behanceIcon} alt="Behance" class="social-icon" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 clamp(16px, 4vw, 40px);
+    pointer-events: none;
+  }
+
+  .header-container {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(10, 10, 14, 0.7) 100%
+    );
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    padding: 10px 24px;
+    box-shadow:
+      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.38),
+      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.55),
+      0 20px 52px rgba(0, 0, 0, 0.55);
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .header-container:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow:
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.5),
+      0 20px 48px rgba(0, 0, 0, 0.6);
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 0.2s;
+  }
+
+  .brand-link:hover {
+    opacity: 0.85;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .brand-name {
+    font-family: var(--font-body);
+    letter-spacing: -0.01em;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    padding: 7px 18px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-cta:hover {
+    background: #ffffff;
+    color: #050505;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .header-cta-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 6px;
+    width: 38px;
+    height: 38px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .toggle-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-text-main);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  .mobile-toggle.is-active .line-1 {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-toggle.is-active .line-2 {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .mobile-toggle.is-active .line-3 {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(5, 5, 7, 0.95);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 32px 48px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-16px) scale(0.98);
+    transition:
+      opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.4s ease;
+  }
+
+  .mobile-menu-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .mobile-menu-content {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mobile-nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.4s ease var(--delay),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) var(--delay);
+  }
+
+  .mobile-menu-overlay.is-active .mobile-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: normal;
+    color: var(--color-text-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border-subtle);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:active {
+    color: #ffffff;
+    border-color: var(--color-border-hover);
+  }
+
+  .link-arrow {
+    font-size: 24px;
+    color: var(--color-text-dimmed);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover .link-arrow {
+    transform: translateX(6px);
+    color: #ffffff;
+  }
+
+  .mobile-menu-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.4s ease var(--delay),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) var(--delay);
+  }
+
+  .mobile-menu-overlay.is-active .mobile-menu-footer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #f4f0e7;
+    color: #050505;
+    padding: 14px 24px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .mobile-cta-btn:active {
+    transform: scale(0.98);
+  }
+
+  .mobile-cta-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .mobile-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-subtle);
+    background: rgba(244, 240, 231, 0.04);
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .site-header {
+      top: 12px;
+      padding: 0 var(--spacing-container-px, 32px);
+    }
+    .header-container {
+      padding: 8px 18px;
+    }
+    .site-nav,
+    .header-cta {
+      display: none !important;
+    }
+    .mobile-toggle {
+      display: flex !important;
+    }
+  }
+</style>
+
+<script>
+  function setupMobileMenu() {
+    const toggle = document.querySelector(".mobile-toggle");
+    const drawer = document.querySelector("#mobile-menu-drawer");
+    const links = document.querySelectorAll(".mobile-nav-link, .mobile-cta-btn");
+
+    if (!toggle || !drawer) return;
+
+    function toggleMenu() {
+      const isActive = toggle?.classList.contains("is-active");
+      if (isActive) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    function openMenu() {
+      toggle?.classList.add("is-active");
+      drawer?.classList.add("is-active");
+      toggle?.setAttribute("aria-expanded", "true");
+      drawer?.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      toggle?.classList.remove("is-active");
+      drawer?.classList.remove("is-active");
+      toggle?.setAttribute("aria-expanded", "false");
+      drawer?.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    toggle.addEventListener("click", toggleMenu);
+
+    links.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+  }
+
+  setupMobileMenu();
+  document.addEventListener("astro:page-load", setupMobileMenu);
+</script>

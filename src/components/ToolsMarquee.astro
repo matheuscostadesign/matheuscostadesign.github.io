@@ -1,0 +1,117 @@
+---
+import { Image } from "astro:assets";
+import wordpressIcon from "../assets/icons/wordpress.svg";
+import elementorIcon from "../assets/icons/elementor.svg";
+import webflowIcon from "../assets/icons/webflow.svg";
+import figmaIcon from "../assets/icons/figma.svg";
+import framerIcon from "../assets/icons/framer.svg";
+import claudeIcon from "../assets/icons/claude.svg";
+import htmlIcon from "../assets/icons/html.svg";
+import cssIcon from "../assets/icons/css.svg";
+import javascriptIcon from "../assets/icons/javascript.svg";
+import typescriptIcon from "../assets/icons/typescript.svg";
+import reactIcon from "../assets/icons/react.svg";
+import nextjsIcon from "../assets/icons/nextjs.svg";
+import astroIcon from "../assets/icons/astro.svg";
+
+interface Tool {
+  img: ImageMetadata;
+  label: string;
+  isLogo?: boolean;
+}
+
+const tools: Tool[] = [
+  { img: wordpressIcon, label: "WordPress" },
+  { img: elementorIcon, label: "Elementor" },
+  { img: webflowIcon, label: "Webflow" },
+  { img: figmaIcon, label: "Figma" },
+  { img: framerIcon, label: "Framer" },
+  { img: htmlIcon, label: "HTML5" },
+  { img: cssIcon, label: "CSS3" },
+  { img: javascriptIcon, label: "JavaScript" },
+  { img: typescriptIcon, label: "TypeScript" },
+  { img: reactIcon, label: "React" },
+  { img: reactIcon, label: "React Native" },
+  { img: nextjsIcon, label: "Next.js" },
+  { img: astroIcon, label: "Astro" },
+  { img: claudeIcon, label: "Claude" },
+];
+---
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    {
+      [0, 1, 2, 3].map(() => (
+        <ul class="marquee-list" aria-hidden="true">
+          {tools.map((tool) => (
+            <li class="marquee-item">
+              {tool.isLogo === true && (
+                <Image src={tool.img} alt={tool.label} class="marquee-logo" />
+              )}
+              {tool.isLogo === undefined && (
+                <>
+                  <Image src={tool.img} alt={tool.label} class="marquee-icon" />
+                  <span class="marquee-label">{tool.label}</span>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .marquee-wrap {
+    margin-top: clamp(4px, 1.5vw, 20px);
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+    overflow: hidden;
+    padding: 26px 0;
+    background: var(--color-bg-main);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeV2 75s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-list {
+    display: flex;
+    align-items: center;
+    gap: clamp(44px, 6vw, 88px);
+    padding: 0 clamp(44px, 6vw, 88px) 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-dimmed);
+  }
+
+  .marquee-icon {
+    height: 24px;
+    width: auto;
+    opacity: 0.55;
+  }
+
+  .marquee-logo {
+    height: 36px;
+    width: auto;
+    filter: invert(1);
+    opacity: 0.55;
+  }
+
+  .marquee-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+</style>

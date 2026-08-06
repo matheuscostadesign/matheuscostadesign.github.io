@@ -1,0 +1,785 @@
+---
+import { Image } from "astro:assets";
+
+import projeto01 from "../assets/carousel/projeto01.webp";
+import projeto02 from "../assets/carousel/projeto02.webp";
+import projeto03 from "../assets/carousel/projeto03.webp";
+import projeto04 from "../assets/carousel/projeto04.webp";
+import projeto05 from "../assets/carousel/projeto05.webp";
+import projeto06 from "../assets/carousel/projeto06.webp";
+import projeto07 from "../assets/carousel/projeto07.webp";
+import projeto08 from "../assets/carousel/projeto08.webp";
+import projeto09 from "../assets/carousel/projeto09.webp";
+import projeto10 from "../assets/carousel/projeto10.webp";
+import projeto11 from "../assets/carousel/projeto11.webp";
+import projeto12 from "../assets/carousel/projeto12.webp";
+import projeto13 from "../assets/carousel/projeto13.webp";
+import projeto14 from "../assets/carousel/projeto14.webp";
+
+import portraitImg from "../assets/hero/portrait.webp";
+import linkedinIcon from "../assets/icons/linkedin.svg";
+import instagramIcon from "../assets/icons/instagram.svg";
+import whatsappIcon from "../assets/icons/whatsapp.svg";
+
+const carouselItems = [
+  { id: "v2-arc1", src: projeto01, alt: "projeto 01" },
+  { id: "v2-arc2", src: projeto02, alt: "projeto 02" },
+  { id: "v2-arc3", src: projeto03, alt: "projeto 03" },
+  { id: "v2-arc4", src: projeto04, alt: "projeto 04" },
+  { id: "v2-arc5", src: projeto05, alt: "projeto 05" },
+  { id: "v2-arc6", src: projeto06, alt: "projeto 06" },
+  { id: "v2-arc7", src: projeto07, alt: "projeto 07" },
+  { id: "v2-arc8", src: projeto08, alt: "projeto 08" },
+  { id: "v2-arc9", src: projeto09, alt: "projeto 09" },
+  { id: "v2-arc10", src: projeto10, alt: "projeto 10" },
+  { id: "v2-arc11", src: projeto11, alt: "projeto 11" },
+  { id: "v2-arc12", src: projeto12, alt: "projeto 12" },
+  { id: "v2-arc13", src: projeto13, alt: "projeto 13" },
+  { id: "v2-arc14", src: projeto14, alt: "projeto 14" },
+];
+---
+
+<section data-screen-label="Hero" class="hero">
+  <div class="particles-bg">
+    <canvas id="hero-particles-canvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <div data-stage-v2="" class="hero-stage">
+      <div class="hero-ringwrap">
+        <div data-ring-v2="" class="hero-ring">
+          {
+            carouselItems.map((item, index) => {
+              const angle = index * 25.7143;
+              return (
+                <div
+                  class="hero-slide"
+                  style={`transform: translate(-50%, -50%) rotateY(${angle}deg) translateZ(-1449.3px);`}
+                >
+                  <div class="hero-slide-inner">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      class="hero-slide-img"
+                    />
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-fade hero-fade--left"></div>
+    <div class="hero-fade hero-fade--right"></div>
+    <div class="hero-vignette-center"></div>
+    <div class="hero-halo"></div>
+
+    <div class="hero-portrait">
+      <Image src={portraitImg} alt="Matheus Costa" class="hero-portrait-img" />
+      <div class="hero-portrait-vignette"></div>
+    </div>
+
+    <div class="hero-fade-bottom"></div>
+
+    <div class="hero-bottom">
+      <div class="hero-main">
+        <h1 class="hero-title">
+          Frontend <span class="italic">D</span>eveloper
+        </h1>
+        <p class="hero-bio">
+          Levo ideias do Figma ao código, criando interfaces modernas,
+          intuitivas e funcionais.
+        </p>
+        <div class="hero-footer-bar">
+          <a
+            href="https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20Matheus!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero-cta"
+          >
+            <span class="hero-arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="12" x2="18.5" y2="12"></line>
+                <polyline points="12.5 6 19 12 12.5 18"></polyline>
+              </svg>
+            </span>
+            <span class="hero-text">Vamos conversar</span>
+          </a>
+          <div class="hero-socials">
+            <a
+              href="https://linkedin.com/in/mattheuscosta"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="hero-social-btn"
+            >
+              <Image
+                src={linkedinIcon}
+                alt="LinkedIn"
+                class="hero-social-icon"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/matheuscosta.design/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="hero-social-btn"
+            >
+              <Image
+                src={instagramIcon}
+                alt="Instagram"
+                class="hero-social-icon"
+              />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send?phone=5517991005132&text=Ol%C3%A1%2C%20Matheus!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              class="hero-social-btn"
+            >
+              <Image
+                src={whatsappIcon}
+                alt="WhatsApp"
+                class="hero-social-icon"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .particles-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particles-bg canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 0%, #0c0c0d 0%, #050505 60%);
+  }
+
+  .hero-icon {
+    position: absolute;
+    left: 50%;
+    top: 130px;
+    transform: translateX(-50%);
+    width: min(64vh, 54vw);
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero-icon svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-content {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .hero-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -25px;
+    height: 520px;
+    z-index: 2;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+  }
+
+  .hero-ringwrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 650px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-ring {
+    position: relative;
+    width: 640px;
+    height: 580px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: translateZ(-470px) scale(0.943) rotateY(0deg);
+  }
+
+  .hero-slide {
+    position: absolute;
+    width: 640px;
+    height: 580px;
+    left: 50%;
+    top: 50%;
+    transform-style: flat;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .hero-slide-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 23px;
+    overflow: hidden;
+  }
+
+  .hero-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 23px;
+  }
+
+  .hero-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(90px, 14vw, 240px);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .hero-fade--left {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      rgba(5, 5, 5, 0.92),
+      rgba(5, 5, 5, 0.6),
+      transparent
+    );
+  }
+
+  .hero-fade--right {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      rgba(5, 5, 5, 0.92),
+      rgba(5, 5, 5, 0.6),
+      transparent
+    );
+  }
+
+  .hero-vignette-center {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(
+      58% 70% at 50% 46%,
+      rgba(5, 5, 5, 0.55) 0%,
+      rgba(5, 5, 5, 0) 62%
+    );
+  }
+
+  .hero-halo {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: clamp(600px, 70vw, 1200px);
+    height: clamp(600px, 90vh, 1200px);
+    z-index: 4;
+    pointer-events: none;
+    background: radial-gradient(
+      50% 54% at 50% 46%,
+      #000 0%,
+      rgba(0, 0, 0, 0.92) 30%,
+      rgba(0, 0, 0, 0.6) 52%,
+      rgba(0, 0, 0, 0.28) 68%,
+      rgba(0, 0, 0, 0) 82%
+    );
+    filter: blur(12px);
+  }
+
+  .hero-portrait {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    top: clamp(35px, 6vh, 85px);
+    bottom: auto;
+    transform: translateX(-50%);
+    width: clamp(250px, 31vw, 470px);
+    height: clamp(390px, 70%, 600px);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .hero-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+    mask-image: linear-gradient(to bottom, #000 65%, transparent 98%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 98%);
+  }
+
+  .hero-portrait-vignette {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(120px, 30%, 200px);
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(5, 5, 5, 0.4) 40%,
+      rgba(5, 5, 5, 0.9) 80%,
+      #050505 100%
+    );
+  }
+
+  .hero-fade-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(380px, 54vh, 660px);
+    z-index: 11;
+    pointer-events: none;
+    background: radial-gradient(
+      88% 110% at 50% 100%,
+      #000 0%,
+      rgba(0, 0, 0, 0.92) 32%,
+      rgba(0, 0, 0, 0.62) 56%,
+      rgba(0, 0, 0, 0.28) 74%,
+      rgba(0, 0, 0, 0) 90%
+    );
+  }
+
+  .hero-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 64px) clamp(28px, 4vw, 48px);
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .hero-main {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    pointer-events: auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-text-main);
+    margin: 4px auto 20px;
+    text-align: center;
+    opacity: 0.95;
+  }
+
+  .hero-title {
+    margin: 0 auto 16px;
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: var(--text-h1);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--color-text-main);
+    text-align: center;
+  }
+
+  .hero-bio {
+    margin: 0 auto 28px;
+    max-width: 720px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .hero-footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(24px, 4vw, 36px);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #f4f0e7;
+    color: #050505;
+    border-radius: 999px;
+    padding: 8px 24px 8px 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #f4f0e7;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .hero-cta:hover {
+    background: #18181c;
+    color: #ffffff;
+    border-color: #f4f0e7;
+    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+  }
+
+  .hero-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #050505;
+    color: #f4f0e7;
+    flex-shrink: 0;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      transform 0.45s cubic-bezier(0.45, 0, 0.2, 1);
+  }
+
+  .hero-text {
+    transition: transform 0.45s cubic-bezier(0.45, 0, 0.2, 1);
+  }
+
+  .hero-cta:hover .hero-arrow {
+    background: #f4f0e7;
+    color: #050505;
+    transform: translateX(var(--arrShift, 130px)) rotate(90deg);
+  }
+
+  .hero-cta:hover .hero-text {
+    transform: translateX(var(--txtShift, -54px));
+  }
+
+  .hero-socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(244, 240, 231, 0.3);
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
+
+  .hero-social-btn:hover {
+    border-color: #cfd3d9;
+    background: linear-gradient(
+      135deg,
+      rgba(246, 247, 249, 0.28) 0%,
+      rgba(143, 146, 152, 0.12) 55%,
+      rgba(217, 220, 224, 0.2) 100%
+    );
+  }
+
+  .hero-social-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (min-width: 761px) and (max-width: 1100px) {
+    .hero-title {
+      font-size: 72px;
+    }
+    .hero-portrait {
+      width: clamp(240px, 38vw, 400px);
+    }
+    .hero-bio {
+      font-size: 16px;
+    }
+    .hero-main {
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      min-height: auto;
+      padding-top: 75px;
+      padding-bottom: 48px;
+    }
+    .hero-stage {
+      top: -30px;
+      height: 350px;
+    }
+    .hero-bottom {
+      position: relative;
+      margin-top: 250px;
+      padding-left: var(--spacing-container-px);
+      padding-right: var(--spacing-container-px);
+      padding-bottom: 32px;
+    }
+    .hero-main {
+      max-width: 100%;
+    }
+    .hero-title {
+      margin-bottom: 16px;
+      font-size: clamp(34px, 8.2vw, 46px);
+    }
+    .hero-bio {
+      max-width: 100%;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .hero-portrait {
+      position: absolute;
+      left: 50%;
+      right: auto;
+      top: -15px;
+      bottom: auto;
+      transform: translateX(-50%);
+      width: clamp(230px, 62vw, 300px);
+      height: clamp(250px, 48vh, 340px);
+    }
+    .hero-portrait-img {
+      object-position: center top;
+    }
+    .hero-halo {
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 400px;
+    }
+    .hero-fade-bottom {
+      height: 300px;
+    }
+    .hero-footer-bar {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .hero-social-btn {
+      width: 52px;
+      height: 52px;
+    }
+    .hero-social-icon {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-bottom {
+      margin-top: 240px;
+    }
+    .hero-footer-bar {
+      gap: 32px;
+    }
+    .hero-social-btn {
+      width: 56px;
+      height: 56px;
+    }
+    .hero-social-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>
+
+<script>
+  const ring = document.querySelector("[data-ring-v2]") as HTMLElement;
+  const stage = document.querySelector("[data-stage-v2]") as HTMLElement;
+  if (ring && stage) {
+    let rot = 0,
+      vel = 0,
+      dragging = false,
+      lastX = 0,
+      last = performance.now();
+    const tick = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (!dragging) {
+        rot += (-4 + vel) * dt;
+        vel *= Math.pow(0.08, dt);
+      }
+      ring.style.transform = `translateZ(-470px) scale(0.943) rotateY(${rot.toFixed(3)}deg)`;
+      requestAnimationFrame(tick);
+    };
+    stage.addEventListener("pointerdown", (e: PointerEvent) => {
+      dragging = true;
+      lastX = e.clientX;
+      vel = 0;
+      stage.style.cursor = "grabbing";
+      try {
+        stage.setPointerCapture(e.pointerId);
+      } catch (_) {}
+    });
+    stage.addEventListener("pointermove", (e: PointerEvent) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      rot += dx * 0.12;
+      vel = dx * 0.12 * 60;
+    });
+    const endDrag = () => {
+      dragging = false;
+      stage.style.cursor = "grab";
+    };
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
+    requestAnimationFrame(tick);
+  }
+
+  const setupHeroBtn = () => {
+    const btn = document.querySelector(".hero-cta") as HTMLElement;
+    if (!btn) return;
+    const arrow = btn.querySelector(".hero-arrow") as HTMLElement;
+    const text = btn.querySelector(".hero-text") as HTMLElement;
+    if (!arrow || !text) return;
+    const padLeft = 8;
+    const padRight = 24;
+    const gap = 14;
+    const txtShift = arrow.offsetWidth + gap - (padRight - padLeft);
+    const arrShift = text.offsetWidth + gap + (padRight - padLeft);
+    btn.style.setProperty("--arrShift", arrShift + "px");
+    btn.style.setProperty("--txtShift", -txtShift + "px");
+  };
+  setupHeroBtn();
+
+  const initParticles = () => {
+    const canvas = document.getElementById(
+      "hero-particles-canvas",
+    ) as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const parent = canvas.parentElement;
+    let width = (canvas.width = parent?.offsetWidth || window.innerWidth);
+    let height = (canvas.height = parent?.offsetHeight || window.innerHeight);
+
+    interface Particle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      opacity: number;
+    }
+
+    const particles: Particle[] = [];
+    const count = Math.min(Math.floor((width * height) / 11000), 80);
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        radius: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.4 + 0.1,
+      });
+    }
+
+    const handleResize = () => {
+      width = canvas.width = parent?.offsetWidth || window.innerWidth;
+      height = canvas.height = parent?.offsetHeight || window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    const maxDist = 150;
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.12;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(render);
+    };
+
+    render();
+  };
+  initParticles();
+</script>
