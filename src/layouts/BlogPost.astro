@@ -316,22 +316,22 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     border-radius: 9999px;
     padding: 10px 28px 10px 10px;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    border: 1px solid #f4f0e7;
+    border: 1px solid var(--color-text-main);
     transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
   }
 
   .back-btn:hover {
-    background: #18181c;
-    color: #ffffff;
-    border-color: #f4f0e7;
-    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
 
@@ -342,15 +342,15 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #050505;
-    color: #f4f0e7;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
     flex-shrink: 0;
     transition: background 0.3s, color 0.3s, transform 0.3s;
   }
 
   .back-btn:hover .btn-arrow {
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     transform: rotate(45deg);
   }
 </style>

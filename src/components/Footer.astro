@@ -223,23 +223,20 @@ const socialLinks = [
   }
 
   .footer-cta-card {
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 20, 0.9) 0%,
-      rgba(10, 10, 12, 0.95) 100%
-    );
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border-subtle);
     border-radius: 28px;
     padding: clamp(28px, 5vw, 64px) clamp(18px, 4vw, 48px);
     margin-bottom: clamp(48px, 7vw, 96px);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    transition: border-color 0.3s;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.3s, box-shadow 0.3s;
   }
 
   .footer-cta-card:hover {
     border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .footer-cta-content {
@@ -285,13 +282,13 @@ const socialLinks = [
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     border-radius: 999px;
     padding: 10px 28px 10px 10px;
     font-size: 15px;
     font-weight: 600;
-    border: 1px solid #f4f0e7;
+    border: 1px solid var(--color-text-main);
     transition:
       background 0.3s,
       color 0.3s,
@@ -301,10 +298,10 @@ const socialLinks = [
   }
 
   .footer-primary-btn:hover {
-    background: #18181c;
-    color: #ffffff;
-    border-color: #f4f0e7;
-    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
 
@@ -315,8 +312,8 @@ const socialLinks = [
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #050505;
-    color: #f4f0e7;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
     flex-shrink: 0;
     transition:
       background 0.3s,
@@ -325,8 +322,8 @@ const socialLinks = [
   }
 
   .footer-primary-btn:hover .btn-arrow {
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     transform: rotate(45deg);
   }
 
@@ -455,6 +452,10 @@ const socialLinks = [
     display: block;
   }
 
+  :global(html[data-theme="light"]) .footer-social-icon {
+    filter: invert(1);
+  }
+
   .footer-bottom-bar {
     border-top: 1px solid var(--color-border-subtle);
     padding-top: 32px;
@@ -516,9 +517,9 @@ const socialLinks = [
   }
 
   .footer-back-to-top:hover .back-to-top-icon {
-    background: #f4f0e7;
-    color: #050505;
-    border-color: #f4f0e7;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
+    border-color: var(--color-text-main);
   }
 
   @media (max-width: 900px) {

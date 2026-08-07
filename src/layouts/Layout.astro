@@ -20,6 +20,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored) {
+          document.documentElement.setAttribute('data-theme', stored);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="BLM8JkaGm0f3prLH3_m0eWhv1nM3kWGvJhgCr6kcxiA" />

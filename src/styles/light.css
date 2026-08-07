@@ -1,0 +1,17 @@
+html[data-theme="light"] {
+  --color-bg-main: #f3f0ea;
+  --color-bg-surface: #f3f0ea;
+  --color-bg-card: #f0efee;
+  --color-bg-elevated: #e5e1d8;
+
+  --color-text-main: #161618;
+  --color-text-muted: #52525b;
+  --color-text-dimmed: #71717a;
+
+  --color-border-subtle: rgba(22, 22, 24, 0.1);
+  --color-border-hover: rgba(22, 22, 24, 0.25);
+
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover:
+    0 20px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+}

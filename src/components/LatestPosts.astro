@@ -156,6 +156,7 @@ const truncate = (str: string, length: number) => {
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-subtle);
     border-radius: 20px;
+    box-shadow: var(--shadow-card);
     overflow: hidden;
     text-decoration: none;
     transition:
@@ -167,7 +168,7 @@ const truncate = (str: string, length: number) => {
   .post-card:hover {
     transform: translateY(-8px);
     border-color: var(--color-border-hover);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .card-image-wrap {
@@ -235,9 +236,9 @@ const truncate = (str: string, length: number) => {
     gap: 12px;
     padding: 12px 12px 12px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(244, 240, 231, 0.18);
-    background: rgba(244, 240, 231, 0.03);
-    color: #f4f0e7;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
     font-weight: 500;
     font-size: 14.5px;
     transition:
@@ -247,9 +248,9 @@ const truncate = (str: string, length: number) => {
   }
 
   .post-card:hover .card-link {
-    background: #f4f0e7;
-    color: #050505;
-    border-color: #f4f0e7;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
+    border-color: var(--color-text-main);
   }
 
   .card-link-icon {
@@ -272,14 +273,14 @@ const truncate = (str: string, length: number) => {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     border-radius: 9999px;
     padding: 10px 28px 10px 10px;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    border: 1px solid #f4f0e7;
+    border: 1px solid var(--color-text-main);
     transition:
       background 0.3s,
       color 0.3s,
@@ -289,10 +290,10 @@ const truncate = (str: string, length: number) => {
   }
 
   .all-posts-btn:hover {
-    background: #18181c;
-    color: #ffffff;
-    border-color: #f4f0e7;
-    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
 
@@ -303,8 +304,8 @@ const truncate = (str: string, length: number) => {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #050505;
-    color: #f4f0e7;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
     flex-shrink: 0;
     transition:
       background 0.3s,
@@ -313,8 +314,8 @@ const truncate = (str: string, length: number) => {
   }
 
   .all-posts-btn:hover .btn-arrow {
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     transform: rotate(45deg);
   }
 

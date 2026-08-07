@@ -77,7 +77,6 @@ const carouselItems = [
 
     <div class="hero-portrait">
       <Image src={portraitImg} alt="Matheus Costa" class="hero-portrait-img" />
-      <div class="hero-portrait-vignette"></div>
     </div>
 
     <div class="hero-fade-bottom"></div>
@@ -183,7 +182,11 @@ const carouselItems = [
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: radial-gradient(120% 90% at 50% 0%, #0c0c0d 0%, #050505 60%);
+    background: radial-gradient(
+      120% 90% at 50% 0%,
+      var(--color-bg-surface) 0%,
+      var(--color-bg-main) 60%
+    );
   }
 
   .hero-icon {
@@ -278,22 +281,12 @@ const carouselItems = [
 
   .hero-fade--left {
     left: 0;
-    background: linear-gradient(
-      to right,
-      rgba(5, 5, 5, 0.92),
-      rgba(5, 5, 5, 0.6),
-      transparent
-    );
+    background: linear-gradient(to right, var(--color-bg-main), transparent);
   }
 
   .hero-fade--right {
     right: 0;
-    background: linear-gradient(
-      to left,
-      rgba(5, 5, 5, 0.92),
-      rgba(5, 5, 5, 0.6),
-      transparent
-    );
+    background: linear-gradient(to left, var(--color-bg-main), transparent);
   }
 
   .hero-vignette-center {
@@ -329,15 +322,37 @@ const carouselItems = [
     filter: blur(12px);
   }
 
+  :global(html[data-theme="light"]) .hero {
+    background: radial-gradient(120% 90% at 50% 0%, #ffffff 0%, #f3f0ea 65%);
+  }
+
+  :global(html[data-theme="light"]) .hero-vignette-center {
+    background: radial-gradient(
+      58% 70% at 50% 46%,
+      rgba(243, 240, 234, 0.15) 0%,
+      transparent 62%
+    );
+  }
+
+  :global(html[data-theme="light"]) .hero-halo {
+    background: radial-gradient(
+      50% 54% at 50% 46%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.85) 35%,
+      rgba(243, 240, 234, 0.6) 60%,
+      transparent 85%
+    );
+  }
+
   .hero-portrait {
     position: absolute;
     left: 50%;
     right: auto;
-    top: clamp(35px, 6vh, 85px);
+    top: clamp(80px, 9vh, 120px);
     bottom: auto;
     transform: translateX(-50%);
     width: clamp(250px, 31vw, 470px);
-    height: clamp(390px, 70%, 600px);
+    height: clamp(340px, 56vh, 580px);
     z-index: 5;
     pointer-events: none;
   }
@@ -348,24 +363,12 @@ const carouselItems = [
     object-fit: contain;
     object-position: center top;
     display: block;
-    mask-image: linear-gradient(to bottom, #000 65%, transparent 98%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 40%, rgba(0, 0, 0, 0.7) 70%, transparent 96%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, rgba(0, 0, 0, 0.7) 70%, transparent 96%);
   }
 
   .hero-portrait-vignette {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: clamp(120px, 30%, 200px);
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(5, 5, 5, 0.4) 40%,
-      rgba(5, 5, 5, 0.9) 80%,
-      #050505 100%
-    );
+    display: none;
   }
 
   .hero-fade-bottom {
@@ -373,16 +376,13 @@ const carouselItems = [
     left: 0;
     right: 0;
     bottom: 0;
-    height: clamp(380px, 54vh, 660px);
+    height: clamp(320px, 46vh, 560px);
     z-index: 11;
     pointer-events: none;
-    background: radial-gradient(
-      88% 110% at 50% 100%,
-      #000 0%,
-      rgba(0, 0, 0, 0.92) 32%,
-      rgba(0, 0, 0, 0.62) 56%,
-      rgba(0, 0, 0, 0.28) 74%,
-      rgba(0, 0, 0, 0) 90%
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--color-bg-main) 75%
     );
   }
 
@@ -451,13 +451,13 @@ const carouselItems = [
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     border-radius: 999px;
     padding: 8px 24px 8px 8px;
     font-size: 15px;
     font-weight: 600;
-    border: 1px solid #f4f0e7;
+    border: 1px solid var(--color-text-main);
     transition:
       background 0.3s,
       color 0.3s,
@@ -466,10 +466,10 @@ const carouselItems = [
   }
 
   .hero-cta:hover {
-    background: #18181c;
-    color: #ffffff;
-    border-color: #f4f0e7;
-    box-shadow: 0 0 24px rgba(244, 240, 231, 0.25);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
   }
 
   .hero-arrow {
@@ -479,8 +479,8 @@ const carouselItems = [
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #050505;
-    color: #f4f0e7;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
     flex-shrink: 0;
     transition:
       background 0.3s,
@@ -493,8 +493,8 @@ const carouselItems = [
   }
 
   .hero-cta:hover .hero-arrow {
-    background: #f4f0e7;
-    color: #050505;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
     transform: translateX(var(--arrShift, 130px)) rotate(90deg);
   }
 
@@ -517,20 +517,16 @@ const carouselItems = [
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(244, 240, 231, 0.3);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
     transition:
       border-color 0.2s,
       background 0.2s;
   }
 
   .hero-social-btn:hover {
-    border-color: #cfd3d9;
-    background: linear-gradient(
-      135deg,
-      rgba(246, 247, 249, 0.28) 0%,
-      rgba(143, 146, 152, 0.12) 55%,
-      rgba(217, 220, 224, 0.2) 100%
-    );
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-elevated);
   }
 
   .hero-social-icon {
@@ -539,15 +535,61 @@ const carouselItems = [
     height: 20px;
   }
 
-  @media (min-width: 761px) and (max-width: 1100px) {
-    .hero-title {
-      font-size: 72px;
-    }
+  :global(html[data-theme="light"]) .hero-social-icon {
+    filter: invert(1);
+  }
+
+  @media (max-width: 1440px) and (min-width: 761px) {
     .hero-portrait {
-      width: clamp(240px, 38vw, 400px);
+      top: clamp(100px, 11vh, 125px);
+      width: clamp(270px, 30vw, 430px);
+      height: clamp(360px, 55vh, 500px);
+    }
+    .hero-title {
+      font-size: clamp(40px, 4.6vw, 68px);
+      margin-bottom: 10px;
     }
     .hero-bio {
-      font-size: 16px;
+      font-size: 15px;
+      margin-bottom: 18px;
+      max-width: 620px;
+    }
+    .hero-bottom {
+      padding-bottom: clamp(44px, 6.5vh, 76px);
+    }
+  }
+
+  @media (max-height: 850px) and (min-width: 761px) {
+    .hero-portrait {
+      top: clamp(95px, 10.5vh, 118px);
+      width: clamp(270px, 30vw, 430px);
+      height: clamp(350px, 53vh, 480px);
+    }
+    .hero-stage {
+      height: 460px;
+    }
+    .hero-title {
+      font-size: clamp(38px, 4.4vw, 60px);
+      margin-bottom: 8px;
+    }
+    .hero-bio {
+      font-size: 14.5px;
+      margin-bottom: 16px;
+    }
+    .hero-bottom {
+      padding-bottom: clamp(40px, 6vh, 70px);
+    }
+  }
+
+  @media (min-width: 761px) and (max-width: 1100px) {
+    .hero-title {
+      font-size: clamp(38px, 5vw, 64px);
+    }
+    .hero-portrait {
+      width: clamp(220px, 30vw, 340px);
+    }
+    .hero-bio {
+      font-size: 15px;
     }
     .hero-main {
       max-width: 600px;
@@ -747,6 +789,9 @@ const carouselItems = [
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      const isLight =
+        document.documentElement.getAttribute("data-theme") === "light";
+
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx;
@@ -757,7 +802,9 @@ const carouselItems = [
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+        ctx.fillStyle = isLight
+          ? `rgba(0, 0, 0, ${p.opacity * 0.4})`
+          : `rgba(255, 255, 255, ${p.opacity})`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -771,7 +818,9 @@ const carouselItems = [
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.strokeStyle = isLight
+              ? `rgba(0, 0, 0, ${alpha * 0.4})`
+              : `rgba(255, 255, 255, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

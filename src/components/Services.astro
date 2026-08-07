@@ -206,7 +206,7 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
 <style>
   .services {
     padding: var(--spacing-section-py) var(--spacing-container-px);
-    background: radial-gradient(ellipse at 50% 30%, #121216 0%, #060608 100%);
+    background: radial-gradient(ellipse at 50% 30%, var(--color-bg-card) 0%, var(--color-bg-surface) 100%);
     border-top: 1px solid var(--color-border-subtle);
     border-bottom: 1px solid var(--color-border-subtle);
     position: relative;
@@ -274,6 +274,7 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
     border: 1px solid var(--color-border-subtle);
     background: var(--color-bg-card);
     color: var(--color-text-main);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
     transition:
       border-color 0.2s,
@@ -284,7 +285,7 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
   .svc-card:hover {
     border-color: var(--color-border-hover);
     background: var(--color-bg-elevated);
-    box-shadow: 0 0 40px rgba(207, 211, 217, 0.14);
+    box-shadow: var(--shadow-card-hover);
   }
 
   .svc-title {
@@ -315,9 +316,9 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
     gap: 12px;
     padding: 12px 12px 12px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(244, 240, 231, 0.18);
-    background: rgba(244, 240, 231, 0.03);
-    color: #f4f0e7;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
     font-weight: 500;
     font-size: 14.5px;
     transition:
@@ -327,9 +328,9 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
   }
 
   .svc-card:hover .svc-cta {
-    background: #f4f0e7;
-    color: #050505;
-    border-color: #f4f0e7;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
+    border-color: var(--color-text-main);
   }
 
   .svc-cta-icon {
