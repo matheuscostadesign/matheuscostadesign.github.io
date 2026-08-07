@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/check": "latest",
+    "aeo.js": "^0.0.16",
     "astro": "latest",
     "lenis": "^1.3.26",
     "typescript": "latest"

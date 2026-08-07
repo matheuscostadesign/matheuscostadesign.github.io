@@ -1,7 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 
 const getPostDate = (id: string) => {
   const match = id.match(/\d{4}-\d{2}-\d{2}/);
@@ -13,48 +13,74 @@ const latestPosts = allPosts
   .slice(0, 3);
 
 const getSlug = (post: any) => {
-  return post.data.slug || post.slug || post.id.split('/').pop()?.replace(/\.mdx?$/, '');
+  return (
+    post.data.slug ||
+    post.slug ||
+    post.id
+      .split("/")
+      .pop()
+      ?.replace(/\.mdx?$/, "")
+  );
 };
 
 const truncate = (str: string, length: number) => {
-  return str.length > length ? str.substring(0, length - 3) + '...' : str;
+  return str.length > length ? str.substring(0, length - 3) + "..." : str;
 };
 ---
 
-<section class="latest-posts-section">
+<section id="blog" class="latest-posts-section">
   <div class="latest-posts-container">
     <div class="section-header">
       <h2 class="section-title">Artigos & Insights</h2>
       <p class="section-subtitle">
-        Conteúdos práticos sobre frontend, UI/UX e desenvolvimento web para elevar o nível dos seus projetos.
+        Conteúdos práticos sobre frontend, UI/UX e desenvolvimento web para
+        elevar o nível dos seus projetos.
       </p>
     </div>
 
     <div class="latest-posts-grid">
-      {latestPosts.map((post) => {
-        const slug = getSlug(post);
-        return (
-          <a href={`/blog/${slug}`} class="post-card">
-            <div class="card-image-wrap">
-              <img src={post.data.image} alt={post.data.title} class="card-image" loading="lazy" />
-              <span class="card-category">{post.data.categories}</span>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">{truncate(post.data.title, 52)}</h3>
-              <p class="card-description">{truncate(post.data.description, 75)}</p>
-              <div class="card-link">
-                <span>Ler artigo</span>
-                <span class="card-link-icon">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" y1="12" x2="18.5" y2="12"></line>
-                    <polyline points="12.5 6 19 12 12.5 18"></polyline>
-                  </svg>
-                </span>
+      {
+        latestPosts.map((post) => {
+          const slug = getSlug(post);
+          return (
+            <a href={`/blog/${slug}`} class="post-card">
+              <div class="card-image-wrap">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="card-image"
+                  loading="lazy"
+                />
+                <span class="card-category">{post.data.categories}</span>
               </div>
-            </div>
-          </a>
-        );
-      })}
+              <div class="card-content">
+                <h3 class="card-title">{truncate(post.data.title, 52)}</h3>
+                <p class="card-description">
+                  {truncate(post.data.description, 75)}
+                </p>
+                <div class="card-link">
+                  <span>Ler artigo</span>
+                  <span class="card-link-icon">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="4" y1="12" x2="18.5" y2="12" />
+                      <polyline points="12.5 6 19 12 12.5 18" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          );
+        })
+      }
     </div>
 
     <div class="section-actions">
@@ -132,7 +158,10 @@ const truncate = (str: string, length: number) => {
     border-radius: 20px;
     overflow: hidden;
     text-decoration: none;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s,
+      box-shadow 0.3s;
   }
 
   .post-card:hover {
@@ -251,7 +280,12 @@ const truncate = (str: string, length: number) => {
     font-weight: 600;
     text-decoration: none;
     border: 1px solid #f4f0e7;
-    transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s,
+      box-shadow 0.3s,
+      transform 0.2s;
   }
 
   .all-posts-btn:hover {
@@ -272,7 +306,10 @@ const truncate = (str: string, length: number) => {
     background: #050505;
     color: #f4f0e7;
     flex-shrink: 0;
-    transition: background 0.3s, color 0.3s, transform 0.3s;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      transform 0.3s;
   }
 
   .all-posts-btn:hover .btn-arrow {

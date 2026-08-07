@@ -1,0 +1,45 @@
+{
+  "site": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Matheus Costa — UX/UI Designer e Desenvolvedor Front-end",
+      "description": "UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza.",
+      "url": "https://matheuscostadesign.github.io"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Matheus Costa",
+      "url": "https://matheuscostadesign.github.io"
+    }
+  ],
+  "pages": {
+    "/\\index": [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Matheus Costa — UX/UI Designer e Desenvolvedor Front-end",
+        "url": "https://matheuscostadesign.github.io/\\index"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://matheuscostadesign.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "\\index",
+            "item": "https://matheuscostadesign.github.io/\\index"
+          }
+        ]
+      }
+    ]
+  }
+}

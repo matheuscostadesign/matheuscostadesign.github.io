@@ -12,7 +12,7 @@ All styling must reference CSS custom properties defined in `src/styles/global.c
 | :---------------------- | :--------------------------- | :------------------------------------------------------------------- |
 | **Display Font**        | `var(--font-display)`        | `'Funnel Display', sans-serif` — Used for all headings (H1 - H6)     |
 | **Body Font**           | `var(--font-body)`           | `'Instrument Sans', Helvetica, sans-serif` — Primary text, UI labels |
-| **Monospace Font**      | `var(--font-mono)`           | `'Space Mono', monospace` — Eyebrows, micro-copy, code blocks        |
+| **Monospace Font**      | `var(--font-mono)`           | `'JetBrains Mono', monospace` — Eyebrows, micro-copy, code blocks |
 | **Background Main**     | `var(--color-bg-main)`       | `#050505` — Primary dark canvas                                      |
 | **Background Surface**  | `var(--color-bg-surface)`    | `#0c0c0d` — Hero / secondary sections                                |
 | **Background Card**     | `var(--color-bg-card)`       | `#121214` — Service cards, blog cards                                |
@@ -70,7 +70,7 @@ The font scale uses fluid typography (`clamp()`) to ensure optimal presentation 
 
 ### Eyebrow / Micro-copy
 
-- **Font**: `var(--font-mono)` (`Space Mono`)
+- **Font**: `var(--font-mono)` (`JetBrains Mono`)
 - **Size**: `12px` (`var(--text-mono)`)
 - **Letter Spacing**: `0.28em`
 - **Transform**: `uppercase`

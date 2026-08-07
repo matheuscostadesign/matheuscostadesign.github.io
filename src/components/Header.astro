@@ -23,8 +23,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     <nav class="site-nav">
       <ul class="nav-list">
         <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/blog" class="nav-link">Blog</a></li>
         <li><a href="/#servicos" class="nav-link">Serviços</a></li>
+        <li><a href="/#blog" class="nav-link">Insights</a></li>
+        <li><a href="/#contato" class="nav-link">Contato</a></li>
       </ul>
     </nav>
 
@@ -64,19 +65,30 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item" style="--delay: 0.05s;">
           <a href="/" class="mobile-nav-link">
-            <span>Início</span>
+            <span>Home</span>
             <span class="link-arrow">&rarr;</span>
           </a>
         </li>
         <li class="mobile-nav-item" style="--delay: 0.1s;">
-          <a href="/blog" class="mobile-nav-link">
-            <span>Blog & Insights</span>
+          <a href="/#servicos" class="mobile-nav-link">
+            <span>Serviços</span>
             <span class="link-arrow">&rarr;</span>
           </a>
         </li>
         <li class="mobile-nav-item" style="--delay: 0.15s;">
-          <a href="/#servicos" class="mobile-nav-link">
-            <span>Serviços</span>
+          <a href="/blog" class="mobile-nav-link">
+            <span>Blog</span>
+            <span class="link-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mobile-nav-item" style="--delay: 0.2s;">
+          <a
+            href="https://wa.me/5517991005132"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-nav-link"
+          >
+            <span>Contato</span>
             <span class="link-arrow">&rarr;</span>
           </a>
         </li>
@@ -298,7 +310,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     height: 2px;
     background-color: var(--color-text-main);
     border-radius: 2px;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.25s ease;
     transform-origin: center;
   }
 
@@ -386,7 +400,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     justify-content: space-between;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--color-border-subtle);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .mobile-nav-link:hover,
@@ -398,7 +414,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
   .link-arrow {
     font-size: 24px;
     color: var(--color-text-dimmed);
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
   }
 
   .mobile-nav-link:hover .link-arrow {
@@ -435,7 +453,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
+    transition:
+      background 0.2s,
+      transform 0.2s;
   }
 
   .mobile-cta-btn:active {
@@ -492,7 +512,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
   function setupMobileMenu() {
     const toggle = document.querySelector(".mobile-toggle");
     const drawer = document.querySelector("#mobile-menu-drawer");
-    const links = document.querySelectorAll(".mobile-nav-link, .mobile-cta-btn");
+    const links = document.querySelectorAll(
+      ".mobile-nav-link, .mobile-cta-btn",
+    );
 
     if (!toggle || !drawer) return;
 

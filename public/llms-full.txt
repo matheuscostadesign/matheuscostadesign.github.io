@@ -1,0 +1,2911 @@
+# Matheus Costa — UX/UI Designer e Desenvolvedor Front-end - Complete Documentation
+
+This file contains all documentation concatenated into a single file for easy consumption by LLMs.
+
+> UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza.
+
+## Table of Contents
+
+This document includes all content from this project.
+Each section is separated by a horizontal rule (---) for easy parsing.
+
+---
+
+# /\index
+
+URL: https://matheuscostadesign.github.io/\index
+
+---
+
+# Como visualizar alterações em um site ou projeto em tempo real usando o Visual Studio Code e o Live Server
+
+Source: blog\2020\09\2020-09-01-live-server.md
+
+> Essa dica irá aumentar muito a sua produtividade no momento em que estiver desenvolvendo o seu site/projeto e quiser ver as alterações em tempo real
+
+Essa dica irá aumentar muito a sua produtividade no momento em que estiver desenvolvendo o seu site/projeto e quiser ver as alterações em tempo real, sem a necessidade de ficar atualizando a página do navegador o tempo todo.
+
+Então sem mais enrolações, vamos lá…
+
+### Instalação
+
+- Abra o gerenciador de Extensões do Visual Studio Code;
+- Pesquise por: [**Live Server**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer);
+- Clique em: **Install**;
+- Aguarde o processo de instalação e se necessário for reinicie o VSCode;
+
+<img src="/assets/images/posts/2020/09/live-server-1.webp">
+
+### Execução
+
+- Abra a pasta do seu projeto;
+- Na barra inferior do software selecione a opção: **Go Live**
+
+<img src="/assets/images/posts/2020/09/live-server-2.webp">
+
+### Pronto!
+
+O seu navegador padrão será executado automaticamente e qualquer alteração no seu projeto será visualizada em tempo real.
+
+<img src="/assets/images/posts/2020/09/live-server-3.gif">
+
+
+---
+
+# Ferramenta online para otimização de imagens JPEG
+
+Source: blog\2022\01\2022-01-14-imagens-jpeg.md
+
+> Ferramenta útil para otimizar imagens em JPG/JPEG
+
+Ferramenta útil para otimizar imagens em JPG/JPEG
+
+<a href="https://jpeg.rocks/" rel="noopener noreferrer">https://jpeg.rocks/</a>
+
+
+---
+
+# Disponibilize imagens em formatos de última geração
+
+Source: blog\2022\01\2022-01-17-imagens-webp.md
+
+> Veja neste artigo como resolver o problema no resultado do Google Pagespeed: Disponibilize imagens em formatos de última geração
+
+Veja neste artigo como resolver o problema no resultado do Google Pagespeed: _"Disponibilize imagens em formatos de última geração"_
+
+#### Convertendo imagens para WEBP com Photoshop
+
+- Baixar o plugin: WebPShop.8bi
+  - [Documentação WEBP do Google][link1]
+  - [Baixar projeto no Github][link2]
+- Inserir o arquivo `WebPShop.8bi` no pasta Plugins do Photoshop
+  - Ex: `Photoshop18\App\Ps\Plug-ins`
+- Para exportar a imagem como WEBP basta clicar em `Save As` e selecionar o tipo: `WEBP`
+
+[link1]: https://developers.google.com/speed/webp/docs/webpshop#windows_installation_steps
+[link2]: https://github.com/webmproject/WebPShop/releases
+
+#### Usando imagens WEBP no HTML
+
+```html
+<picture>
+  <source type="image/webp" srcset="flower.webp" />
+  <source type="image/jpeg" srcset="flower.jpg" />
+  <img src="flower.jpg" alt="" />
+</picture>
+```
+
+#### WebP em imagens no background CSS
+
+```css
+background: url("../assets/images/bg-info.jpg");
+background: -webkit-image-set(url("../assets/images/bg-info.webp") 1x) no-repeat;
+```
+
+#### Referencias
+
+- [Ole Michelsen](https://ole.michelsen.dk/blog/using-webp-images-html-css/)
+
+
+---
+
+# Atualizar ano atual automaticamente com Javascript
+
+Source: blog\2022\01\2022-01-21-atualizar-ano.md
+
+> Veja neste artigo como mostrar o ano atual automaticamente no footer do site
+
+Veja neste artigo como mostrar o ano atual automaticamente no footer do site
+
+### HTML
+
+- Adicione o conteúdo da tag `<span>` abaixo no seu arquivo HTML, onde deseja exibir o ano atual automaticamente.
+
+```html
+<span id="mostrarAnoAtual"></span>
+```
+
+### Javascript
+
+- Já no arquivo no seu arquivo Javascript, insira os comandos abaixo:
+
+```js
+const ano = document.getElementById("mostrarAnoAtual");
+const anoAtual = new Date();
+ano.innerHTML = anoAtual.getFullYear();
+```
+
+- Dessa forma, na tag `<span>` que foi adicionado no seu HTML será exibido o ano atual automaticamente, sem a necessidade de ficar trocando todo ano.
+
+> Gostou da dica? Sabe de algo que possa melhor? Então comente abaixo!
+
+Valeeu! 👊
+
+
+---
+
+# Configurações importantes para adicionar no arquivo .htaccess
+
+Source: blog\2022\02\2022-02-11-htaccess.md
+
+> Veja neste artigo configurações importantes de se adicionar no arquivo .htaccess para servidores web/PHP
+
+Veja neste artigo configurações importantes de se adicionar no arquivo `.htaccess` para servidores web/PHP:
+
+### Redirecionamento HTTP para HTTPs
+
+```txt
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.dominio.com.br/$1 [R,L]
+```
+
+### Remover extensões dos arquivos na URL
+
+```txt
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ $1.html [L]
+</IfModule>
+```
+
+### Exibir página não encontrada - 404
+
+```txt
+ErrorDocument 404 /404.html
+```
+
+### Ativar compactação GZIP
+
+```txt
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/atom_xml
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-httpd-php
+AddOutputFilterByType DEFLATE application/x-httpd-fastphp
+AddOutputFilterByType DEFLATE application/x-httpd-eruby
+AddOutputFilterByType DEFLATE text/html
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4.0[678] no-gzip
+BrowserMatch ^HMSI[E] !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary
+```
+
+### Habilitar Keep Alive
+
+```txt
+<ifModule mod_headers.c>
+Header set Connection keep-alive
+</ifModule>
+```
+
+
+---
+
+# Como alterar a cor do texto selecionado de uma página com CSS
+
+Source: blog\2022\02\2022-02-18-cor-texto.md
+
+> Aprenda neste artigo como alterar a cor do texto selecionado do site com CSS
+
+Sabia que é possível alterar a cor padrão do texto selecionado pelo usuário no navegador?
+
+Com essas duas linhas de CSS é possível alterar as cores e personalizá-las de acordo com a identidade visual do projeto/site/empresa.
+
+### Alterando a cor do texto selecionado
+
+```css
+::-moz-selection {
+  color: #ffffff;
+  background-color: #bf4b8a;
+}
+::selection {
+  color: #ffffff;
+  background-color: #bf4b8a;
+}
+```
+
+Gostou da dica? Sabia dela ou já usou em algum projeto? Tem alguma dica para acrescentar? Comenta aí o que achou. Valeeu!
+
+
+---
+
+# Como gerar o certificado SSL/HTTPS de forma manual
+
+Source: blog\2022\02\2022-02-21-ssl-manual.md
+
+> Veja neste artigo como gerar os arquivos de certificado SSL da Let's Encrypt para seu site de forma manual e gratuita.
+
+Veja neste artigo como gerar os arquivos de certificado SSL da Let's Encrypt para seu site de forma manual e gratuita.
+
+Este procedimento é necessário para hospedagens em servidores com versões antigas do Windows (Windows Server 2008, por exemplo) ou hospedagens que não suportam e/ou não tem integração com a Let's Encrypt para renovar o certificado automaticamente.
+
+Então o procedimento será realizado manualmente, beleza?!
+
+E de 3 em 3 meses será necessário refazer todo processo.
+
+### Processo no servidor de hospedagem
+
+1. Criar as pastas **".well-known"** e **"acme-challenge"** na raiz do site (e também nos subdomínios)
+   - Ex: `dominio.com.br/.well-known/acme-challenge/...`
+   - Ex: `subdominio.dominio.com.br/.well-known/acme-challenge/...`
+
+2. Criar o arquivo **"web.config"** com a seguinte estrutura XML na pasta **"acme-challenge"** (e também nos subdomínios) - **PARA SERVIDOR WINDOWS**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <staticContent>
+            <mimeMap fileExtension="." mimeType="text/plain" />
+        </staticContent>
+    </system.webServer>
+</configuration>
+```
+
+### Geração do certificado e dos arquivos
+
+1. Fazer a instalação do Certbot no Windows
+   - **<a href="https://github.com/certbot/certbot/releases/download/v1.23.0/certbot-beta-installer-win32.exe" rel="noopener noreferrer">https://dl.eff.org/certbot-beta-installer-win32.exe</a>**
+
+2. Abrir **Prompt de Comando** como administrador
+
+3. Executar o comando:
+   - <kbd>certbot certonly --manual</kbd>
+
+4. Se for a primeira utilização, informe um email e aceite os termos de uso
+
+5. Insira o nome do domínio _(Se for incluir os subdominios, fazer a separação por espaço ou vírgula)_
+   - Ex 1: `subdominio.dominio.com.br www.dominio.com.br dominio.com.br`
+   - Ex 2: `subdominio.dominio.com.br,www.dominio.com.br,dominio.com.br,`
+
+6. Crie um arquivo com os dados que foram gerados pelo Certbot _(exatamente com o mesmo nome gerado pelo Certbot, sem nenhuma extenção)_
+   - **Exemplo:**
+   - **Nome do arquivo:** <kbd>LD_37mksvJMxkIU-wKmsglXG7h-EL15kfaddVS6XKa4</kbd>
+   - **Conteúdo:** <kbd>LD_37mksvJMxkIU-wKmsglXG7h-EL15kfaddVS6XKa4.rt9TPxI7m6aoCBhS6YVbWpDqZSBD2vGrEyr88dPom_M</kbd>
+
+7. Acessar o servidor de hospedagem e inserir o arquivo gerado na pasta **"acme-challenge"** (no domínio principal e nos subdominios)
+   - Ex: **http://dominio.com.br/.well-known/acme-challenge/LD_37mksvJMxkIU-wKmsglXG7h-EL15kfaddVS6XKa4**
+   - Ex: **http://subdominio.dominio.com.br/.well-known/acme-challenge/LD_37mksvJMxkIU-wKmsglXG7h-EL15kfaddVS6XKa4**
+
+8. Abra a URL gerada pelo Certbot no navegador. A página deve carregar normalmente e exibir o conteúdo em forma de texto.
+
+9. Volte no prompt de comando e pressione **"Enter"**
+
+10. Pronto! O certificado será gerado na pasta:
+
+- `C:\Certbot\live\dominio.com.br\fullchain.pem`
+- `C:\Certbot\live\dominio.com.br\privkey.pem`
+
+![ssl.png]({{ site.baseurl }}/assets/images/posts/2022/ssl.png)
+
+### Enviando certificado para a empresa de hospedagem
+
+1. Pegar os arquivos gerados pelo certbot e **alterar a extensão**
+   - <kbd>fullchain.pem</kbd> para <kbd>fullchain.crt</kbd> e
+   - <kbd>privkey.pem</kbd> para <kbd>privkey.key</kbd>
+
+2. Criar uma pasta na raiz do do servidor
+   - Ex: `Web > ssl`
+
+3. Inserir os arquivos **"fullchain.crt"** e **"privkey.key"** na pasta criada via FTP
+
+4. Abrir um chamado com a empresa de hospedagem (de 3 em 3 meses) e informá-los sobre a instalação do certificado tanto para o domínio principal quanto para subdomínios
+
+5. Validar o funcionamento do certificado pelo site:
+   - **<a href="https://certlogik.com/ssl-checker/" rel="noopener noreferrer">https://certlogik.com/ssl-checker/</a>**
+   - **<a href="https://www.sslshopper.com/ssl-checker.html" rel="noopener noreferrer">https://www.sslshopper.com/ssl-checker.html</a>**
+
+6. Forçar o uso do HTTPS via web.config/.htaccess (redirect)
+
+
+---
+
+# Como alterar menu header após scroll com Javascript
+
+Source: blog\2022\02\2022-02-22-header-scroll.md
+
+> Veja neste artigo como alterar o menu/cabeçalho/header do site após scroll na página com Vanilla Javascript (Pure JS).
+
+Veja neste artigo como alterar o menu/cabeçalho/header do site após scroll na página com Vanilla Javascript (Pure JS), sem utilizar o framework jQuery.
+
+### Configurando o HTML
+
+- Primeiramente vamos chamar em nosso HTML o arquivo Javascript que irá conter a função para alterar o header.
+- Neste exemplo, o arquivo de scripts está na pasta `js/scripts`
+- Insira o comando abaixo antes do fechamento da tag `</body>`
+
+```html
+<script src="js/scripts.js"></script>
+```
+
+### Adicionando função no Javascript
+
+- Agora insira o comando abaixo no arquivo de scripts
+- Lembrando que é necessário alterar o seletor: `querySelector(".header")` para que ele capture o seu elemento HTML, seja uma classe ou um ID.
+- Exemplo: `document.querySelector("NOME-DA-SUA-CLASSE-OU-ID")`
+
+```js
+// Função Alterar Header Apos Scroll
+function alterarHeaderAposScroll() {
+  const header = document.querySelector(".header"); // captura o header
+  const navHeight = header.offsetHeight;
+  if (window.scrollY >= navHeight) {
+    // se o scroll for maior que a altura do header adiciona a classe ativo
+    header.classList.add("ativo");
+  } else {
+    header.classList.remove("ativo"); // remove a classe
+  }
+}
+
+// Chamada das funções pelo scroll
+window.addEventListener("scroll", function () {
+  alterarHeaderAposScroll();
+});
+```
+
+### Personalizando a classe no CSS
+
+- Agora é só adicionar a classe `.ativo` no arquivo .CSS do seu menu e fazer as personalizações desejadas.
+- Toda vez que o scroll na página for maior que a altura do header a classe será adicionada
+
+```scss
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 12.5rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+// Habilita classe .ativo após o scroll
+.header.ativo {
+  background: $white;
+  height: 8rem;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+}
+```
+
+- No exemplo acima, eu adiciono uma cor de fundo (branco), diminuo a altura do cabeçalho e adiciono também uma sombra.
+- Todas essas mudança só são aplicadas após o scroll na página.
+- E se voltar ao topo, a classe é removida e os estilos também.
+
+### Inspecionando elemento
+
+- Para validar o funcionamento da função, inspecione a página (F12) e verifique se seu menu está recebendo a classe `.ativo` quando o scroll é feito na página.
+
+Gostou da dica? Sabia dela ou já usou em algum projeto? Tem alguma dica para acrescentar? Comenta aí o que achou. Valeeu!
+
+
+---
+
+# Como enviar dados do formulário HTML para o Whatsapp
+
+Source: blog\2022\03\2022-03-18-whatsapp.md
+
+> Veja neste artigo como enviar os dados digitados no formulário HTML para o Whatsapp com validação de campos obrigatórios.
+
+Veja neste artigo como enviar os dados digitados no formulário HTML para o Whatsapp com validação de campos obrigatórios.
+
+### Exemplo/Demonstração da funcionalidade:
+
+- Veja o exemplo abaixo de como irá funcionar o envio:
+
+<p class="codepen" data-height="600" data-default-tab="html,result" data-slug-hash="jOYWppy" data-pen-title="Enviar dados do formulário HTML para o Whatsapp" data-user="matheuscostadesign" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/matheuscostadesign/pen/jOYWppy">
+  Enviar dados do formulário HTML para o Whatsapp</a> by Matheus Costa (<a href="https://codepen.io/matheuscostadesign">@matheuscostadesign</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+Você também pode acessar o exemplo clicando no link abaixo:
+
+- <a href="https://matheuscostadesign.github.io/enviar-para-whatsapp/" target="_blank" rel="noopener noreferrer">matheuscostadesign.github.io/enviar-para-whatsapp/</a>
+
+Código fonte completo:
+
+- <a href="https://github.com/matheuscostadesign/enviar-para-whatsapp" target="_blank" rel="noopener noreferrer">github.com/matheuscostadesign/enviar-para-whatsapp</a>
+
+### Como fazer isso no meu formulário?
+
+#### 1) Adicionar onsubmit no form
+
+- Você vai precisar primeiramente passar uma função Javascript no `onsubmit` da tag `form` do HTML:
+
+```html
+<form action="#" method="get" onsubmit="abrirWhatsapp()">
+  <!-- seus campos/inputs aqui -->
+  <button type="submit">Enviar dados p/ Whatsapp</button>
+</form>
+```
+
+#### 2) Nomear cada input com um ID exclusivo
+
+- Agora será necessário passar um `ID` exclusivo cada um dos seus campos do formulário, por exemplo:
+
+```html
+<!-- id="nome" -->
+<input
+  type="text"
+  name="nome"
+  id="nome"
+  placeholder="Informe seu nome completo"
+  required
+/>
+<!-- id="telefone" -->
+<input
+  type="tel"
+  name="telefone"
+  id="telefone"
+  placeholder="Informe seu telefone"
+  required
+/>
+<!-- id="email" -->
+<input
+  type="email"
+  name="email"
+  id="email"
+  placeholder="Seu melhor e-mail"
+  required
+/>
+```
+
+#### 3) Criar script
+
+- Agora, no seu JavaScript inclua o código abaixo:
+
+  - **Lembrando que você deve alterar o código de acordo com os campos do seu formulário.**
+
+```js
+<script>
+    function abrirWhatsapp() {
+      var nome = document.getElementById("nome").value; // nome é o id do input no HTML
+      var telefone = document.getElementById("telefone").value; // telefone é o id do input no HTML
+      var email = document.getElementById("email").value; // e assim vai
+      var msg = document.getElementById("msg").value;
+
+      var url = "https://wa.me/5517999999999?text=" // Seu numero do Whatsapp com DDD
+        + "*Formulário de Contato*" + "%0a" // Mensagem personalizada
+        + "%0a" // Quebra de linha
+        + "*Nome*: " + nome + "%0a" // Dados do formulário
+        + "*Telefone*: " + telefone + "%0a"
+        + "*E-mail*: " + email + "%0a"
+        + "*Mensagem*: " + msg;
+      window.open(url, '_blank').focus();
+    }
+</script>
+```
+
+Gostou da dica? Sabia dela ou já usou em algum projeto?
+
+Tem alguma dica para acrescentar?
+
+Comenta aí o que achou.
+
+Valeeu! 👊
+
+
+---
+
+# Como fazer o efeito voltar ao topo suave com jQuery
+
+Source: blog\2022\03\2022-03-22-voltar-topo.md
+
+> Veja neste artigo como fazer o efeito voltar ao topo da página de forma suave (smooth scrolling) utilizando a biblioteca jQuery
+
+Veja neste artigo como fazer o efeito voltar ao topo da página de forma suave (smooth scrolling) utilizando a biblioteca jQuery, que irá funcionar perfeitamente nos browsers para Windows (Chrome, Brave, Firefox, Edge, etc) quanto para o browser da Apple/iOS/Macbook (Safari).
+
+### 1. Inserindo o jQuery no HTML
+
+- Primeiramente faça o download da biblioteca jQuery (ou utilize via CDN):
+
+- <a href="https://jquery.com/download/" target="_blank" rel="noopener noreferrer">https://jquery.com/download/</a>
+
+- Referencie a biblioteca jQuery em seu HTML, antes do fechamento da tag `</body>`
+
+```html
+<script src="js/jquery-3.6.0.min.js"></script>
+```
+
+### 2. Criando o elemento/botão que irá fazer o efeito de voltar ao topo
+
+- No exemplo abaixo, vamos criar um simples link, com um ícone em SVG:
+
+```html
+<a href="#" title="Voltar ao topo" class="voltar-topo">
+  <img src="assets/icone-top.svg" alt="Voltar ao topo" />
+</a>
+```
+
+#### 3. Scroll suave ativado pelo botão
+
+- Agora basta adicionar o código abaixo no seu arquivo de scripts e pronto!
+- Lembrando que o comando `$(".voltar-topo")` faz referencia ao elemento HTML
+- Portanto, se seu botão está com outro nome, ou um ID, por exemplo, é só alterar essa opção
+
+```js
+// Voltar ao topo suave (jQuery)
+$(document).ready(function () {
+  $(".voltar-topo").click(function () {
+    // elemento/botao
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+});
+```
+
+#### 4. Scroll suave no menu (Header)
+
+- Caso queira que os links do seu menu também levem a sessão de sua página de forma suave, adicione o código abaixo em seu arquivo de scripts e faça as mudanças necessárias nas linhas onde o código está comentado
+
+```js
+// Scroll suave nos links do Header
+$('.header a[href^="#"]').on("click", function (e) {
+  // seu menu
+  e.preventDefault();
+  var id = $(this).attr("href"),
+    targetOffset = $(id).offset().top;
+  $("html, body").animate(
+    {
+      scrollTop: targetOffset - 80, // margin-top (altura do header)
+    },
+    400 // velocidade transição
+  );
+});
+```
+
+- Lembrando que é necessário seu menu/header chame esta sessão. Por exemplo:
+
+```html
+<header class="header">
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#contato" class="link under">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+```
+
+- E a sessão deve ter o mesmo ID:
+
+```html
+<section class="s-contato" id="contato"></section>
+```
+
+Dessa forma, quando o usuário clicar no link a página irá descer suavemente até a sessão desejada.
+
+Gostou da dica? Sabia dela ou já usou em algum projeto? Tem alguma dica para acrescentar? Comenta aí o que achou. Valeeu!
+
+
+---
+
+# As melhores bibliotecas de UI para Frontend em 2024
+
+Source: blog\2023\05\2023-05-01-libs-frontend.md
+
+> Links de algumas bibliotecas de estilização no front-end
+
+Confira neste post alguns links de bibliotecas para estilização e construção de páginas web modernas.
+
+### Lista de bibliotecas Front-end
+
+- Veja a lista de algumas libs para usar no Front-end
+
+### 1) [Astro](https://astro.build/)
+
+<a href="https://astro.build/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/astro.jpeg" alt="Astro">
+</a>
+
+Astro é um framework moderno para construção de sites que permite aos desenvolvedores criar aplicações web rápidas e eficientes sem comprometer a experiência do usuário ou o desempenho da página. Ele foi projetado com o objetivo de oferecer uma alternativa ao tradicional "full-stack" JavaScript, permitindo que os desenvolvedores escolham como querem renderizar suas páginas (no lado do servidor, no cliente ou em ambos) sem ter que se preocupar com a complexidade adicional que isso pode trazer.
+
+### 2) [Shadcn/UI](https://ui.shadcn.com/)
+
+<a href="https://ui.shadcn.com/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/shadcnui.jpg" alt="Shadcn/UI">
+</a>
+
+A biblioteca Shadcn/UI é uma coleção de componentes reutilizáveis baseados no Radix UI e Tailwind CSS. Ela é projetada para ser fácil de usar e personalizar, oferecendo uma experiência intuitiva e descomplicada em comparação com outras bibliotecas de componentes.
+
+Os componentes são acessíveis através de métodos de copiar e colar ou instalação via CLI, permitindo uma rápida integração nos projetos de desenvolvimento web com React.
+
+A Shadcn/UI é popularmente utilizada em projetos com Next.js, Gatsby, Remix, Astro, Laravel e Vite, e pode ser integrada manualmente com outras tecnologias. Ela oferece recursos como temas prontos, suporte ao modo escuro e editor de temas para personalizar a aparência dos componentes. Além disso, os componentes são acessíveis e podem ser customizados para atender às necessidades específicas dos aplicativos
+
+### 3) [Material UI (MUI)](https://mui.com/material-ui/)
+
+<a href="https://mui.com/material-ui/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/mui.jpg" alt="MUI">
+</a>
+
+Material UI, também conhecida como MUI, é uma biblioteca aberta de componentes React que implementa o Material Design do Google. Esta biblioteca é abrangente e pode ser utilizada prontamente em produção. Com mais de 2.500 colaboradores de código aberto, Material UI oferece uma extensa coleção de componentes prontos para uso, permitindo que os desenvolvedores se concentrem na lógica principal de seus negócios.
+
+A biblioteca é meticulosa em sua implementação do Material Design, garantindo que cada componente atenda aos mais altos padrões de forma e função. Além disso, Material UI é altamente customizável, permitindo que os usuários personalizem os componentes de acordo com suas necessidades específicas. É uma escolha confiável, com uma grande comunidade de usuários e é apoiada por milhares de organizações.
+
+Material UI oferece uma experiência intuitiva para desenvolvedores, facilitando a colaboração entre equipes técnicas e de design. A biblioteca também fornece recursos de design, como modelos gratuitos e ferramentas de personalização, para impulsionar o fluxo de trabalho de design e desenvolvimento
+
+### 4) [Radix UI](https://www.radix-ui.com/)
+
+<a href="https://www.radix-ui.com/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/radix.jpg" alt="Radix">
+</a>
+
+Radix UI é uma biblioteca de componentes de interface do usuário de código aberto otimizada para um desenvolvimento rápido, fácil manutenção e acessibilidade. Esta biblioteca é projetada para ser importada e utilizada sem a necessidade de configuração adicional, facilitando a integração em projetos de desenvolvimento web.
+
+Radix UI oferece componentes de baixo nível com foco em acessibilidade, personalização e experiência do desenvolvedor. Esses componentes podem ser usados como a camada base de um sistema de design ou adotados incrementalmente, proporcionando flexibilidade no desenvolvimento de interfaces de alta qualidade e acessíveis
+
+### 5) [Next UI](https://nextui.org/)
+
+<a href="https://nextui.org/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/nextui.jpg" alt="Next UI">
+</a>
+
+NextUI é uma biblioteca de interface do usuário para React que ajuda a construir interfaces de usuário bonitas e acessíveis. Ela foi criada em cima do Tailwind CSS e React Aria, com o objetivo principal de simplificar o processo de desenvolvimento, oferecendo um sistema de design belo e adaptável para uma experiência de usuário melhorada. É importante destacar que NextUI não está relacionado ao Vercel e é um projeto independente da comunidade.
+
+NextUI é especificamente projetado para React, pois é construído em cima do React Aria. No entanto, você ainda pode usar a parte de estilo dos componentes do NextUI com outros frameworks ou bibliotecas. Isso significa que, embora seja otimizado para React, sua abordagem modular permite certa flexibilidade na integração com outras tecnologias.
+
+### 6) [Stitches](https://stitches.dev/)
+
+<a href="https://stitches.dev/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/stitches.jpg" alt="Stitches">
+</a>
+
+Stitches é uma biblioteca de estilização CSS-in-JS desenvolvida pelo WorkOS, projetada para oferecer uma experiência de desenvolvimento (DX) superior e ser framework-agnóstica. Ela é conhecida por sua API totalmente tipada, propriedades conscientes de tokens e utilitários personalizados, proporcionando uma experiência divertida e intuitiva para os desenvolvedores.
+
+### 7) [Nextra](https://nextra.site/)
+
+<a href="https://nextra.site/" target="_blank">
+  <img src="/assets/images/posts/2023/ui/nextra.jpg" alt="Nextra">
+</a>
+
+Nextra é uma ferramenta de geração de sites baseada em Next.js e MDX, projetada para ajudar desenvolvedores a criar sites bonitos e documentações completas rapidamente. Ele combina a simplicidade e a flexibilidade do Next.js com o poderoso formato de conteúdo MDX, permitindo que você escreva documentos ricos em markdown e componentes React.
+
+
+---
+
+# Guia básico de comandos terminal SSH/Bash/Putty
+
+Source: blog\2023\05\2023-05-02-comandos-bash.md
+
+> Aprenda neste post alguns dos comandos de terminal mais utilizados no dia a dia
+
+Aprenda neste post alguns dos comandos de terminal mais utilizados no dia a dia
+
+### Comandos básicos para terminal
+
+- Localizar pasta:`cd nome_da_pasta`
+- Voltar pasta/diretório: `cd ..`
+- Listar conteúdo do diretório: `ls`
+- Descompactar ZIP:`unzip nome_do_arquivo.zip`
+- Apagar pasta inteira: `rm -rf nome_da_pasta`
+- Apagar arquivo específico: `rm nome_do_arquivo1.txt`
+- Apagar todos arquivos, menos a pasta: `rm -rf *`
+- Limpar comandos: `clear`
+
+### Backup via SSH
+
+- Acessar a raiz da pasta com o `PuTTY`
+- Executar o comando:
+  `tar -czvf site.tar.gz public_html && mv site.tar.gz public_html && ls -lha public_html`
+- O arquivo `site.tar.gz` será criado na raiz do site
+- Basta acessar o domínio e fazer o download.
+  - Exemplo: `https://safebras.com.br/site.tar.gz`
+- Comando para excluir o arquivo: `rm -f public_html/site.tar.gz`
+
+
+---
+
+# Comandos básicos de Git
+
+Source: blog\2023\05\2023-05-03-comandos-git.md
+
+> Aprenda neste post alguns dos comandos básicos de Git
+
+Inicializar repositório Git
+
+```jsx
+git init
+```
+
+Criar arquivo .gitignore
+
+```jsx
+npx gitignore node
+```
+
+Ver os arquivos que serão adicionados
+
+```jsx
+git status
+```
+
+Adicionar todas mudanças (stage)
+
+```jsx
+git add .
+```
+
+Comitar e escrever o que foi feito
+
+```jsx
+git commit -m "feat: primeiro commit"
+```
+
+Garantir que está na branch “main”
+
+```jsx
+git branch -M main
+```
+
+Linkar a pasta local com a pasta remota do repositório no Github
+
+```jsx
+git remote add origin https://github.com/matheuscostadesign/aluratube.git
+```
+
+Mandar os arquivos pra pasta remota (Push to Remote)
+
+```jsx
+git push -u origin main
+```
+
+
+---
+
+# Como criar apps com React Native
+
+Source: blog\2023\05\2023-05-04-react-native.md
+
+> Neste post estarei compartilhando e documentando minha experiência durante o processo de criação de aplicativos Android e iOS utilizando React Native.
+
+> Neste post estarei compartilhando e documentando minha experiência durante o processo de criação de aplicativos **Android e iOS** utilizando React Native.
+
+## 1) Configuração do ambiente
+
+### 1.2) Quais as ferramentas de desenvolvimento?
+
+- [Node.js](https://nodejs.org/)
+- [Git](https://git-scm.com/downloads)
+- [Visual Studio Code](https://code.visualstudio.com/)
+  - _Extensões:_ [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native) _e_ [Expo Tools](https://marketplace.visualstudio.com/items?itemName=byCedric.vscode-expo)
+- [Android Studio](https://developer.android.com/studio)
+- [Genynobile Scrcpy](https://github.com/Genymobile/scrcpy) (Para espelhar o smartphone no computador)
+
+### 1.3) Criando um app em React Native (com Expo)
+
+#### Criando o app
+
+```bash
+npx create-expo-app NomeApp
+```
+
+O comando acima irá criar um o aplicativo utilizando o [Expo](https://expo.dev/).
+
+#### Executando o app
+
+```bash
+cd NomeApp
+npx expo start
+```
+
+_Observações:_
+
+- Instalar o app **Expo Go** (Android/iOS\*)
+- Ler o QR-Code gerado através do aplicativo Expo Go;
+  - \*no iOS basta ler o QR-Code com o aplicativo de câmera;
+
+### 1.4) Criando um app em React Native (por CLI)
+
+_Observações:_
+
+- Ambiente: **Windows**
+- Dispositivo: **Android**
+- Conectar o dispositivo Android no computador via cabo USB;
+- No aparelho, **habilitar o modo de desenvolvedor** e **permitir a depuração USB**;
+- Ao conectar o celular no computador, **permitir a transferência de arquivos**;
+
+#### Criando o app
+
+```bash
+npx react-native@latest init NomeApp
+```
+
+O comando acima irá criar todos os arquivos necessários para o app;
+
+#### Iniciando o app
+
+```bash
+cd NomeApp
+npx react-native run-android
+```
+
+O aplicativo será instalado automaticamente no aparelho Android
+
+Também é possível iniciar com Metro\* separadamente com o comando:
+
+```bash
+npx react-native start
+```
+
+\*o Metro é muito parecido com o webpack (React para web) — só que p/ para apps — ele é um empacotador de JavaScript.
+
+#### Atalhos
+
+Podemos personalizar os atalhos para executar o app em modo de desenvolvimento;
+
+Para isso, basta editar o arquivo `package.json.`
+
+```json
+"scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "start": "react-native start",
+    "dev": "react-native start --reset-cache",
+    "test": "jest"
+  }
+```
+
+No exemplo acima foi adicionado o atalho `“dev”` com `—reset-cache`.
+
+Assim podemos iniciar o modo de desenvolvimento com:
+
+```bash
+npm run dev
+```
+
+---
+
+## 2) O básico
+
+### 2.1) O que é o React Native?
+
+React Native é uma **estrutura híbrida** e de código aberto para criar apps para _Android_ e _iOS_ usando [**React**](https://reactjs.org/);
+
+Para aprender React Native é necessário saber os **fundamentos de Javascript, HTML e CSS.**
+
+- [**Fundamentos de Javascript**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [**Uma reintrodução ao JavaScript**](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_overview)
+
+### 2.2) Desenvolvimento Nativo x Híbrido
+
+- Para criar apps nativos em **Android** utilizamos a linguagem **Java ou Kotlin;**
+
+- Para criar apps nativos para **iOS** é necessário codificar em **Swift ou Objective-C;**
+
+- O React Native é uma **estrutura híbrida** e utiliza a linguagem **Javascript** para criar as visualizações correspondentes do Android e iOS em tempo de execução;
+
+### 2.3) Componentes principais
+
+- O React Native possui muitos componentes principais, como por exemplo:
+
+| React Native   | Android        | iOS              | Web (similaridade)    |
+| -------------- | -------------- | ---------------- | --------------------- |
+| `<View>`       | `<ViewGroup>`  | `<UIView>`       | `<div>`               |
+| `<Text>`       | `<TextView>`   | `<UITextView>`   | `<p>`                 |
+| `<Image>`      | `<ImageView>`  | `<UIImageImage>` | `<img>`               |
+| `<ScrollView>` | `<ScrollView>` | `<UIScrollView>` | `<div> `              |
+| `<TextInput>`  | `<EditText>`   | `<UITextField>`  | `<input type="text">` |
+
+#### 2.3.1) Amostra das visualizações no Android x iOS
+
+<img src="/assets/images/posts/2023/05/android-e-ios-react-native.png" alt="Android x iOS">
+
+### 2.4) Fundamentos de React
+
+- React Native é executado com base no React, por isso, é necessário saber os fundamentos de:
+
+  - 2.4.1) componentes
+  - 2.4.2) JSX
+  - 2.4.3) props
+  - 2.4.4) estado
+
+#### 2.4.1) Componentes
+
+- **Um componente é um elemento básico da interface do usuário;**
+
+- Podemos criar componentes de função (_hooks com estado_) e com classes (_forma antiga_);
+
+- O React Native irá renderizar no aparelho do usuário o componente de acordo com o sistema operacional do dispositivo (iOS ou Android);
+
+```jsx
+import React from "react";
+import { Text } from "react-native";
+
+const Cat = () => {
+  return <Text>Hello, I am your cat!</Text>;
+};
+
+export default Cat;
+```
+
+#### 2.4.2) JSX
+
+- JSX é uma extensão da sintaxe do JavaScript que **permite escrever HTML dentro do JavaScript**;
+
+- **Em JSX podemos misturar JavaScript e HTML** (ou XML) **em um único arquivo**;
+
+- Como JSX é JavaScript, podemos usar **variáveis** dentro dele;
+
+- Qualquer expressão JavaScript funcionará entre chaves no JSX, como por exemplo:
+
+```jsx
+import React from "react";
+import { Text } from "react-native";
+
+const getFullName = (
+  firstName: string,
+  secondName: string,
+  thirdName: string
+) => {
+  return firstName + " " + secondName + " " + thirdName;
+};
+
+const Cat = () => {
+  return <Text>Hello, I am {getFullName("Rum", "Tum", "Tugger")}!</Text>;
+};
+
+export default Cat;
+```
+
+#### 2.4.3) Props
+
+- Props é uma abreviação para **propriedades**;
+
+- **As propriedades permitem personalizar os componentes React,** por exemplo:
+
+```jsx
+import React from "react";
+import { Text, View } from "react-native";
+
+const Cat = (props) => {
+  return (
+    <View>
+      <Text>Hello, I am {props.name}!</Text>
+    </View>
+  );
+};
+
+const Cafe = () => {
+  return (
+    <View>
+      <Cat name="Maru" />
+      <Cat name="Jellylorum" />
+      <Cat name="Spot" />
+    </View>
+  );
+};
+
+export default Cafe;
+```
+
+#### 2.4.4) Estado
+
+- **Estado** é a forma de **armazenar dados** de um componente;
+
+- **O estado fornece memória aos componentes;**
+
+- Ele é útil para lidar com **dados que mudam** com o **tempo** ou que vêm da **interação do usuário;**
+
+- É possível adicionar estado a um componente React usando o hook `useState`;
+
+- `useState` é um hook que permite adicionar estado aos componentes da função;
+
+```jsx
+import React, { useState } from "react";
+import { Button, Text, View } from "react-native";
+
+const Cat = (props) => {
+  const [isHungry, setIsHungry] = useState(true);
+
+  return (
+    <View>
+      <Text>
+        I am {props.name}, and I am {isHungry ? "hungry" : "full"}!
+      </Text>
+      <Button
+        onPress={() => {
+          setIsHungry(false);
+        }}
+        disabled={!isHungry}
+        title={isHungry ? "Pour me some milk, please!" : "Thank you!"}
+      />
+    </View>
+  );
+};
+
+const Cafe = () => {
+  return <Cat name="Munkustrap" />;
+};
+
+export default Cafe;
+```
+
+#### 2.4.5) Fragmentos
+
+- As tags “vazias” `<>` e `</>` acima são bits do JSX chamadas de [fragmentos](https://reactjs.org/docs/fragments.html).
+
+- Fragmentos permitem envolver todo código sem precisar incluir um elemento extra e desnecessário, como uma `View`, por exemplo.
+
+```jsx
+const Cafe = () => {
+  return (
+    <>
+      <Cat name="Munkustrap" />
+      <Cat name="Spot" />
+    </>
+  );
+};
+```
+
+### 2.5) Código específico Android/iOS
+
+- Com React Native é possível **implementar componentes visuais separados** p/ Android e iOS;
+
+- Há duas maneiras de separar o código por plataforma:
+
+  1. **Usando o \*Platform Module**;\*
+  2. **Usando extensões de arquivos específicas;**
+
+#### **Platform Module**
+
+- Essa opção é recomendada **para pequenas partes de código;**
+
+- É possível usar a lógica de detecção para implementar o código específico da plataforma;
+
+##### **Platform:**
+
+```jsx
+import { Platform, StyleSheet } from "react-native";
+
+const styles = StyleSheet.create({
+  height: Platform.OS === "ios" ? 200 : 100,
+});
+```
+
+##### **Platform.select - pode ser: `'ios' | 'android' | 'native' | 'default'`**
+
+```jsx
+import { Platform, StyleSheet } from "react-native";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...Platform.select({
+      ios: {
+        backgroundColor: "red",
+      },
+      android: {
+        backgroundColor: "green",
+      },
+      default: {
+        // outras plataformas, web por exemplo
+        backgroundColor: "blue",
+      },
+    }),
+  },
+});
+```
+
+##### **Detectar a versão do Android:**
+
+```jsx
+import { Platform } from "react-native";
+
+if (Platform.Version === 25) {
+  console.log("Running on Nougat!");
+}
+```
+
+##### **Detectar a versão do iOS:**
+
+```jsx
+import { Platform } from "react-native";
+
+const majorVersionIOS = parseInt(Platform.Version, 10);
+if (majorVersionIOS <= 9) {
+  console.log("Work around a change in behavior");
+}
+```
+
+#### **Extensões de arquivos específicas**
+
+- Recomendado para **códigos específicos da plataforma mais complexos;**
+
+- Com essa opção é possível **dividir o código em arquivos separados**;
+
+- Para utilizar esse opção é só criar o componente com o nome de cada plataforma, por exemplo:
+
+```jsx
+BigButton.ios.js;
+BigButton.android.js;
+```
+
+Depois, basta importar o componente e o **React Native selecionará automaticamente o arquivo correto com base na plataforma em execução:**
+
+```jsx
+import BigButton from "./BigButton";
+```
+
+---
+
+## 3) Design
+
+### 3.1) Style
+
+- Todos os componentes principais aceitam a propriedade `style`
+
+- Os nomes dos estilos e valores correspondem à maneira como o CSS funciona na web;
+
+- Porém os nomes são escritos no **formato _camelCase_**, por exemplo:
+
+- `backgroundColor` ao invés de `background-color`;
+
+- A medida que o componente cresce em complexidade é mais limpo usar `StyleSheet.create`
+
+```jsx
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+  },
+  red: {
+    color: "red",
+  },
+});
+
+const LotsOfStyles = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.red}>just red</Text>
+    </View>
+  );
+};
+
+export default LotsOfStyles;
+```
+
+### 3.2) Largura e altura (Width/Height)
+
+- Todas as dimensões no React Native **não precisam de unidade (px, rem, etc)**
+
+- As dimensões representam pixels independentes da densidade.
+
+```js
+import React from "react";
+import { View } from "react-native";
+
+export function FixedDimensionsBasics() {
+  return (
+    <View>
+      <View
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: "red",
+        }}
+      />
+    </View>
+  );
+}
+```
+
+- Também é possível utilizar valores percentuais no estilo do componente
+
+- As dimensões percentuais também **requerem um elemento pai** com o tamanho definido;
+
+```js
+import React from "react";
+import { View } from "react-native";
+
+const PercentageDimensionsBasics = () => {
+  return (
+    <View style={{ height: "100%" }}>
+      <View
+        style={{
+          height: "10%",
+          backgroundColor: "#212121",
+        }}
+      />
+      <View
+        style={{
+          width: "66%",
+          height: "90%",
+          backgroundColor: "#555555",
+        }}
+      />
+    </View>
+  );
+};
+
+export default PercentageDimensionsBasics;
+```
+
+### 3.3) Layout com Flexbox
+
+- Por padrão **todos os componentes do React Native são _flex_ e direcionados por _coluna;_**
+
+- **Na web o padrão é por linha (row), um ao lado do outro;**
+
+- Já no React Native, **o padrão é por coluna (column), um em baixo do outro;**
+  - **`display: flex`**
+  - `flexDirection: column`
+- Para que um componente seja expandido e reduzido dinamicamente com base no espaço disponível podemos utilizar `flex: 1`;
+
+<cite>Um componente só pode expandir para preencher o espaço disponível se seu pai tiver dimensões maiores que `0`.</cite>
+
+#### Exemplo de layout com Flexbox:
+
+```js
+import React from "react";
+import { View } from "react-native";
+
+const FlexDimensionsBasics = () => {
+  return (
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "powderblue" }} />
+      <View style={{ flex: 2, backgroundColor: "skyblue" }} />
+      <View style={{ flex: 3, backgroundColor: "steelblue" }} />
+    </View>
+  );
+};
+
+export default FlexDimensionsBasics;
+```
+
+- Todas as outras propriedades do Flexbox estão disponíveis no React Native:
+  - Flex-Direction: `column` `row` `columnReverse` `rowReverse`
+  - Layout-Direction: `LTR` `RTL`
+  - Justify-Content: \*\*\*\*`flexStart` `flexEnd` `center` `spaceBetween` `spaceAround` `spaceEvenly`
+  - Align-Items: `stretch` `flex-start` `flex-end` `center` `baseline`
+  - Align-Self e Align-Content
+  - Flex-Wrap, Flex-Basis, Grow e Shrink
+  - Row-Gap, Column-Gap e Gap
+  - Posição absoluta e relativa: `relative` `absolute`
+
+### 3.4) Imagens
+
+- O React Native fornece uma maneira unificada de gerenciar imagens e outros ativos de mídia em seus aplicativos Android e iOS;
+
+#### Imagens Estáticas
+
+- Para adicionar uma imagem estática, basta importar o componente `Image`
+
+```jsx
+import { Image } from "react-native";
+```
+
+- Depois é só chamar o componente de imagem e inserir o caminho do arquivo:
+
+```jsx
+<Image source={require("./src/assets/imagem.png")} />
+```
+
+_Observações:_
+
+- Podemos usar os sufixos `@2x`e `@3x`para **fornecer imagens para diferentes densidades de tela**.
+
+```
+└── img
+    ├── check.png
+    ├── check@2x.png
+    └── check@3x.png
+```
+
+- E chamar a imagem normalmente:
+
+```jsx
+<Image source={require("./img/check.png")} />
+```
+
+#### Imagens na Rede
+
+- Também podemos exibir imagens que não estão no projeto
+- Porém, ao contrário dos recursos estáticos, **precisamos especificar as dimensões da imagem;**
+
+```js
+// CORRETO
+<Image source={{uri: 'https://reactjs.org/logo-og.png'}}
+       style={{width: 400, height: 400}} />
+
+// ERRADO
+<Image source={{uri: 'https://reactjs.org/logo-og.png'}} />
+```
+
+#### Imagens de fundo (Background-Image)
+
+- Para exibir imagens de fundo podemos usar o componente `<ImageBackground>`;
+- Ele tem as mesmas propriedades que o componente `<Image>`
+- Exemplo simples:
+
+```js
+<ImageBackground source={...} style={{width: '100%', height: '100%'}}>
+  <Text>Inside</Text>
+</ImageBackground>
+```
+
+- Exemplo completo com imagem na rede:
+
+```js
+import React from "react";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
+
+const image = { uri: "https://reactjs.org/logo-og.png" };
+
+const App = () => (
+  <View style={styles.container}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image} />
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
+export default App;
+```
+
+### 3.5) Cores
+
+- Os componentes no React Native são estilizados usando Javascript;
+- As propriedades de cores geralmente **correspondem à forma como o CSS funciona na web;**
+
+#### Cores em Hexadecimal
+
+- É possível inserir cores conforme o padrão da web que é hexadecimal, como por exemplo:
+  - `#fafafa`
+  - `#000000`
+  - `#000` (abreviado)
+
+#### Cores em RGB
+
+- React Native tem suporte para cores em `rgb()` e `rgba()`
+  - `'#f0f'` (#rgb)
+  - `'#ff00ff'` (#rrggbb)
+  - `'#f0ff'` (#rgba)
+  - `'#ff00ff00'` (#rrggbbaa)
+  - `'rgb(255, 0, 255)'`
+  - `'rgb(255 0 255)'`
+  - `'rgba(255, 0, 255, 1.0)'`
+  - `'rgba(255 0 255 / 1.0)'`
+
+#### Cores Nomeadas
+
+- No React Native, também podemos usar strings de nomes de cores como valores;
+  - **`transparent` (**Um atalho para `rgba(0,0,0,0)`)
+  - `aliceblue, coral, green, blue, etc...`
+  - [_A lista completa de cores pode ser acessada aqui_](https://www.w3.org/TR/css-color-3/#svg-color)
+
+#### Cores em HSL
+
+- Também é possível usar `hsl()` e `hsla()`:
+  - `'hsl(360, 100%, 100%)'`
+  - `'hsl(360 100% 100%)'`
+  - `'hsla(360, 100%, 100%, 1.0)'`
+  - `'hsla(360 100% 100% / 1.0)'`
+
+#### Cores em Matriz (HWB)
+
+- React Native suporta `hwb()`em notação funcional:
+  - `'hwb(0, 0%, 100%)'`
+  - `'hwb(360, 100%, 100%)'`
+  - `'hwb(0 0% 0%)'`
+  - `'hwb(70 50% 0%)'`
+
+---
+
+## 4) Gestos e Toques
+
+- Com o React Native é possível lidar com todos os tipos de gestos comuns;
+
+#### 4.1) Botões
+
+- Um botão é um componente básico que é renderizado em todas as plataformas;
+
+#### Botão simples
+
+- Um exemplo básico é o botão:
+
+```jsx
+<Button
+  onPress={() => {
+    console.log("O botão foi pressionado!");
+  }}
+  title="Toque aqui"
+  color="#841584"
+/>
+```
+
+#### Componentes tocáveis (**Touchables)**
+
+- Os componentes "tocáveis" podem capturar gestos de toque e exibir feedback;
+
+```
+<TouchableHighlight
+  onPress={() => {
+    console.log('O botão foi pressionado!');
+  }}
+  underlayColor="white">
+  <View>
+    <Text>TouchableHighlight</Text>
+  </View>
+</TouchableHighlight>;
+```
+
+### 4.2) Navegação entre telas
+
+- Aplicativos raramente são compostos de **uma única tela**.
+- No React Native, a **forma mais simples de criar a navegação entre telas e guias é usando o [React Natigation](https://reactnavigation.org/);**
+
+#### **React Navigation**
+
+- Primeiramente é preciso instalar a biblioteca:
+
+```bash
+npm install @react-navigation/native @react-navigation/native-stack
+```
+
+#### Dependências do React Navigation
+
+- Se for um projeto **React Native simples**, instale as dependências com `npm`:
+
+```bash
+npm install react-native-screens react-native-safe-area-context
+```
+
+- Se for um projeto **gerenciado pelo Expo**, instale as dependências com `expo`:
+
+```bash
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+#### Envolvendo a aplicação
+
+- Agora precisamos envolver todo o aplicativo com o `NavigationContainer`.
+- Isso é feito no arquivo de entrada de nosso projeto, como `index.js`ou `App.js`:
+
+```jsx
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+
+const App = () => {
+  return (
+    <NavigationContainer>{/* Restante da aplicação */}</NavigationContainer>
+  );
+};
+
+export default App;
+```
+
+#### Criando as telas
+
+- Exemplo completo abaixo com 2 telas:
+  - 1. Tela inicial (_HomeScreen_)
+  - 2. Tela de perfil (_ProfileScreen_)
+
+```jsx
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Welcome" }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: "Profile" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
+```
+
+#### Navegando entre as telas
+
+- Cada tela `<Stack.Screen>` tem uma propriedade chamada: `component`;
+- A propriedade `component` é uma referência a um componente React;
+- Esses componentes recebem uma propriedade chamada `navigation`;
+- O `navigation` possui vários métodos para vincular a outras telas;
+
+#### Componente _HomeScreen.jsx_
+
+```jsx
+const HomeScreen = ({ navigation }) => {
+  return (
+    <Button
+      title="Go to profile screen"
+      onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+    />
+  );
+};
+```
+
+#### Componente _ProfileScreen.jsx_
+
+```jsx
+const ProfileScreen = ({ navigation, route }) => {
+  return <Text>This is {route.params.name}'s profile</Text>;
+};
+```
+
+---
+
+## 5) Observações Expo
+
+- Fluxos de trabalho no Expo
+  - Managed Workflow (padrão, sem acesso as pastas Android e iOS)
+  - Bare Workflow
+  - Development Builds
+    - Config Plugins
+    - Custom Clients
+
+Parar mudar um fluxo Managed Workflow para Bare Workflow basta rodar o comando:
+
+```jsx
+npx expo prebuild
+```
+
+https://docs.expo.dev/workflow/prebuild/
+
+Configurar Build
+
+https://docs.expo.dev/build/setup/
+
+Gerar APK
+
+https://docs.expo.dev/build-reference/apk/
+
+
+---
+
+# Padrões de mensagens de commit
+
+Source: blog\2023\08\2023-08-08-padroes-commit.md
+
+> Aprenda neste artigo algumas convenções/padronizações das mensagens de commits para o Git/Github.
+
+> Aprenda neste artigo algumas convenções/padronizações das mensagens de commits para o Git/Github.
+
+### Padronização de Commits
+
+#### Formato:
+
+```
+<tipo>(escopo): Assunto
+<corpo>
+Tipo
+```
+
+Os valores permitidos para o `tipo` são:
+
+- `feat`: _Nova funcionalidade_;
+- `fix` : _Correção de um bug_;
+- `refactor`: _Alterações em geral_;
+- `style`: _Estilização e layout_;
+- `docs`: _Algo relacionado a documentação_;
+- `perf`: _Melhorias de performance_;
+- `chore`: _Build, configs, deploy e afins_;
+- `test`: _Adicionar ou corrigir testes_;
+
+#### Escopo
+
+Informe qual escopo (projeto) está sendo alterado. Valores permitidos para o `escopo`:
+
+- `adm`: FreedomNEO - ADM
+- `app`: FreedomNEO - APP Portaria
+- `frq`: FreedomNEO - Franqueados
+- `www`: FreedomNEO - Landing-page
+
+#### Assunto
+
+- Máximo de 50 caracteres
+- Assunto deve estar no _imperativo_
+
+#### Corpo
+
+- _Opcional_
+- Deve conter o `o que` e o `por que` ao invés de conter o `como` foi feito
+- Se for necessário contextualizar o commit ou explicar o porquê das mudanças, fique a vontade!
+
+#### Exemplo de Commit:
+
+```
+refactor(app): Bloqueia edição da placa do veículo
+Inclui trava para o usuário não conseguir editar a placa do veículo
+```
+
+### Referências
+
+- Essa padronização das mensagens tem como base o [Karma Commit](https://karma-runner.github.io/1.0/dev/git-commit-msg.html)
+
+
+---
+
+# Como detectar imagens quebradas
+
+Source: blog\2023\09\2023-09-14-imagens-quebradas.md
+
+> Aprenda como detectar e corrigir imagens quebradas de um site
+
+### O problema
+
+Lidamos com muitas imagens em projetos web e muitas vezes esquecemos de tratar quando a foto está com algum problema de referência, link quebrado ou até uma imagem que depende da gestão do usuário (onde o mesmo não adicionou ou excluiu a mesma).
+
+### Exemplo de imagem quebrada
+
+Exemplo de como uma imagem é exibida no navegador sem tratamento de erros:
+
+![Erro ao carregar o logo](/assets/images/posts/2023/09/exemplo-erro.jpg)
+
+Erro ao carregar o logo
+
+### Soluções
+
+#### 1) Tag `<img>` no HTML
+
+- A solução mais simples é se a imagem estiver sendo renderizada em uma tag `<img>`
+
+- Basta adicionar a propriedade `onerror` abaixo e o caminho da imagem que será renderizada caso a principal esteja com problema
+
+```html
+<img
+  src="logo.png"
+  onerror="this.onerror=null;this.src='https://placehold.co/200x100';"
+/>
+```
+
+#### 2) Background-image no CSS
+
+Se a imagem estiver sendo renderizada via CSS com a propriedade `background-image` também podemos adicionar uma foto alternativa para substituir a que está quebrada:
+
+```html
+<div class="bg">Imagem como background</div>
+```
+
+##### CSS
+
+```css
+.bg {
+  width: 200px;
+  height: 100px;
+  background-image: url("image-broken.png"), url("https://placehold.co/200x100");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+```
+
+#### 3) Imagem no React
+
+Exemplo de como adicionar a imagem de fallback para um componente `<img>` no React:
+
+```jsx
+<img
+  src="/assets/logo.png"
+  alt="Logo do cliente"
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = "/assets/logo-fallback.png";
+  }}
+/>
+```
+
+#### 4) Componente React com background
+
+Exemplo de background image para um componente MUI Box (React JSX):
+
+```js
+import React from "react";
+
+export default function Image() {
+  return (
+    <Box
+      width={200}
+      height={100}
+      sx={{
+        background: `url("/assets/image-broken.png"), url("/assets/img-fallback.svg")`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    />
+  );
+}
+```
+
+### Conclusão
+
+- É isso aí, espero ter ajudado a evitar imagens quebradas em seus projetos web!
+
+
+---
+
+# Como remover o fundo de uma imagem com CSS
+
+Source: blog\2023\09\2023-09-15-bg-css.md
+
+> Aprenda como remover o fundo de uma imagem com CSS
+
+### Imagens com fundo transparente no CSS
+
+- Sabia que é possível remover o fundo de uma imagem via código CSS?
+- Basta adicionar a propriedade `“mix-blend-mode”` como `“multiply”`
+- Veja o exemplo abaixo:
+
+### HTML
+
+```html
+<img src="/assets/logo.png" class="logo" />
+```
+
+### CSS
+
+```css
+.logo {
+  mix-blend-mode: multiply;
+}
+```
+
+### React
+
+- Essa solução é viável para quem precisa ter um controle da imagem **tanto em temas claros, quanto em temas escuros** (_dark/light mode_).
+- Nesse exemplo abaixo a ideia era que **a imagem permanecesse com suas cores originais no modo claro e que no modo escuro fosse aplicado a transparência nas partes brancas da imagem e que todo seu conteúdo fosse alterado para a cor branca.**
+- Veja abaixo o exemplo:
+
+```tsx
+<Box
+  sx={
+    mixBlendMode: themeName === "dark" ? "plus-lighter" : "multiply",
+  }
+>
+  <img
+    src={img}
+    width={props.width}
+    height={props.height}
+    style={
+      filter:
+        themeName === "dark"
+          ? "grayscale(1) contrast(1) invert(1) brightness(130%)"
+          : "none",
+    }
+  />
+</Box>
+```
+
+> _Observações:_
+
+- O componente React está envolvido uma [Box do MUI](https://mui.com/material-ui/react-box/), mas poderia ser uma `div` com `style`.
+- Quanto maior o brilho `brightness` mais a imagem fica branca;
+- Quanto maior o contraste `contrast` mais pixelada a imagem fica;
+- A chamada ao `themeName === "dark"` é um _context_ global do React;
+
+### Conclusão
+
+- E isso resolveu o problema! 👊
+- A imagem fica com suas cores originais no modo claro, porém no modo escuro é aplicada a transparência e a cor é alterada ajustada para branco em toda foto.
+
+
+---
+
+# Exemplo prático Axios Interceptor consumindo várias APIs
+
+Source: blog\2024\04\2024-04-12-axios.md
+
+> Exemplo prático Axios Interceptor consumindo várias APIs
+
+Exemplo prático de como configurar o Axios Interceptor consumindo várias APIs
+
+#### Configurando o serviço
+
+- Arquivo `services/apis.tsx`
+
+<hr>
+
+```tsx
+import axios, { AxiosInstance } from "axios";
+
+type ICustomInstace = AxiosInstance & {
+  defaults: {
+    customBaseURL?: string;
+  };
+};
+
+export const instance: ICustomInstace = axios.create({});
+
+export const apiExemplo1 = () => {
+  instance.defaults.baseURL = process.env.EXPO_PUBLIC_API_EXEMPLO1;
+  return instance;
+};
+
+export const apiExemplo2 = () => {
+  instance.defaults.baseURL = process.env.EXPO_PUBLIC_API_EXEMPLO2;
+  return instance;
+};
+
+export const apiExemplo3 = () => {
+  instance.defaults.baseURL = process.env.EXPO_PUBLIC_API_EXEMPLO3;
+  return instance;
+};
+```
+
+#### Criando componente funcional
+
+- Arquivo `services/apis.interceptor.tsx` como um componente funcional:
+
+<hr>
+
+```tsx
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
+import { apiAuth, instance } from "./apis";
+import { storage } from "./storage";
+
+const AxiosInterceptor = ({ children }) => {
+  const { setToken, setRefreshToken, setTokenDecoded, setRefreshTokenDecoded } =
+    useAuth();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    // Intercepta a requisição (request)
+    instance.interceptors.request.use((request) => {
+      return request;
+    });
+
+    // Intercepta a resposta (response)
+    instance.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      async (error) => {
+        const originalReq = error.config;
+        if (
+          error.response.status === 401 &&
+          originalReq &&
+          !originalReq._retry
+        ) {
+          originalReq._retry = true;
+
+          const refresh = storage.getString("tokenRefresh");
+
+          if (!refresh) {
+            return Promise.reject(error);
+          }
+
+          const storagedTokenRefresh = storage.getString("tokenRefreshExp");
+          const currentTime = new Date();
+          const timeExpiryRefreshToken = new Date(storagedTokenRefresh);
+
+          // Se o token expirar, navega p/ tela de sessão expirada
+          if (timeExpiryRefreshToken && currentTime >= timeExpiryRefreshToken) {
+            navigation.navigate("SessionExpired");
+            return Promise.reject(error);
+          }
+
+          return apiAuth()
+            .get("/tokenrefresh", {
+              headers: { Authorization: refresh },
+            })
+            .then(async (responseRefresh) => {
+              const newAccessToken = responseRefresh.data.accesstoken;
+              const newRefreshToken = responseRefresh.data.refreshtoken;
+
+              const newTokenDecoded = jwtDecode(newAccessToken) as JWTPayload;
+              const newRefreshTokenDecoded = jwtDecode(
+                newRefreshToken
+              ) as JWTPayloadRefresh;
+
+              const newTimeExpireJWT = newRefreshTokenDecoded.exp;
+              const newTimeExpire = new Date(
+                newTimeExpireJWT * 1000
+              ).toString();
+
+              storage.set("token", newAccessToken);
+              storage.set("tokenRefresh", newRefreshToken);
+              storage.set("tokenRefreshExp", newTimeExpire);
+
+              setToken(newAccessToken);
+              setRefreshToken(newRefreshToken);
+              setTokenDecoded(newTokenDecoded);
+              setRefreshTokenDecoded(newRefreshTokenDecoded);
+
+              originalReq.headers["Authorization"] = newAccessToken;
+
+              return instance(originalReq);
+            })
+            .catch((refreshError) => {
+              return Promise.reject(refreshError);
+            });
+        } else {
+          return Promise.reject(error);
+        }
+      }
+    );
+  }, []);
+
+  return children;
+};
+
+export default AxiosInterceptor;
+```
+
+#### Envolvendo a aplicação
+
+- Envolva o arquivo de entrada do app o com componente **AxiosInterceptor**:
+
+<hr>
+
+```tsx
+import * as React from "react";
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AxiosInterceptor>
+        <StatusBarCustom />
+        <Routes />
+      </AxiosInterceptor>
+    </AuthProvider>
+  );
+}
+```
+
+#### Criando uma tela de sessão expirada
+
+- Tela sessão expirada:
+
+<hr>
+
+```tsx
+...
+import { BackHandler, View } from "react-native";
+import { Button, Text } from "react-native-paper";
+
+export default function SessionExpired({ route }) {
+  const { t } = useTranslation();
+  const currentRoute = useRoute();
+
+  const {
+    setUser,
+    setToken,
+    setRefreshToken,
+    setTokenDecoded,
+    setRefreshTokenDecoded,
+  } = useAuth();
+
+  // Limpa dados do storage e direciona pra tela de login
+  async function clearAllSession() {
+		storage.clearAll();
+    setUser(null);
+    setToken(null);
+    setRefreshToken(null);
+    setTokenDecoded(null);
+    setRefreshTokenDecoded(null);
+  }
+
+  // Ação botão "voltar" físico Android
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        if (route.name === currentRoute.name) {
+          clearAllSession();
+          return true;
+        } else {
+          return false;
+        }
+      };
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
+      return () =>
+        BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+    }, [route]),
+  );
+
+  return (
+    <ImgBackground>
+      <Container>
+        <ContainerSurface>
+          <View className="items-center justify-center gap-y-4">
+            <LottieSessionExpired />
+            <Text className="font-title text-2xl">
+              {t("session-expired.title")}
+            </Text>
+            <Text className="font-body">
+              {t("session-expired.description")}
+            </Text>
+            <Button
+              mode="contained"
+              icon="logout"
+              className="w-[300]"
+              onPress={() => {
+                clearAllSession();
+              }}
+            >
+              {t("session-expired.button")}
+            </Button>
+          </View>
+        </ContainerSurface>
+      </Container>
+    </ImgBackground>
+  );
+}
+```
+
+
+---
+
+# Como formatar um currículo de maneira adequada
+
+Source: blog\2024\05\2024-05-31-cv.md
+
+> Veja neste artigo uma dica de ferramenta para melhorar seu currículo e conseguir passar pelas ferramentas atuais de seleção, as chamadas ATS.
+
+### Nunca sou chamado para uma vaga...
+
+<cite>Agradecemos seu interesse na vaga de UX Designer em Brasil. Infelizmente, não daremos prosseguimento à sua candidatura, mas agradecemos o tempo dispensado e o interesse na empresa tal...</cite>
+
+Sabia que o seu CV pode estar sendo ignorado? Muitas vezes, nós, designers, queremos criar um currículo que reflete a profissão, fazer algo complemente personalizado, com uma tipografia moderna, cores, gráficos, etc...
+
+Porém, ao aplicar para vagas de UX Designer, por exemplo, muitas vezes não somos nem chamados.
+
+E o porque isso acontece? Isso pode estar relacionado a má-formatação do seu currículo.
+
+Não adianta aplicar para centenas de vagas se o seu currículo está formatado de maneira inadequada.
+
+#### 1) Diferença entre Currículo ATS e Currículo Personalizado
+
+Um currículo **ATS-friendly** é um documento extremamente simples que você usará para fazer upload em plataformas de recrutamento como LinkedIn, Gupy, Greenhouse, Catho, Glassdoor, entre outras.
+
+Já um currículo personalizado é aquele mais visualmente atraente que você entrega pessoalmente ou envia diretamente para o e-mail de um recrutador específico.
+
+#### 2) Por que o Currículo ATS é essencial?
+
+Os ATS são sistemas automatizados utilizados por muitas empresas para filtrar e classificar candidatos antes mesmo que seus currículos cheguem aos recrutadores humanos, procurando por palavras-chave, formação, habilidades, etc.
+
+Por isso, é crucial formatá-lo corretamente.
+
+#### 3) Como formatar um Currículo ATS?
+
+- ✅ Usar uma fonte apropriada (Arial, de preferência);
+- ✅ Padronizar tamanho da fonte entre 11 e 12;
+- ✅ Detalhes de contato ou perfil como cabeçalho;
+- ✅ Divida em 6 seções: contato, resumo, experiência, educação, habilidades e referências;
+- ✅ Evite o uso de gráficos;
+- ✅ Use espaçamento simples entre o texto;
+- ✅ Crie títulos claros e padronizados para cada seção;
+- ✅ Exporte em formato PDF.
+
+#### 4) Qual software utilizar?
+
+Utilize os mais conhecidos:
+
+- Google Docs
+- Microsoft Word.
+
+#### 5) Existem templates disponíveis?
+
+Sim. Procure por `"resumeworded ats templates"` no Google.
+
+Você encontrará vários templates gratuitos para diversas áreas.
+
+#### 6) Como fazer o teste do currículo?
+
+<a href="https://www.resumego.net/resume-checker/">
+  <img src="/assets/images/posts/2024/05/resume-checker.jpg" alt="Resume Checker">
+</a>
+
+Acesse o site [Resume Checker](https://www.resumego.net/resume-checker/) e faça o upload do seu CV atual.
+
+#### 7) O Que é o Resume Checker?
+
+O Resume Checker é uma ferramenta online desenvolvida pelo ResumoGO, projetada para analisar e otimizar currículos com foco em superar as barreiras impostas pelos ATS.
+
+#### 8) Exemplo de formato de currículo ATS:
+
+```txt
+Nome do Candidato
+[Endereço de Email] | [Telefone] | [LinkedIn]
+
+Resumo Profissional:
+Breve resumo das qualificações e experiências relevantes para o cargo.
+
+Experiência Profissional:
+Título do Cargo
+Nome da Empresa, Localização
+Mês/Ano – Mês/Ano
+
+- Descrição das responsabilidades e realizações utilizando palavras-chave relevantes.
+- Outra responsabilidade importante.
+
+Educação:
+Nome do Curso
+Nome da Instituição, Localização
+Mês/Ano de Conclusão
+
+Habilidades:
+
+- Habilidade 1
+- Habilidade 2
+- Habilidade 3
+
+Certificações:
+
+- Nome da Certificação, Instituição Emissora, Mês/Ano
+```
+
+
+---
+
+# Como fazer todos os links externos do site abrir em uma nova aba/guia
+
+Source: blog\2024\05\2024-05-31-links-externos.md
+
+> Veja neste artigo como fazer com que todos os links externos do seu site abram em uma nova guia do navegador.
+
+Aprenda como fazer com que todos os links externos do seu site abram em uma nova guia do navegador automaticamente, sem precisar ficar adicionando `target="_blank"` manualmente para cada tag `a` (âncora) no HTML.
+
+### Adicionando script
+
+Para fazer com que todos os links externos (aqueles que não apontam para o seu domínio) abram em uma nova guia, você pode usar JavaScript para adicionar o atributo `target="_blank"` a esses links. Aqui está um exemplo de como fazer isso:
+
+1. **Obter todos os links da página**: Você pode selecionar todos os elementos `<a>`.
+2. **Verificar se o link é externo**: Comparar o domínio do link com o domínio da sua página.
+3. **Adicionar `target="_blank"` aos links externos**: Se o link for externo, adicionar o atributo para que ele abra em uma nova guia.
+
+Aqui está um código JavaScript que realiza essas etapas:
+
+```javascript
+document.addEventListener("DOMContentLoaded", function () {
+  // Obter o domínio atual
+  const currentDomain = window.location.hostname;
+
+  // Selecionar todos os links na página
+  const links = document.querySelectorAll("a");
+
+  // Iterar sobre cada link
+  links.forEach((link) => {
+    // Obter o href do link
+    const href = link.getAttribute("href");
+
+    // Verificar se o href é um link externo
+    if (href && !href.includes(currentDomain) && href.startsWith("http")) {
+      // Adicionar o atributo target="_blank"
+      link.setAttribute("target", "_blank");
+      // Evita que a página de destino acesse a página de origem
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+});
+```
+
+#### Explicação do código:
+
+1. **Evento DOMContentLoaded**: O código é executado quando o DOM é carregado e pronto. Isso garante que todos os links estejam presentes na página antes de tentar manipulá-los.
+
+2. **Obter o domínio atual**: `window.location.hostname` retorna o domínio do site atual, sem incluir o protocolo (http/https) e o caminho.
+
+3. **Selecionar todos os links**: `document.querySelectorAll("a")` seleciona todos os elementos `<a>` na página.
+
+4. **Iterar sobre os links**: `forEach` é usado para iterar sobre cada link selecionado.
+
+5. **Verificar se o link é externo**:
+
+   - `href && !href.includes(currentDomain) && href.startsWith("http")`: Isso verifica se o link tem um atributo `href`, se o `href` não contém o domínio atual e se o `href` começa com "http" (para garantir que é um link completo).
+
+6. **Adicionar `target="_blank"`**: Se o link for externo, `link.setAttribute("target", "_blank")` adiciona o atributo `target` com valor `_blank`, fazendo com que o link abra em uma nova guia.
+
+7. **Adicionar `rel="noopener noreferrer"`**: O atributo `“rel=noopener noreferrer”` é usado para abrir links externos em uma nova janela e evitar que a página de destino acesse a página de origem.
+
+#### Como usar:
+
+1. Adicione o código JavaScript acima ao seu arquivo JavaScript principal ou diretamente dentro de uma tag `<script>` no final do seu arquivo HTML, antes da tag de fechamento `</body>`.
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exemplo</title>
+  </head>
+  <body>
+    <!-- Seu conteúdo aqui -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentDomain = window.location.hostname;
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (
+            href &&
+            !href.includes(currentDomain) &&
+            href.startsWith("http")
+          ) {
+            link.setAttribute("target", "_blank");
+            link.setAttribute("rel", "noopener noreferrer");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+```
+
+Dessa forma, todos os links externos na sua página abrirão em uma nova guia automaticamente.
+
+Comente aqui em baixo se esta dica te ajudou 👊
+
+
+---
+
+# Como configurar path aliases em um projeto React + Vite + TypeScript + SWC
+
+Source: blog\2024\06\2024-06-03-path-aliases.md
+
+> Veja neste post como configurar as importações com '@' (path aliases) em um projeto Vite/React com Typescript e SWC
+
+Veja neste post como configurar as importações com `'@'` **(path aliases)** em um projeto Vite/React com Typescript e SWC e melhorar a organização do código.
+
+### Exemplos:
+
+```tsx
+// 🚫 Importação sem Path Aliases
+import logo from "../../../../../../../assets/logo.png";
+
+// 👍 Importação com Path Aliases
+import logo from "@/assets/logo.png";
+```
+
+#### Criação do projeto
+
+Para configurar path aliases no Vite com o plugin React SWC, você precisa seguir alguns passos simples.
+
+Primeiro, certifique-se de que seu projeto está configurado para usar o Vite com o plugin React SWC.
+
+Se ainda não estiver, você pode criar um novo projeto usando o comando:
+
+- `npm create vite@latest`
+
+Selecione a opção React com a variante TypeScript + SWC durante a criação do projeto.
+
+Depois de ter o projeto configurado, siga estas etapas para configurar os path aliases:
+
+#### 1) Instale as dependências necessárias:
+
+Certifique-se de que você tem o ` @types/node`` instalado como uma dependência de desenvolvimento  `(npm i -D @types/node)`.
+
+- Isso é necessário para evitar erros relacionados ao uso de `__dirname` em arquivos TypeScript ou JavaScript.
+
+#### 2) Configure o arquivo `vite.config.ts`
+
+No seu arquivo `vite.config.ts`, você precisará importar o módulo path do Node.js e definir os aliases desejados na seção resolve.alias.
+
+Aqui está um exemplo de como fazer isso:
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import * as path from "path"; // Importe o módulo path
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: [
+      {
+        find: "@",
+        replacement: path.resolve(__dirname, "src"),
+        // Defina seus aliases aqui
+      },
+    ],
+  },
+});
+```
+
+<cite>Neste exemplo, estamos configurando um alias para `"@"` que aponta para o diretório `src` do seu projeto.</cite>
+
+Você pode adicionar mais aliases conforme necessário, seguindo o mesmo formato.
+
+#### 3) Atualize o arquivo `tsconfig.json`
+
+Se você estiver usando TypeScript, também pode querer atualizar seu arquivo `tsconfig.json` para incluir as mesmas configurações de alias.
+
+Isso garante que o TypeScript entenda como resolver esses caminhos.
+
+Adicione ou atualize a seção `compilerOptions.paths` para corresponder aos seus aliases:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+Com essas configurações, você agora deve ser capaz de usar os path aliases em seu projeto Vite com o plugin React SWC.
+
+Dessa forma, você pode importar componentes da seguinte maneira:
+
+```tsx
+import logo from "@/assets/logo.png";
+```
+
+E não ficar procurando o caminho da pasta assim:
+
+```tsx
+import logo from "../../../../../../../assets/logo.png";
+```
+
+
+---
+
+# Como espelhar celular Android no PC com scrcpy da Genymobile
+
+Source: blog\2024\06\2024-06-05-scrcpy.md
+
+> Aprenda neste post como espelhar o celular Android no PC Windows com scrcpy
+
+Aprenda neste post como espelhar o celular Android no PC Windows com o scrcpy.
+
+## Espelhando a tela (Android)
+
+- Exemplo de uso 👇
+
+<img src="/assets/images/posts/2024/06/screenshot.jpg" alt="Exemplo de uso">
+
+### 1) Download da aplicação
+
+Faça o download da última versão do [**scrcpy**](https://github.com/Genymobile/scrcpy/releases)
+
+- [📱 Download Genymobile / scrcpy](https://github.com/Genymobile/scrcpy/releases)
+
+### 2) Configurações no aparelho
+
+Conecte o dispositivo Android no computador **via cabo USB;**
+
+No aparelho Android, habilite o **modo de desenvolvedor** e **permita a depuração USB**;
+
+Para finalizar, basta executar o arquivo **"scrcpy.exe"**
+
+### 3) Personalizando scrcpy
+
+Também é possível realizar algumas configurações adicionais no scrcpy
+
+Por exemplo:
+
+- Desligar a tela do celular automaticamente ao abrir o programa
+- Configurar a posição inicial de abertura (posição x e y)
+- Entre outras configurações...
+
+Para fazer isso basta criar um arquivo chamado `scrcpy.bat` na raíz da pasta onde está localizado o `scrcpy.exe` com os seguintes comandos:
+
+```bat
+scrcpy -d -S -w --video-codec=h265 --max-size=1920 --max-fps=60 --no-audio --always-on-top --window-x=1400 --window-y=60
+```
+
+E toda vez que for espelhar o celular, basta executar esse arquivo `.bat`
+
+### 4) Documentação completa
+
+Se precisar de mais alguma configuração, basta consultar toda documentação aqui:
+
+- [https://github.com/Genymobile/scrcpy?tab=readme-ov-file#user-documentation](https://github.com/Genymobile/scrcpy?tab=readme-ov-file#user-documentation)
+
+
+---
+
+# Como habilitar acesso à câmera em sites sem certificado HTTPS/SSL
+
+Source: blog\2024\06\2024-06-10-acesso-camera.md
+
+> Aprenda neste post como habilitar acesso à câmera em sites sem certificado HTTPS/SSL
+
+Já tentou fazer o acesso à câmera do seu dispositivo pelo browser e a permissão de acesso a mesma não apareceu?
+
+Isso provavelmente pode ser porque seu site não tem o certificado HTTPS/SSL, e o navegador bloqueia o acesso.
+
+Mas existe uma configuração para ativar essa opção nos principais navegadores da web
+
+Essa configuração é útil para sites locais (_localhost / 127.0.0.1_), em modo de desenvolvimento/testes.
+
+Veja neste artigo como ativar.
+
+#### Ativando no Chrome (desktop/mobile)
+
+<img src="/assets/images/posts/2024/06/insecure-origins.jpg" alt="Insecure origins">
+
+1. Digite o link abaixo na barra de navegação do Chrome:
+
+   - `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
+
+2. Ative a opção:
+
+   - **"Insecure origins treated as secure"**
+
+3. Insira as URLs que deseja
+
+   - Por exemplo: `http://10.0.0.242:5173`
+
+4. Reinicie navegador e pronto!
+
+#### No Safari
+
+##### Desktop
+
+1. Habilitar modo de desenvolvedor
+
+2. Acessar na página:
+   - `Desenvolvedor` > `Mostrar inspetor web` > Tocar no ícone: `Ajustes do Dispositivo` > Habilitar: `WebRTC - Permitir captura de mídia em sites pouco seguros`
+
+<img src="/assets/images/posts/2024/06/como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl.jpg" alt="Safari">
+
+##### Mobile
+
+\*\* **_Opção só está disponível a partir do iOS 13_**
+
+1. Com o site aberto, toque no ícone `“AA”` no canto superior esquerdo.
+
+1. Em seguida, toque em:
+   - `Ajustes do site` > `Câmera` > `Permitir`
+
+<div style="display: flex; gap: 24px; margin-top: 24px">
+  <img src="/assets/images/posts/2024/06/ios-1.jpg" alt="Safari">
+  <img src="/assets/images/posts/2024/06/ios-2.jpg" alt="Safari">
+<div>
+
+
+---
+
+# Como configurar chave SSH para o Github
+
+Source: blog\2024\07\2024-07-12-ssh-github.md
+
+> Aprenda neste post como configurar chave SSH para o Github
+
+Aprenda neste post como configurar chave SSH para o Github
+
+#### 1) Gerando chave SSH
+
+- Executar no terminal
+  - `ssh-keygen -t ed25519 -C "your_email@example.com"`
+- Colocar o e-mail do Github em “your_email…”
+- Pressionar **“Enter”** p/ gerar a chave no diretório padrão
+- Após isso, irá solicitar uma senha.
+- Insira e repita a senha, por exemplo:
+  - `123456`
+- Se der certo, **2 chaves serão criadas** _(pública e privada)_
+- Acesse o diretório do arquivo público
+- No terminal irá mostrar onde o arquivo foi gerado, por exemplo:
+  - `Your public key has been saved in /Users/users/.ssh/id_ed25519.pub`
+- Agora, acesse essa pasta e abra o arquivo `“id_ed25519.pub”` em um editor de texto (VSCode, por exemplo)
+- O arquivo deve conter o seguinte:
+  - `ssh-ed25519 BBBBD4OabD2mZK26PU5BBBbqT7SzVqptcJOdFw2gXMGQ2ZeyGAfhZHcb2Qo9wmdZ your_email@example.com`
+- Copie esse conteúdo do arquivo.
+
+#### 2) Configuração no Github
+
+- O próximo passo é [**abrir a página de configurações do Github**](https://github.com/settings/profile)
+- No menu lateral, clique em:
+  - **SSH and GPG keys**
+  - Clique no botão: **New SSH key**
+  - Informe um título p/ esta chave `(Ex: MacOS)`
+  - Cole o conteúdo do arquivo `“id_ed25519.pub”` no campo “Key” e salve as configurações
+- O próximo passo é fazer o clone do projeto
+- Vá até o repositório no Github e copie a URL de clone via SSH
+- Exemplo: `git@github.com:repo/app.git`
+  - Baixe o [Fork](https://git-fork.com/)
+  - Navegue até: `Fork > File > Clone`
+  - Insira a URL SSH, faça o login na conta e pronto!
+
+[Documentação completa](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+
+---
+
+# O que é o Figma Buzz?
+
+Source: blog\2025\05\2025-05-05-o-que-e-o-figma-buzz.md
+
+> Descubra o que é o Figma Buzz, a nova ferramenta do Figma que facilita a criação de materiais visuais consistentes para marcas, com colaboração, modelos prontos e recursos de IA.
+
+## O que é o Figma Buzz?
+
+O Figma Buzz é uma ferramenta lançada pelo Figma em 2025, projetada para facilitar a criação, gestão e distribuição de recursos visuais alinhados à marca.
+
+Ele oferece um espaço colaborativo onde designers e profissionais de marketing podem trabalhar juntos para produzir ativos como posts para redes sociais, anúncios digitais, materiais para eventos, documentos de uma página e folhetos, mantendo a consistência da identidade visual da marca.
+
+<img src="/assets/images/posts/2025/05/figma-buzz.gif">
+
+### O que é possível criar com o Figma Buzz?
+
+Com o Figma Buzz, é possível criar uma variedade de materiais visuais que seguem as diretrizes da marca de forma rápida e colaborativa.
+
+Entre os principais tipos de conteúdo que podem ser produzidos estão:
+
+- **Posts para redes sociais**: Crie modelos reutilizáveis para Instagram, LinkedIn, X (Twitter) e outras redes, mantendo identidade visual consistente.
+
+- **Anúncios digitais (ads)**: Produza banners e criativos de campanhas publicitárias online com elementos fixos da marca, como logos e cores.
+
+- **Apresentações e documentos de uma página**: Monte slides ou arquivos para envio rápido com informações chave e visual atraente.
+
+- **Materiais de eventos**: Cartazes, flyers, credenciais e outros materiais promocionais para eventos e conferências.
+
+- **Folhetos e panfletos**: Crie peças impressas ou digitais com layouts prontos e fáceis de editar.
+
+- **Campanhas de e-mail e thumbnails**: Imagens padronizadas para newsletters e plataformas de vídeo como YouTube.
+
+- **Ativos internos**: Como manuais, guias rápidos, templates para RH, entre outros.
+
+<img src="/assets/images/posts/2025/05/o-que-e-possivel-criar-com-o-figma-buzz.jpg">
+
+### Figma Buzz ou Canva?
+
+A escolha ideal depende do perfil da equipe e do nível de controle desejado sobre a identidade visual.
+
+#### 🔍 Comparativo Rápido
+
+| Característica            | **Figma Buzz**                      | **Canva**          |
+| ------------------------- | ----------------------------------- | ------------------ |
+| **Foco**                  | Times que já usam Figma             | Usuários em geral  |
+| **Modelos controlados**   | ✅ Alta precisão                    | ✅ Menos controle  |
+| **Integração com design** | ✅ Total com Figma                  | 🔸 Parcial         |
+| **Facilidade de uso**     | 🔸 Média (exige noção de Figma)     | ✅ Muito fácil     |
+| **Liberdade de layout**   | ✅ Total                            | 🔸 Limitada        |
+| **IA integrada**          | ✅ Sim                              | ✅ Sim             |
+| **Preço**                 | Grátis com limites (ou plano Figma) | Grátis + plano Pro |
+
+### ✅ Use o Figma Buzz se:
+
+- Você já usa Figma.
+- Precisa manter rigor na identidade visual.
+- Quer que não-designers editem com segurança.
+
+### ✅ Use o Canva se:
+
+- Precisa de algo rápido e fácil.
+- Quer muitos templates prontos.
+- Trabalha com equipes variadas (RH, vendas, educação).
+
+### Principais Funcionalidades do Figma Buzz
+
+#### Modelos Personalizáveis
+
+Crie e compartilhe modelos de marca que sua equipe pode utilizar, garantindo que todos os materiais produzidos estejam em conformidade com as diretrizes visuais estabelecidas.
+
+#### Edição Simplificada
+
+Com uma interface intuitiva, mesmo membros da equipe sem experiência em design podem editar e adaptar modelos conforme necessário, promovendo agilidade na produção de conteúdo.
+
+#### Controle de Elementos
+
+Defina quais partes dos modelos são editáveis e quais permanecem fixas, assegurando que elementos essenciais da identidade visual não sejam alterados inadvertidamente.
+
+#### Visualização em Grade
+
+Organize e visualize todos os ativos criados em uma única tela, facilitando a gestão e a manutenção da consistência entre os materiais.
+
+#### Recursos de IA
+
+Utilize ferramentas de inteligência artificial integradas para remover fundos de imagens, ajustar textos e gerar imagens a partir de prompts, otimizando o processo criativo.
+
+#### Estatísticas Recentes do Figma
+
+O Figma tem apresentado um crescimento significativo nos últimos anos. Em 2024, a empresa alcançou uma receita de US$ 400 milhões, um aumento considerável em relação aos US$ 190 milhões registrados em 2022. Além disso, a base de usuários cresceu a uma taxa de 159%, refletindo a crescente adoção de ferramentas de colaboração remota no setor de design.
+
+### Conclusão
+
+O Figma Buzz representa uma evolução significativa na forma como equipes de design e marketing colaboram na criação de materiais visuais. Ao centralizar a produção de ativos em uma plataforma intuitiva e integrada, ele promove eficiência, consistência e agilidade, atendendo às demandas dinâmicas do mercado atual. Para profissionais interessados em design, o Figma Buzz oferece uma oportunidade valiosa de otimizar processos e fortalecer a presença da marca em diversos canais de comunicação.
+
+
+---
+
+# Guia rápido de semântica HTML para UX Writers
+
+Source: blog\2025\06\2025-06-18-ux-writers.md
+
+> Este artigo é um guia prático para UX Writers que desejam entender e aplicar a semântica HTML de forma estratégica.
+
+Este artigo é um guia prático para UX Writers que desejam entender e aplicar a semântica HTML de forma estratégica. Ao explorar o uso adequado das tags, aprenda como estruturar o conteúdo de maneira clara, promovendo acessibilidade e elevando a qualidade da experiência do usuário.
+
+### O que é semântica HTML?
+
+A semântica HTML é a prática de usar tags e elementos de forma que reflitam o significado e a estrutura do conteúdo, indo além da simples apresentação visual.
+
+Para UX Writers, que são responsáveis por criar textos claros e impactantes em interfaces digitais, **entender a semântica HTML é essencial para garantir que o conteúdo seja acessível, compreensível por sistemas automatizados e otimizado para a experiência do usuário.**
+
+### Por que o HTML semântico é essencial para UX e SEO?
+
+O HTML semântico utiliza tags específicas — como `<header>`, `<article>`, `<nav>`, e `<aside>`  —  para descrever o propósito do conteúdo, em vez de apenas sua aparência.
+
+Por exemplo, usar `<h1>` para um título principal não apenas define o tamanho da fonte, mas também indica a hierarquia mais importante na página.
+
+Isso é crucial para tecnologias assistivas, como leitores de tela, que interpretam a estrutura do conteúdo para usuários com deficiência visual.
+
+_Jakob Nielsen_, um dos pioneiros em usabilidade, enfatiza que a clareza estrutural reduz o esforço cognitivo do usuário ao buscar e processar informações” (Nielsen, 2005).
+
+No contexto do UX Writing, a semântica HTML amplifica essa clareza, permitindo que o texto seja compreendido tanto por humanos quanto por máquinas, como motores de busca e assistentes de voz.
+
+Além disso, um HTML bem estruturado melhora a acessibilidade, atendendo às diretrizes do [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/), e pode até contribuir para o SEO, aumentando a visibilidade do conteúdo.
+
+### Como a semântica HTML impacta o trabalho de UX Writers?
+
+UX Writers criam textos que guiam, informam e engajam os usuários em interfaces digitais, como botões, mensagens de erro e formulários. Embora tradicionalmente o foco esteja na escolha das palavras, a forma como esse texto é codificado no HTML afeta sua eficácia.
+
+Um texto mal estruturado pode confundir leitores de tela ou ser mal interpretado por sistemas automatizados, comprometendo a experiência do usuário.
+
+Por exemplo, um botão com o texto “Enviar” codificado como `<div>Enviar</div>` não será reconhecido como um elemento interativo por tecnologias assistivas. Em vez disso, usar `<button>Enviar</button>` garante que o elemento seja identificado corretamente, permitindo que usuários com deficiência naveguem com facilidade.
+
+Para UX Writers, colaborar com desenvolvedores na escolha de tags HTML corretas é, portanto, uma extensão natural de seu trabalho.
+
+### Principais elementos semânticos HTML para UX Writers
+
+Abaixo, apresentamos os elementos semânticos mais relevantes para UX Writers, com explicações e exemplos práticos:
+
+#### 1) Hierarquia de cabeçalhos (`<h1>` a `<h6>`)
+
+Cabeçalhos organizam o conteúdo em níveis de importância, facilitando a navegação e a compreensão. Um `<h1>` deve ser usado para o título principal da página, enquanto `<h2>` a `<h6>` indicam subtítulos. _Exemplo:_
+
+```html
+<h1>Crie sua conta</h1>
+<h2>Informações pessoais</h2>
+<h3>Endereço</h3>
+<h4>CEP</h4>
+```
+
+#### 2) Parágrafos (`<p>`)
+
+O elemento `<p>` é usado para blocos de texto, garantindo que o conteúdo seja apresentado como uma unidade coesa. _Exemplo:_
+
+```html
+<p>O e-mail informado é inválido. Tente novamente.</p>
+<p>Todos os campos marcados com * são obrigatórios.</p>
+```
+
+#### 3) Botões (`<button>`)
+
+Segundo Podmajersky (2019, p. 66):
+
+> _“os botões são o texto mais importante na experiência”._
+
+Os botões indicam ações interativas, como “Enviar” ou “Cancelar”. Usar `<button>` em vez de `<div>` ou `<span>` assegura acessibilidade. _Exemplo:_
+
+```html
+<button type="submit">Enviar</button>
+```
+
+#### 4) Rótulos de formulário (`<label>`)
+
+O elemento <label> associa um texto descritivo a um campo de entrada, como um campo de texto ou checkbox. Isso é crucial para acessibilidade, pois permite que leitores de tela identifiquem o propósito do campo. _Exemplo:_
+
+```html
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" required />
+<p>Utilize um e-mail válido para continuar</p>
+```
+
+#### 5) Listas (`<ul>`, `<ol>`, `<li>`)
+
+Listas semânticas organizam itens relacionados, como opções de menu ou etapas de um processo. `<ul>` é para listas não ordenadas, enquanto `<ol>` é para listas ordenadas. _Exemplo:_
+
+```html
+<ol>
+  <li>Faça login no sistema</li>
+  <li>Escolha o plano ideal</li>
+  <li>Confirme o pagamento</li>
+</ol>
+```
+
+#### 6) Elementos de navegação (`<nav>`)
+
+O elemento `<nav>` agrupa links de navegação, como menus principais. Isso ajuda tecnologias assistivas a identificar áreas navegáveis. _Exemplo:_
+
+```html
+<nav>
+  <ul>
+    <li><a href="/">Início</a></li>
+    <li><a href="/sobre">Sobre</a></li>
+  </ul>
+</nav>
+```
+
+#### 7) Artigos e seções (`<article>`, `<section>`)
+
+O elemento `<article>` representa conteúdo independente, como um post de blog, enquanto `<section>` agrupa conteúdo relacionado. Esses elementos criam uma estrutura lógica. _Exemplo:_
+
+```html
+<section>
+  <h2>Perguntas frequentes</h2>
+  <article>
+    <h3>Como recuperar minha senha?</h3>
+    <p>Clique em "Esqueci minha senha" e siga as instruções</p>
+  </article>
+</section>
+```
+
+### Exemplo prático: formulário de login
+
+Considere um formulário de login simples. Um UX Writer pode redigir os textos e sugerir a seguinte estrutura HTML semântica:
+
+```html
+<form>
+  <h1>Entrar na sua conta</h1>
+  <div>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" required />
+  </div>
+  <div>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" required />
+  </div>
+  <p class="erro" hidden>E-mail ou senha incorretos</p>
+  <button type="submit">Entrar</button>
+  <a href="/recuperar-senha">Esqueceu sua senha?</a>
+</form>
+```
+
+Nesse exemplo:
+
+- `<h1>` estabelece a hierarquia principal.
+- `<label>` associa os campos aos seus textos descritivos.
+- `<p class="erro">` fornece feedback claro em caso de erro.
+- `<button>` indica uma ação interativa.
+
+Essa estrutura é acessível, legível por máquinas e fácil de navegar, demonstrando como a semântica HTML amplifica o impacto do texto.
+
+### Práticas recomendadas para UX Writers
+
+Para integrar a semântica HTML ao fluxo de trabalho de UX Writing, algumas práticas são indispensáveis:
+
+- **Testes de acessibilidade:** Utilize ferramentas como o Lighthouse no DevTools para verificar se o HTML atende às diretrizes do WCAG. Uma das maneiras de executar o Lighthouse é usar o [PageSpeed Insights](https://pagespeed.web.dev/), ferramenta oficial do Google para analisar a semântica e a velocidade das páginas da Web. Seguir as recomendações do teste garante que o conteúdo seja acessível a todos os usuários.
+
+<img src="/assets/images/posts/2025/06/pagespeed.png" class="w-full">
+
+- **Colaboração com desenvolvedores:** UX Writers devem trabalhar junto com desenvolvedores para garantir que o texto seja implementado com as tags corretas. Ferramentas como Figma podem incluir anotações sobre tags recomendadas.
+
+- **Documentação clara:** Crie guias ou design systems que especifiquem como os textos devem ser codificados. Por exemplo, indique que mensagens de erro devem sempre usar `<p>` e botões devem usar `<button>`.
+
+- **Foco na clareza:** Escreva textos que, quando combinados com HTML semântico, sejam diretos e fáceis de interpretar por humanos e máquinas.
+
+### Benefícios da semântica HTML para UX Writing
+
+1. **Acessibilidade:** Elementos semânticos garantem que o conteúdo seja compreensível por usuários com deficiências, alinhando-se às diretrizes do WCAG.
+
+2. **SEO:** Motores de busca, como o Google, favorecem páginas com HTML semântico, pois entendem melhor a estrutura do conteúdo.
+
+3. **Manutenção:** Um código semântico é mais fácil de atualizar e manter, beneficiando equipes de desenvolvimento.
+
+4. **Consistência:** A semântica promove uma experiência uniforme, especialmente em projetos colaborativos.
+
+### Limitações e desafios
+
+Embora poderosa, a semântica HTML exige aprendizado e colaboração interdisciplinar. UX Writers podem enfrentar dificuldades iniciais para entender as nuances do código, e a resistência de equipes de desenvolvimento em adotar práticas semânticas pode ser um obstáculo.
+
+No entanto, investir em treinamentos e ferramentas de colaboração, como design systems, pode superar essas barreiras.
+
+### Conclusão
+
+A semântica HTML é uma aliada indispensável para UX Writers que desejam criar experiências digitais acessíveis e eficazes.
+
+Ao compreender e aplicar elementos como cabeçalhos, botões e rótulos, os escritores podem garantir que seus textos sejam claros para usuários e sistemas automatizados.
+
+Integrar texto e código é mais do que unir disciplinas — é construir experiências digitais mais humanas, acessíveis e significativas. Quando UX Writing se alia ao desenvolvimento, o resultado é uma interface que comunica com clareza e acolhe cada pessoa que a utiliza.
+
+---
+
+_Este artigo foi escrito para a disciplina de projeto em UX Design na pós-graduação do [Senac São Paulo](https://www.sp.senac.br/cursos/pos-graduacao/ux-design)._
+
+
+---
+
+# Melhores ferramentas gratuitas para criar documentação em 2026
+
+Source: blog\2026\03\2026-03-04-ferramentas-documentacao.md
+
+> Links de algumas ferramentas gratuitas para criação de documentação de projetos
+
+Confira neste post alguns links de ferramentas gratuitas (open-source)para criação e manutenção de documentações de projetos.
+
+### Lista de ferramentas de Documentação
+
+- Veja a lista de algumas ferramentas para criar documentação
+
+### 1) [FumaDocs](https://www.fumadocs.dev/)
+
+<a href="https://www.fumadocs.dev/" target="_blank">
+  <img src="/assets/images/posts/2026/03/fumadocs.png" alt="FumaDocs">
+</a>
+
+FumaDocs é um framework poderoso e moderno para criação de documentações, construído sobre Next.js. Ele oferece uma experiência de desenvolvimento excelente com suporte nativo a MDX, busca integrada e temas personalizáveis, permitindo que equipes criem documentações bonitas e performáticas com facilidade.
+
+### 2) [Starlight](https://starlight.astro.build/pt-br/)
+
+<a href="https://starlight.astro.build/pt-br/" target="_blank">
+  <img src="/assets/images/posts/2026/03/starlight.jpg" alt="Starlight">
+</a>
+
+Starlight é um tema oficial do Astro voltado para documentações, projetado para ser rápido, acessível e fácil de usar. Com suporte a internacionalização, modo escuro, busca integrada e componentes prontos para uso, ele é uma das melhores opções para quem já utiliza o ecossistema Astro e quer criar uma documentação completa e profissional.
+
+### 3) [Docusaurus](https://docusaurus.io/pt-BR/)
+
+<a href="https://docusaurus.io/pt-BR/" target="_blank">
+  <img src="/assets/images/posts/2026/03/docusaurus.png" alt="Docusaurus">
+</a>
+
+Docusaurus é uma ferramenta open source criada pelo Meta para criação de sites de documentação. Com suporte a Markdown e MDX, versionamento de conteúdo, internacionalização e uma grande comunidade ativa, é uma das escolhas mais populares entre projetos de código aberto que precisam de documentação robusta e escalável.
+
+### 4) [Wiki.js](https://js.wiki/)
+
+<a href="https://js.wiki/" target="_blank">
+  <img src="/assets/images/posts/2026/03/wikijs.png" alt="Wiki.js">
+</a>
+
+Wiki.js é uma plataforma de wiki moderna, open source e extremamente poderosa, construída com Node.js. Ela oferece uma interface de edição rica, suporte a múltiplos bancos de dados, autenticação via diferentes provedores e armazenamento de conteúdo em Git, tornando-a ideal para equipes que precisam de uma solução completa e auto-hospedada para gestão de conhecimento e documentação interna.
+
+
+---
+
+## About This Document
+
+This concatenated documentation file is generated automatically by aeo.js
+to make it easier for AI systems to understand the complete context of this project.
+
+For a structured index, see: https://matheuscostadesign.github.io/llms.txt
+For individual files, see: https://matheuscostadesign.github.io/docs.json
+
+Generated by aeo.js - https://aeojs.org

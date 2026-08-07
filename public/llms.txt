@@ -1,0 +1,171 @@
+# Matheus Costa — UX/UI Designer e Desenvolvedor Front-end
+
+> UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza.
+
+## About
+
+This file provides a structured overview of the documentation and content available on this site,
+optimized for consumption by Large Language Models (LLMs) and AI assistants.
+
+## Pages
+
+- [/\index](https://matheuscostadesign.github.io/\index)
+
+## Documentation
+
+### blog\2020\09\2020-09-01-live-server.md
+
+- [Como visualizar alterações em um site ou projeto em tempo real usando o Visual Studio Code e o Live Server](https://matheuscostadesign.github.io/blog\2020\09\2020-09-01-live-server)
+  Essa dica irá aumentar muito a sua produtividade no momento em que estiver desenvolvendo o seu site/projeto e quiser ver as alterações em tempo real
+
+### blog\2022\01\2022-01-14-imagens-jpeg.md
+
+- [Ferramenta online para otimização de imagens JPEG](https://matheuscostadesign.github.io/blog\2022\01\2022-01-14-imagens-jpeg)
+  Ferramenta útil para otimizar imagens em JPG/JPEG
+
+### blog\2022\01\2022-01-17-imagens-webp.md
+
+- [Disponibilize imagens em formatos de última geração](https://matheuscostadesign.github.io/blog\2022\01\2022-01-17-imagens-webp)
+  Veja neste artigo como resolver o problema no resultado do Google Pagespeed: Disponibilize imagens em formatos de última geração
+
+### blog\2022\01\2022-01-21-atualizar-ano.md
+
+- [Atualizar ano atual automaticamente com Javascript](https://matheuscostadesign.github.io/blog\2022\01\2022-01-21-atualizar-ano)
+  Veja neste artigo como mostrar o ano atual automaticamente no footer do site
+
+### blog\2022\02\2022-02-11-htaccess.md
+
+- [Configurações importantes para adicionar no arquivo .htaccess](https://matheuscostadesign.github.io/blog\2022\02\2022-02-11-htaccess)
+  Veja neste artigo configurações importantes de se adicionar no arquivo .htaccess para servidores web/PHP
+
+### blog\2022\02\2022-02-18-cor-texto.md
+
+- [Como alterar a cor do texto selecionado de uma página com CSS](https://matheuscostadesign.github.io/blog\2022\02\2022-02-18-cor-texto)
+  Aprenda neste artigo como alterar a cor do texto selecionado do site com CSS
+
+### blog\2022\02\2022-02-21-ssl-manual.md
+
+- [Como gerar o certificado SSL/HTTPS de forma manual](https://matheuscostadesign.github.io/blog\2022\02\2022-02-21-ssl-manual)
+  Veja neste artigo como gerar os arquivos de certificado SSL da Let's Encrypt para seu site de forma manual e gratuita.
+
+### blog\2022\02\2022-02-22-header-scroll.md
+
+- [Como alterar menu header após scroll com Javascript](https://matheuscostadesign.github.io/blog\2022\02\2022-02-22-header-scroll)
+  Veja neste artigo como alterar o menu/cabeçalho/header do site após scroll na página com Vanilla Javascript (Pure JS).
+
+### blog\2022\03\2022-03-18-whatsapp.md
+
+- [Como enviar dados do formulário HTML para o Whatsapp](https://matheuscostadesign.github.io/blog\2022\03\2022-03-18-whatsapp)
+  Veja neste artigo como enviar os dados digitados no formulário HTML para o Whatsapp com validação de campos obrigatórios.
+
+### blog\2022\03\2022-03-22-voltar-topo.md
+
+- [Como fazer o efeito voltar ao topo suave com jQuery](https://matheuscostadesign.github.io/blog\2022\03\2022-03-22-voltar-topo)
+  Veja neste artigo como fazer o efeito voltar ao topo da página de forma suave (smooth scrolling) utilizando a biblioteca jQuery
+
+### blog\2023\05\2023-05-01-libs-frontend.md
+
+- [As melhores bibliotecas de UI para Frontend em 2024](https://matheuscostadesign.github.io/blog\2023\05\2023-05-01-libs-frontend)
+  Links de algumas bibliotecas de estilização no front-end
+
+### blog\2023\05\2023-05-02-comandos-bash.md
+
+- [Guia básico de comandos terminal SSH/Bash/Putty](https://matheuscostadesign.github.io/blog\2023\05\2023-05-02-comandos-bash)
+  Aprenda neste post alguns dos comandos de terminal mais utilizados no dia a dia
+
+### blog\2023\05\2023-05-03-comandos-git.md
+
+- [Comandos básicos de Git](https://matheuscostadesign.github.io/blog\2023\05\2023-05-03-comandos-git)
+  Aprenda neste post alguns dos comandos básicos de Git
+
+### blog\2023\05\2023-05-04-react-native.md
+
+- [Como criar apps com React Native](https://matheuscostadesign.github.io/blog\2023\05\2023-05-04-react-native)
+  Neste post estarei compartilhando e documentando minha experiência durante o processo de criação de aplicativos Android e iOS utilizando React Native.
+
+### blog\2023\08\2023-08-08-padroes-commit.md
+
+- [Padrões de mensagens de commit](https://matheuscostadesign.github.io/blog\2023\08\2023-08-08-padroes-commit)
+  Aprenda neste artigo algumas convenções/padronizações das mensagens de commits para o Git/Github.
+
+### blog\2023\09\2023-09-14-imagens-quebradas.md
+
+- [Como detectar imagens quebradas](https://matheuscostadesign.github.io/blog\2023\09\2023-09-14-imagens-quebradas)
+  Aprenda como detectar e corrigir imagens quebradas de um site
+
+### blog\2023\09\2023-09-15-bg-css.md
+
+- [Como remover o fundo de uma imagem com CSS](https://matheuscostadesign.github.io/blog\2023\09\2023-09-15-bg-css)
+  Aprenda como remover o fundo de uma imagem com CSS
+
+### blog\2024\04\2024-04-12-axios.md
+
+- [Exemplo prático Axios Interceptor consumindo várias APIs](https://matheuscostadesign.github.io/blog\2024\04\2024-04-12-axios)
+  Exemplo prático Axios Interceptor consumindo várias APIs
+
+### blog\2024\05\2024-05-31-cv.md
+
+- [Como formatar um currículo de maneira adequada](https://matheuscostadesign.github.io/blog\2024\05\2024-05-31-cv)
+  Veja neste artigo uma dica de ferramenta para melhorar seu currículo e conseguir passar pelas ferramentas atuais de seleção, as chamadas ATS.
+
+### blog\2024\05\2024-05-31-links-externos.md
+
+- [Como fazer todos os links externos do site abrir em uma nova aba/guia](https://matheuscostadesign.github.io/blog\2024\05\2024-05-31-links-externos)
+  Veja neste artigo como fazer com que todos os links externos do seu site abram em uma nova guia do navegador.
+
+### blog\2024\06\2024-06-03-path-aliases.md
+
+- [Como configurar path aliases em um projeto React + Vite + TypeScript + SWC](https://matheuscostadesign.github.io/blog\2024\06\2024-06-03-path-aliases)
+  Veja neste post como configurar as importações com '@' (path aliases) em um projeto Vite/React com Typescript e SWC
+
+### blog\2024\06\2024-06-05-scrcpy.md
+
+- [Como espelhar celular Android no PC com scrcpy da Genymobile](https://matheuscostadesign.github.io/blog\2024\06\2024-06-05-scrcpy)
+  Aprenda neste post como espelhar o celular Android no PC Windows com scrcpy
+
+### blog\2024\06\2024-06-10-acesso-camera.md
+
+- [Como habilitar acesso à câmera em sites sem certificado HTTPS/SSL](https://matheuscostadesign.github.io/blog\2024\06\2024-06-10-acesso-camera)
+  Aprenda neste post como habilitar acesso à câmera em sites sem certificado HTTPS/SSL
+
+### blog\2024\07\2024-07-12-ssh-github.md
+
+- [Como configurar chave SSH para o Github](https://matheuscostadesign.github.io/blog\2024\07\2024-07-12-ssh-github)
+  Aprenda neste post como configurar chave SSH para o Github
+
+### blog\2025\05\2025-05-05-o-que-e-o-figma-buzz.md
+
+- [O que é o Figma Buzz?](https://matheuscostadesign.github.io/blog\2025\05\2025-05-05-o-que-e-o-figma-buzz)
+  Descubra o que é o Figma Buzz, a nova ferramenta do Figma que facilita a criação de materiais visuais consistentes para marcas, com colaboração, modelos prontos e recursos de IA.
+
+### blog\2025\06\2025-06-18-ux-writers.md
+
+- [Guia rápido de semântica HTML para UX Writers](https://matheuscostadesign.github.io/blog\2025\06\2025-06-18-ux-writers)
+  Este artigo é um guia prático para UX Writers que desejam entender e aplicar a semântica HTML de forma estratégica.
+
+### blog\2026\03\2026-03-04-ferramentas-documentacao.md
+
+- [Melhores ferramentas gratuitas para criar documentação em 2026](https://matheuscostadesign.github.io/blog\2026\03\2026-03-04-ferramentas-documentacao)
+  Links de algumas ferramentas gratuitas para criação de documentação de projetos
+
+## Quick Links
+
+- Full Documentation: https://matheuscostadesign.github.io/llms-full.txt
+- Documentation Manifest: https://matheuscostadesign.github.io/docs.json
+- AI-Optimized Index: https://matheuscostadesign.github.io/ai-index.json
+- Sitemap: https://matheuscostadesign.github.io/sitemap.xml
+
+## For LLMs
+
+To get the complete documentation in a single file, request:
+https://matheuscostadesign.github.io/llms-full.txt
+
+For structured access to individual pages with metadata:
+https://matheuscostadesign.github.io/docs.json
+
+For RAG (Retrieval Augmented Generation) systems:
+https://matheuscostadesign.github.io/ai-index.json
+
+---
+Generated by aeo.js - Answer Engine Optimization for the modern web
+Learn more at https://aeojs.org

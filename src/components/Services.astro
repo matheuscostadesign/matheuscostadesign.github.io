@@ -258,6 +258,12 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
       grid-template-columns: 1fr;
       max-width: 540px;
     }
+
+    .svc-preview--top {
+      order: 1;
+      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+      border-radius: 0 0 20px 20px;
+    }
   }
 
   .svc-card {
@@ -452,6 +458,12 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
   @media (max-width: 1100px) {
     .svc-grid {
       grid-template-columns: 1fr;
+    }
+
+    .svc-preview--top {
+      order: 1;
+      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+      border-radius: 0 0 20px 20px;
     }
   }
 </style>

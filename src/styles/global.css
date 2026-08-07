@@ -1,23 +1,23 @@
 @font-face {
   font-family: 'Funnel Display';
-  src: url('/FunnelDisplay-Variable.woff2') format('woff2-variations'),
-       url('/FunnelDisplay-Regular.woff2') format('woff2');
+  src: url('/fonts/FunnelDisplay-Variable.woff2') format('woff2-variations'),
+       url('/fonts/FunnelDisplay-Regular.woff2') format('woff2');
   font-weight: 300 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Editorial Old';
-  src: url('/FunnelDisplay-Variable.woff2') format('woff2-variations'),
-       url('/FunnelDisplay-Regular.woff2') format('woff2');
+  src: url('/fonts/FunnelDisplay-Variable.woff2') format('woff2-variations'),
+       url('/fonts/FunnelDisplay-Regular.woff2') format('woff2');
   font-weight: 300 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Editorial New';
-  src: url('/FunnelDisplay-Variable.woff2') format('woff2-variations'),
-       url('/FunnelDisplay-Regular.woff2') format('woff2');
+  src: url('/fonts/FunnelDisplay-Variable.woff2') format('woff2-variations'),
+       url('/fonts/FunnelDisplay-Regular.woff2') format('woff2');
   font-weight: 300 800;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 :root {
   --font-display: 'Funnel Display', sans-serif;
   --font-body: 'Instrument Sans', Helvetica, sans-serif;
-  --font-mono: 'Space Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --color-bg-main: #050505;
   --color-bg-surface: #0c0c0d;
@@ -55,6 +55,10 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body {

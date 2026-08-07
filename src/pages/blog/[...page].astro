@@ -40,13 +40,12 @@ const truncate = (str: string, length: number) => {
   description="Dicas e conhecimentos sobre desenvolvimento web, frontend, React, Astro e design UX/UI por Matheus Costa."
 >
   <div class="blog-index-page">
-
     <section class="blog-hero">
       <div class="blog-hero-content">
-        <h1 class="blog-title">Todos os artigos no blog</h1>
+        <h1 class="blog-title">Artigos, Dicas & Insights</h1>
         <p class="blog-subtitle">
-          Dicas e novos conhecimentos adquiridos sobre desenvolvimento web e
-          design UX/UI 👊
+          Conteúdos práticos e experiências sobre desenvolvimento web, UI/UX e
+          design para elevar o nível dos seus projetos.
         </p>
       </div>
     </section>
@@ -100,7 +99,10 @@ const truncate = (str: string, length: number) => {
 
         {
           page.lastPage > 1 && (
-            <nav class="pagination-nav" aria-label="Navegação de páginas do blog">
+            <nav
+              class="pagination-nav"
+              aria-label="Navegação de páginas do blog"
+            >
               <div class="pagination-info">
                 Página {page.currentPage} de {page.lastPage}
               </div>
@@ -146,7 +148,8 @@ const truncate = (str: string, length: number) => {
                   {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
                     (pageNum) => {
                       const isCurrent = pageNum === page.currentPage;
-                      const pageUrl = pageNum === 1 ? "/blog" : `/blog/${pageNum}`;
+                      const pageUrl =
+                        pageNum === 1 ? "/blog" : `/blog/${pageNum}`;
                       return (
                         <a
                           href={pageUrl}
@@ -218,7 +221,7 @@ const truncate = (str: string, length: number) => {
   }
 
   .blog-hero {
-    padding: var(--spacing-section-py) var(--spacing-container-px) 20px;
+    padding: clamp(120px, 12vw, 160px) var(--spacing-container-px) 20px;
     text-align: center;
   }
 
