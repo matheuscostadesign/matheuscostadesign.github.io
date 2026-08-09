@@ -1,6 +1,6 @@
 # AGENTS.md — Design System, Typography Hierarchy & Code Standards
 
-This document establishes the official design system, typographic scale, semantic structure, SEO/AEO guidelines, and code conventions for `matheuscosta.com.br`. All AI agents and developers working on this project must follow these patterns strictly.
+This document establishes the official design system, typographic scale, semantic structure, SEO/AEO guidelines, and code conventions for `matheuscostadesign.github.io`. All AI agents and developers working on this project must follow these patterns strictly.
 
 ---
 
@@ -8,22 +8,22 @@ This document establishes the official design system, typographic scale, semanti
 
 All styling must reference CSS custom properties defined in `src/styles/global.css`:
 
-| Token                   | CSS Variable                 | Value / Usage                                                        |
-| :---------------------- | :--------------------------- | :------------------------------------------------------------------- |
-| **Display Font**        | `var(--font-display)`        | `'Funnel Display', sans-serif` — Used for all headings (H1 - H6)     |
-| **Body Font**           | `var(--font-body)`           | `'Instrument Sans', Helvetica, sans-serif` — Primary text, UI labels |
-| **Monospace Font**      | `var(--font-mono)`           | `'JetBrains Mono', monospace` — Eyebrows, micro-copy, code blocks |
-| **Background Main**     | `var(--color-bg-main)`       | `#050505` — Primary dark canvas                                      |
-| **Background Surface**  | `var(--color-bg-surface)`    | `#0c0c0d` — Hero / secondary sections                                |
-| **Background Card**     | `var(--color-bg-card)`       | `#121214` — Service cards, blog cards                                |
-| **Background Elevated** | `var(--color-bg-elevated)`   | `#1a1a1d` — Hover states & popups                                    |
-| **Text Main**           | `var(--color-text-main)`     | `#F4F0E7` — Primary high-contrast text                               |
-| **Text Muted**          | `var(--color-text-muted)`    | `rgba(244, 240, 231, 0.75)` — Paragraphs & descriptions              |
-| **Text Dimmed**         | `var(--color-text-dimmed)`   | `rgba(244, 240, 231, 0.6)` — Footers, dates, captions                |
-| **Border Subtle**       | `var(--color-border-subtle)` | `rgba(244, 240, 231, 0.12)` — Card borders                           |
-| **Border Hover**        | `var(--color-border-hover)`  | `rgba(244, 240, 231, 0.28)` — Active border highlight                |
-| **Section Padding Y**   | `var(--spacing-section-py)`  | `clamp(60px, 8vw, 120px)` — Standard vertical section padding        |
-| **Container Padding X** | `var(--spacing-container-px)`| `clamp(24px, 5vw, 64px)` — Standard horizontal container padding     |
+| Token                   | CSS Variable                  | Value / Usage                                                        |
+| :---------------------- | :---------------------------- | :------------------------------------------------------------------- |
+| **Display Font**        | `var(--font-display)`         | `'Funnel Display', sans-serif` — Used for all headings (H1 - H6)     |
+| **Body Font**           | `var(--font-body)`            | `'Instrument Sans', Helvetica, sans-serif` — Primary text, UI labels |
+| **Monospace Font**      | `var(--font-mono)`            | `'JetBrains Mono', monospace` — Eyebrows, micro-copy, code blocks    |
+| **Background Main**     | `var(--color-bg-main)`        | `#050505` — Primary dark canvas                                      |
+| **Background Surface**  | `var(--color-bg-surface)`     | `#0c0c0d` — Hero / secondary sections                                |
+| **Background Card**     | `var(--color-bg-card)`        | `#121214` — Service cards, blog cards                                |
+| **Background Elevated** | `var(--color-bg-elevated)`    | `#1a1a1d` — Hover states & popups                                    |
+| **Text Main**           | `var(--color-text-main)`      | `#F4F0E7` — Primary high-contrast text                               |
+| **Text Muted**          | `var(--color-text-muted)`     | `rgba(244, 240, 231, 0.75)` — Paragraphs & descriptions              |
+| **Text Dimmed**         | `var(--color-text-dimmed)`    | `rgba(244, 240, 231, 0.6)` — Footers, dates, captions                |
+| **Border Subtle**       | `var(--color-border-subtle)`  | `rgba(244, 240, 231, 0.12)` — Card borders                           |
+| **Border Hover**        | `var(--color-border-hover)`   | `rgba(244, 240, 231, 0.28)` — Active border highlight                |
+| **Section Padding Y**   | `var(--spacing-section-py)`   | `clamp(60px, 8vw, 120px)` — Standard vertical section padding        |
+| **Container Padding X** | `var(--spacing-container-px)` | `clamp(24px, 5vw, 64px)` — Standard horizontal container padding     |
 
 ---
 
