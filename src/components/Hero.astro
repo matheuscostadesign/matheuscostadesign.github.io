@@ -60,6 +60,8 @@ const carouselItems = [
                       src={item.src}
                       alt={item.alt}
                       class="hero-slide-img"
+                      loading="eager"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -76,7 +78,13 @@ const carouselItems = [
     <div class="hero-halo"></div>
 
     <div class="hero-portrait">
-      <Image src={portraitImg} alt="Matheus Costa" class="hero-portrait-img" />
+      <Image
+        src={portraitImg}
+        alt="Matheus Costa"
+        class="hero-portrait-img"
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
 
     <div class="hero-fade-bottom"></div>
@@ -363,8 +371,18 @@ const carouselItems = [
     object-fit: contain;
     object-position: center top;
     display: block;
-    mask-image: linear-gradient(to bottom, #000 40%, rgba(0, 0, 0, 0.7) 70%, transparent 96%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 40%, rgba(0, 0, 0, 0.7) 70%, transparent 96%);
+    mask-image: linear-gradient(
+      to bottom,
+      #000 50%,
+      rgba(0, 0, 0, 0.9) 90%,
+      transparent 98%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 50%,
+      rgba(0, 0, 0, 0.9) 90%,
+      transparent 98%
+    );
   }
 
   .hero-portrait-vignette {
@@ -427,6 +445,7 @@ const carouselItems = [
     letter-spacing: -0.01em;
     color: var(--color-text-main);
     text-align: center;
+    padding-top: 64px;
   }
 
   .hero-bio {
@@ -541,9 +560,9 @@ const carouselItems = [
 
   @media (max-width: 1440px) and (min-width: 761px) {
     .hero-portrait {
-      top: clamp(100px, 11vh, 125px);
-      width: clamp(270px, 30vw, 430px);
-      height: clamp(360px, 55vh, 500px);
+      top: clamp(90px, 10vh, 120px);
+      width: clamp(290px, 33vw, 460px);
+      height: clamp(380px, 58vh, 520px);
     }
     .hero-title {
       font-size: clamp(40px, 4.6vw, 68px);
@@ -561,9 +580,9 @@ const carouselItems = [
 
   @media (max-height: 850px) and (min-width: 761px) {
     .hero-portrait {
-      top: clamp(95px, 10.5vh, 118px);
-      width: clamp(270px, 30vw, 430px);
-      height: clamp(350px, 53vh, 480px);
+      top: clamp(85px, 9.5vh, 112px);
+      width: clamp(290px, 33vw, 460px);
+      height: clamp(370px, 57vh, 510px);
     }
     .hero-stage {
       height: 460px;
@@ -630,7 +649,7 @@ const carouselItems = [
       position: absolute;
       left: 50%;
       right: auto;
-      top: 45px;
+      top: 60px;
       bottom: auto;
       transform: translateX(-50%);
       width: clamp(230px, 62vw, 300px);
@@ -653,32 +672,15 @@ const carouselItems = [
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 28px;
     }
-    .hero-social-btn {
-      width: 52px;
-      height: 52px;
-    }
-    .hero-social-icon {
-      width: 26px;
-      height: 26px;
+    .hero-socials {
+      display: none;
     }
   }
 
   @media (max-width: 520px) {
     .hero-bottom {
       margin-top: 330px;
-    }
-    .hero-footer-bar {
-      gap: 32px;
-    }
-    .hero-social-btn {
-      width: 56px;
-      height: 56px;
-    }
-    .hero-social-icon {
-      width: 28px;
-      height: 28px;
     }
   }
 </style>

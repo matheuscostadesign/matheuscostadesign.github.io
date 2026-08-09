@@ -206,7 +206,11 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
 <style>
   .services {
     padding: var(--spacing-section-py) var(--spacing-container-px);
-    background: radial-gradient(ellipse at 50% 30%, var(--color-bg-card) 0%, var(--color-bg-surface) 100%);
+    background: radial-gradient(
+      ellipse at 50% 30%,
+      var(--color-bg-card) 0%,
+      var(--color-bg-surface) 100%
+    );
     border-top: 1px solid var(--color-border-subtle);
     border-bottom: 1px solid var(--color-border-subtle);
     position: relative;
@@ -261,7 +265,8 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
 
     .svc-preview--top {
       order: 1;
-      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px))
+        calc(-1 * clamp(18px, 3.5vw, 26px));
       border-radius: 0 0 20px 20px;
     }
   }
@@ -269,7 +274,8 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
   .svc-card {
     display: flex;
     flex-direction: column;
-    padding: clamp(20px, 4vw, 30px) clamp(16px, 3.5vw, 26px) clamp(18px, 3.5vw, 26px);
+    padding: clamp(20px, 4vw, 30px) clamp(16px, 3.5vw, 26px)
+      clamp(18px, 3.5vw, 26px);
     border-radius: 20px;
     border: 1px solid var(--color-border-subtle);
     background: var(--color-bg-card);
@@ -353,12 +359,14 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
   }
 
   .svc-preview--top {
-    margin: calc(-1 * clamp(20px, 4vw, 30px)) calc(-1 * clamp(16px, 3.5vw, 26px)) 24px;
+    margin: calc(-1 * clamp(20px, 4vw, 30px))
+      calc(-1 * clamp(16px, 3.5vw, 26px)) 24px;
     border-radius: 20px 20px 0 0;
   }
 
   .svc-preview--bottom {
-    margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+    margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px))
+      calc(-1 * clamp(18px, 3.5vw, 26px));
     border-radius: 0 0 20px 20px;
     flex: 1;
     aspect-ratio: auto;
@@ -463,7 +471,8 @@ const ArrowIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" s
 
     .svc-preview--top {
       order: 1;
-      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px)) calc(-1 * clamp(18px, 3.5vw, 26px));
+      margin: 24px calc(-1 * clamp(16px, 3.5vw, 26px))
+        calc(-1 * clamp(18px, 3.5vw, 26px));
       border-radius: 0 0 20px 20px;
     }
   }

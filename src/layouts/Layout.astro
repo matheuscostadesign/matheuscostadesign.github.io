@@ -18,13 +18,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
 ---
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <script is:inline>
       (function() {
         const stored = localStorage.getItem('theme');
-        if (stored) {
-          document.documentElement.setAttribute('data-theme', stored);
+        if (stored === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
         } else {
           document.documentElement.setAttribute('data-theme', 'dark');
         }

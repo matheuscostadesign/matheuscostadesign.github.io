@@ -317,7 +317,9 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     align-items: center;
     justify-content: center;
     position: absolute;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
   }
 
   .sun-icon {
@@ -627,7 +629,8 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     }
 
     function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      const current =
+        document.documentElement.getAttribute("data-theme") || "dark";
       const next = current === "light" ? "dark" : "light";
       setTheme(next);
     }
