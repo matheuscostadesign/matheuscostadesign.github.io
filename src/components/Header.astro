@@ -1,10 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import linkedinIcon from "../assets/icons/linkedin.svg";
-import instagramIcon from "../assets/icons/instagram.svg";
-import githubIcon from "../assets/icons/github.svg";
-import behanceIcon from "../assets/icons/behance.svg";
-import whatsappIcon from "../assets/icons/whatsapp.svg";
 ---
 
 <header class="site-header">
@@ -124,57 +118,6 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
         </li>
       </ul>
     </nav>
-
-    <div class="mobile-menu-footer" style="--delay: 0.2s;">
-      <a
-        href="https://wa.me/5517991005132"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mobile-cta-btn"
-      >
-        <span>Fazer orçamento no WhatsApp</span>
-        <Image src={whatsappIcon} alt="WhatsApp" class="mobile-cta-icon" />
-      </a>
-
-      <div class="mobile-socials">
-        <a
-          href="https://linkedin.com/in/mattheuscosta"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          class="mobile-social-btn"
-        >
-          <Image src={linkedinIcon} alt="LinkedIn" class="social-icon" />
-        </a>
-        <a
-          href="https://github.com/matheuscostadesign"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          class="mobile-social-btn"
-        >
-          <Image src={githubIcon} alt="GitHub" class="social-icon" />
-        </a>
-        <a
-          href="https://www.instagram.com/matheuscosta.design/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          class="mobile-social-btn"
-        >
-          <Image src={instagramIcon} alt="Instagram" class="social-icon" />
-        </a>
-        <a
-          href="https://www.behance.net/matheuscostadesign"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Behance"
-          class="mobile-social-btn"
-        >
-          <Image src={behanceIcon} alt="Behance" class="social-icon" />
-        </a>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -352,6 +295,29 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
       0 12px 32px rgba(0, 0, 0, 0.08);
   }
 
+  :global(html[data-theme="light"]) .brand-icon {
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+
+  :global(html[data-theme="light"]) .nav-link:hover {
+    color: var(--color-text-main);
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(html[data-theme="light"]) .mobile-menu-overlay {
+    background: rgba(243, 240, 234, 0.96);
+  }
+
+  :global(html[data-theme="light"]) .mobile-nav-link:hover,
+  :global(html[data-theme="light"]) .mobile-nav-link:active {
+    color: #000000;
+    border-color: var(--color-border-hover);
+  }
+
+  :global(html[data-theme="light"]) .mobile-nav-link:hover .link-arrow {
+    color: #000000;
+  }
+
   .mobile-toggle {
     display: none;
     background: transparent;
@@ -403,7 +369,7 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     -webkit-backdrop-filter: blur(28px) saturate(180%);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 100px 32px 48px;
     opacity: 0;
     visibility: hidden;
@@ -428,8 +394,7 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .mobile-nav-list {
@@ -489,72 +454,6 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
     color: #ffffff;
   }
 
-  .mobile-menu-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.4s ease var(--delay),
-      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) var(--delay);
-  }
-
-  .mobile-menu-overlay.is-active .mobile-menu-footer {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .mobile-cta-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background: #f4f0e7;
-    color: #050505;
-    padding: 14px 24px;
-    border-radius: 9999px;
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    transition:
-      background 0.2s,
-      transform 0.2s;
-  }
-
-  .mobile-cta-btn:active {
-    transform: scale(0.98);
-  }
-
-  .mobile-cta-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .mobile-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
-
-  .mobile-social-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--color-border-subtle);
-    background: rgba(244, 240, 231, 0.04);
-  }
-
-  .social-icon {
-    width: 20px;
-    height: 20px;
-  }
-
   @media (max-width: 900px) {
     .site-header {
       top: 12px;
@@ -576,9 +475,7 @@ import whatsappIcon from "../assets/icons/whatsapp.svg";
   function setupMobileMenu() {
     const toggle = document.querySelector(".mobile-toggle");
     const drawer = document.querySelector("#mobile-menu-drawer");
-    const links = document.querySelectorAll(
-      ".mobile-nav-link, .mobile-cta-btn",
-    );
+    const links = document.querySelectorAll(".mobile-nav-link");
 
     if (!toggle || !drawer) return;
 
