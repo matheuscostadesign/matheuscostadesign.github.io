@@ -21,55 +21,51 @@ import linkedinIcon from "../assets/icons/linkedin.svg";
 import instagramIcon from "../assets/icons/instagram.svg";
 import whatsappIcon from "../assets/icons/whatsapp.svg";
 
-const carouselItems = [
-  { id: "v2-arc1", src: projeto01, alt: "projeto 01" },
-  { id: "v2-arc2", src: projeto02, alt: "projeto 02" },
-  { id: "v2-arc3", src: projeto03, alt: "projeto 03" },
-  { id: "v2-arc4", src: projeto04, alt: "projeto 04" },
-  { id: "v2-arc5", src: projeto05, alt: "projeto 05" },
-  { id: "v2-arc6", src: projeto06, alt: "projeto 06" },
-  { id: "v2-arc7", src: projeto07, alt: "projeto 07" },
-  { id: "v2-arc8", src: projeto08, alt: "projeto 08" },
-  { id: "v2-arc9", src: projeto09, alt: "projeto 09" },
-  { id: "v2-arc10", src: projeto10, alt: "projeto 10" },
-  { id: "v2-arc11", src: projeto11, alt: "projeto 11" },
-  { id: "v2-arc12", src: projeto12, alt: "projeto 12" },
-  { id: "v2-arc13", src: projeto13, alt: "projeto 13" },
-  { id: "v2-arc14", src: projeto14, alt: "projeto 14" },
+import DriftWall from "./DriftWall.astro";
+import HeroCarousel from "./HeroCarousel.astro";
+import ParticlesBg from "./Backgrounds/ParticlesBg.astro";
+
+const driftWallItems = [
+  { image: projeto01.src, title: "Projeto 01" },
+  { image: projeto02.src, title: "Projeto 02" },
+  { image: projeto03.src, title: "Projeto 03" },
+  { image: projeto04.src, title: "Projeto 04" },
+  { image: projeto05.src, title: "Projeto 05" },
+  { image: projeto06.src, title: "Projeto 06" },
+  { image: projeto07.src, title: "Projeto 07" },
+  { image: projeto08.src, title: "Projeto 08" },
+  { image: projeto09.src, title: "Projeto 09" },
+  { image: projeto10.src, title: "Projeto 10" },
+  { image: projeto11.src, title: "Projeto 11" },
+  { image: projeto12.src, title: "Projeto 12" },
+  { image: projeto13.src, title: "Projeto 13" },
+  { image: projeto14.src, title: "Projeto 14" },
 ];
 ---
 
 <section data-screen-label="Hero" class="hero">
-  <div class="particles-bg">
-    <canvas id="hero-particles-canvas"></canvas>
-  </div>
+  <ParticlesBg />
   <div class="hero-content">
-    <div data-stage-v2="" class="hero-stage">
-      <div class="hero-ringwrap">
-        <div data-ring-v2="" class="hero-ring">
-          {
-            carouselItems.map((item, index) => {
-              const angle = index * 25.7143;
-              return (
-                <div
-                  class="hero-slide"
-                  style={`transform: translate(-50%, -50%) rotateY(${angle}deg) translateZ(-1449.3px);`}
-                >
-                  <div class="hero-slide-inner">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      class="hero-slide-img"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
-              );
-            })
-          }
-        </div>
-      </div>
+    <div class="hero-stage--desktop">
+      <DriftWall
+        items={driftWallItems}
+        columns={5}
+        tileWidth={360}
+        tileHeight={225}
+        gap={24}
+        radius={16}
+        tilt={16}
+        turn={-14}
+        perspective={1200}
+        depth={120}
+        speed={42}
+        dim={0.55}
+        overlayColor="rgba(5, 5, 5, 0.2)"
+      />
+    </div>
+
+    <div class="hero-stage--mobile">
+      <HeroCarousel />
     </div>
 
     <div class="hero-fade hero-fade--left"></div>
@@ -170,20 +166,6 @@ const carouselItems = [
 </section>
 
 <style>
-  .particles-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .particles-bg canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
   .hero {
     position: relative;
     min-height: 100vh;
@@ -216,66 +198,25 @@ const carouselItems = [
 
   .hero-content {
     position: relative;
+    width: 100%;
+    min-height: 100vh;
     flex: 1;
-    min-height: 0;
   }
 
-  .hero-stage {
+  .hero-stage--desktop {
+    display: block;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 520px;
-    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
     overflow: hidden;
-    cursor: grab;
     user-select: none;
     touch-action: pan-y;
   }
 
-  .hero-ringwrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 650px;
-    transform-style: preserve-3d;
-  }
-
-  .hero-ring {
-    position: relative;
-    width: 640px;
-    height: 580px;
-    transform-style: preserve-3d;
-    will-change: transform;
-    transform: translateZ(-470px) scale(0.943) rotateY(0deg);
-  }
-
-  .hero-slide {
-    position: absolute;
-    width: 640px;
-    height: 580px;
-    left: 50%;
-    top: 50%;
-    transform-style: flat;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .hero-slide-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 23px;
-    overflow: hidden;
-  }
-
-  .hero-slide-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 23px;
+  .hero-stage--mobile {
+    display: none;
   }
 
   .hero-fade {
@@ -300,11 +241,11 @@ const carouselItems = [
   .hero-vignette-center {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 1;
     pointer-events: none;
     background: radial-gradient(
       58% 70% at 50% 46%,
-      rgba(5, 5, 5, 0.55) 0%,
+      rgba(5, 5, 5, 0.1) 0%,
       rgba(5, 5, 5, 0) 62%
     );
   }
@@ -317,15 +258,13 @@ const carouselItems = [
     transform: translate(-50%, -50%);
     width: clamp(600px, 70vw, 1200px);
     height: clamp(600px, 90vh, 1200px);
-    z-index: 4;
+    z-index: 1;
     pointer-events: none;
     background: radial-gradient(
       50% 54% at 50% 46%,
-      #000 0%,
-      rgba(0, 0, 0, 0.92) 30%,
-      rgba(0, 0, 0, 0.6) 52%,
-      rgba(0, 0, 0, 0.28) 68%,
-      rgba(0, 0, 0, 0) 82%
+      rgba(5, 5, 5, 0.25) 0%,
+      rgba(5, 5, 5, 0.12) 40%,
+      rgba(0, 0, 0, 0) 80%
     );
     filter: blur(12px);
   }
@@ -337,7 +276,7 @@ const carouselItems = [
   :global(html[data-theme="light"]) .hero-vignette-center {
     background: radial-gradient(
       58% 70% at 50% 46%,
-      rgba(243, 240, 234, 0.15) 0%,
+      rgba(243, 240, 234, 0.08) 0%,
       transparent 62%
     );
   }
@@ -345,10 +284,9 @@ const carouselItems = [
   :global(html[data-theme="light"]) .hero-halo {
     background: radial-gradient(
       50% 54% at 50% 46%,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0.85) 35%,
-      rgba(243, 240, 234, 0.6) 60%,
-      transparent 85%
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      transparent 80%
     );
   }
 
@@ -394,13 +332,13 @@ const carouselItems = [
     left: 0;
     right: 0;
     bottom: 0;
-    height: clamp(320px, 46vh, 560px);
-    z-index: 11;
+    height: clamp(240px, 35vh, 420px);
+    z-index: 6;
     pointer-events: none;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      var(--color-bg-main) 75%
+      var(--color-bg-main) 85%
     );
   }
 
@@ -409,7 +347,7 @@ const carouselItems = [
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 12;
+    z-index: 10;
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 clamp(24px, 5vw, 64px) clamp(28px, 4vw, 48px);
@@ -584,9 +522,6 @@ const carouselItems = [
       width: clamp(290px, 33vw, 460px);
       height: clamp(370px, 57vh, 510px);
     }
-    .hero-stage {
-      height: 460px;
-    }
     .hero-title {
       font-size: clamp(38px, 4.4vw, 60px);
       margin-bottom: 8px;
@@ -621,10 +556,11 @@ const carouselItems = [
       padding-top: 75px;
       padding-bottom: 48px;
     }
-    .hero-stage {
-      top: 50%;
-      transform: translateY(-50%);
-      height: 350px;
+    .hero-stage--desktop {
+      display: block;
+    }
+    .hero-stage--mobile {
+      display: none;
     }
     .hero-bottom {
       position: relative;
@@ -686,49 +622,6 @@ const carouselItems = [
 </style>
 
 <script>
-  const ring = document.querySelector("[data-ring-v2]") as HTMLElement;
-  const stage = document.querySelector("[data-stage-v2]") as HTMLElement;
-  if (ring && stage) {
-    let rot = 0,
-      vel = 0,
-      dragging = false,
-      lastX = 0,
-      last = performance.now();
-    const tick = (now: number) => {
-      const dt = Math.min((now - last) / 1000, 0.05);
-      last = now;
-      if (!dragging) {
-        rot += (-4 + vel) * dt;
-        vel *= Math.pow(0.08, dt);
-      }
-      ring.style.transform = `translateZ(-470px) scale(0.943) rotateY(${rot.toFixed(3)}deg)`;
-      requestAnimationFrame(tick);
-    };
-    stage.addEventListener("pointerdown", (e: PointerEvent) => {
-      dragging = true;
-      lastX = e.clientX;
-      vel = 0;
-      stage.style.cursor = "grabbing";
-      try {
-        stage.setPointerCapture(e.pointerId);
-      } catch (_) {}
-    });
-    stage.addEventListener("pointermove", (e: PointerEvent) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      lastX = e.clientX;
-      rot += dx * 0.12;
-      vel = dx * 0.12 * 60;
-    });
-    const endDrag = () => {
-      dragging = false;
-      stage.style.cursor = "grab";
-    };
-    stage.addEventListener("pointerup", endDrag);
-    stage.addEventListener("pointercancel", endDrag);
-    requestAnimationFrame(tick);
-  }
-
   const setupHeroBtn = () => {
     const btn = document.querySelector(".hero-cta") as HTMLElement;
     if (!btn) return;
@@ -744,95 +637,4 @@ const carouselItems = [
     btn.style.setProperty("--txtShift", -txtShift + "px");
   };
   setupHeroBtn();
-
-  const initParticles = () => {
-    const canvas = document.getElementById(
-      "hero-particles-canvas",
-    ) as HTMLCanvasElement;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const parent = canvas.parentElement;
-    let width = (canvas.width = parent?.offsetWidth || window.innerWidth);
-    let height = (canvas.height = parent?.offsetHeight || window.innerHeight);
-
-    interface Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      opacity: number;
-    }
-
-    const particles: Particle[] = [];
-    const count = Math.min(Math.floor((width * height) / 11000), 80);
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 1.2,
-        vy: (Math.random() - 0.5) * 1.2,
-        radius: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.4 + 0.1,
-      });
-    }
-
-    const handleResize = () => {
-      width = canvas.width = parent?.offsetWidth || window.innerWidth;
-      height = canvas.height = parent?.offsetHeight || window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    const maxDist = 150;
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      const isLight =
-        document.documentElement.getAttribute("data-theme") === "light";
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = isLight
-          ? `rgba(0, 0, 0, ${p.opacity * 0.4})`
-          : `rgba(255, 255, 255, ${p.opacity})`;
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.12;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = isLight
-              ? `rgba(0, 0, 0, ${alpha * 0.4})`
-              : `rgba(255, 255, 255, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(render);
-    };
-
-    render();
-  };
-  initParticles();
 </script>

@@ -1,37 +1,59 @@
 ---
-import Layout from './Layout.astro';
-import Footer from '../components/Footer.astro';
-import type { CollectionEntry } from 'astro:content';
+import Layout from "./Layout.astro";
+import Footer from "../components/Footer.astro";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
 const { title, description, author, categories, image } = post.data;
 
 const meses = [
-  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
 ];
 
 const match = post.id.match(/\d{4}-\d{2}-\d{2}/);
 const date = match ? new Date(match[0]) : new Date();
-const dia = date.getDate().toString().padStart(2, '0');
+const dia = date.getDate().toString().padStart(2, "0");
 const mes = meses[date.getMonth()];
 const ano = date.getFullYear();
 const dateString = `${dia} de ${mes} de ${ano}`;
 ---
 
-<Layout title={`${title} — Blog Matheus Costa`} description={description} image={image}>
+<Layout
+  title={`${title} — Blog Matheus Costa`}
+  description={description}
+  image={image}
+>
   <div class="post-page">
-
     <main class="post-main">
       <article class="post-article">
         <div class="post-header">
           <div class="post-meta-top">
             <a href="/blog" class="back-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
               </svg>
@@ -43,7 +65,13 @@ const dateString = `${dia} de ${mes} de ${ano}`;
           <h1 class="post-title">{title}</h1>
 
           <div class="post-author-row">
-            <img class="author-avatar" src="/assets/matheus.jpg" alt={author} width="44" height="44" />
+            <img
+              class="author-avatar"
+              src="/assets/matheus.jpg"
+              alt={author}
+              width="44"
+              height="44"
+            />
             <div class="author-info">
               <span class="author-name">{author}</span>
               <span class="post-date">
@@ -53,11 +81,13 @@ const dateString = `${dia} de ${mes} de ${ano}`;
           </div>
         </div>
 
-        {image && (
-          <div class="post-cover-wrapper">
-            <img class="post-cover" src={image} alt={title} />
-          </div>
-        )}
+        {
+          image && (
+            <div class="post-cover-wrapper">
+              <img class="post-cover" src={image} alt={title} />
+            </div>
+          )
+        }
 
         <div class="post-body">
           <slot />
@@ -89,39 +119,48 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     <Footer />
   </div>
 
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "description": description,
-    "image": image,
-    "author": {
-      "@type": "Person",
-      "name": author
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Matheus Costa",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/assets/favicon/apple-icon-precomposed.png"
-      }
-    },
-    "datePublished": date.toISOString()
-  })} />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description: description,
+      image: image,
+      author: {
+        "@type": "Person",
+        name: author,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Matheus Costa",
+        logo: {
+          "@type": "ImageObject",
+          url: "/assets/favicon/apple-icon-precomposed.png",
+        },
+      },
+      datePublished: date.toISOString(),
+    })}
+  />
 </Layout>
 
 <style>
   .post-page {
     min-height: 100vh;
-    background: radial-gradient(120% 90% at 50% 0%, var(--color-bg-surface) 0%, var(--color-bg-main) 60%);
+    background: radial-gradient(
+      120% 90% at 50% 0%,
+      var(--color-bg-surface) 0%,
+      var(--color-bg-main) 60%
+    );
     color: var(--color-text-main);
   }
 
   .post-main {
     max-width: var(--container-max-width, 1200px);
     margin: 0 auto;
-    padding: clamp(120px, 12vw, 160px) var(--spacing-container-px) var(--spacing-section-py);
+    padding: clamp(120px, 12vw, 160px) var(--spacing-container-px)
+      var(--spacing-section-py);
   }
 
   .post-article {
@@ -273,7 +312,8 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     display: block;
   }
 
-  .post-body :global(ul), .post-body :global(ol) {
+  .post-body :global(ul),
+  .post-body :global(ol) {
     margin: 0 0 24px;
     padding-left: 28px;
   }
@@ -324,7 +364,12 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     font-weight: 600;
     text-decoration: none;
     border: 1px solid var(--color-text-main);
-    transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s,
+      box-shadow 0.3s,
+      transform 0.2s;
   }
 
   .back-btn:hover {
@@ -345,7 +390,10 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     background: var(--color-bg-main);
     color: var(--color-text-main);
     flex-shrink: 0;
-    transition: background 0.3s, color 0.3s, transform 0.3s;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      transform 0.3s;
   }
 
   .back-btn:hover .btn-arrow {

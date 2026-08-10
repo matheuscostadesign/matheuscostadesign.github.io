@@ -1,8 +1,9 @@
 ---
+
 ---
 
 <header class="site-header">
-  <div class="header-container">
+  <div class="header-container glass-surface glass-surface--fallback">
     <a href="/" class="brand-link">
       <img
         src="/assets/favicon/apple-icon-precomposed.png"
@@ -139,32 +140,144 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.13) 0%,
-      rgba(255, 255, 255, 0.04) 50%,
-      rgba(10, 10, 14, 0.7) 100%
-    );
-    backdrop-filter: blur(32px) saturate(200%);
-    -webkit-backdrop-filter: blur(32px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 9999px;
     padding: 10px 24px;
-    box-shadow:
-      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.38),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.55),
-      0 20px 52px rgba(0, 0, 0, 0.55);
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
   }
 
-  .header-container:hover {
-    border-color: rgba(255, 255, 255, 0.28);
+  .glass-surface {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: opacity 0.26s ease-out;
+  }
+
+  .glass-surface__filter {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .glass-surface__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: inherit;
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass-surface--svg {
+    background: light-dark(hsl(0 0% 100% / var(--glass-frost, 0)), hsl(0 0% 0% / var(--glass-frost, 0)));
+    backdrop-filter: var(--filter-id, url(#glass-filter)) saturate(var(--glass-saturation, 1));
     box-shadow:
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
-      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.5),
-      0 20px 48px rgba(0, 0, 0, 0.6);
+      0 0 2px 1px light-dark(color-mix(in oklch, black, transparent 85%), color-mix(in oklch, white, transparent 65%))
+        inset,
+      0 0 10px 4px light-dark(color-mix(in oklch, black, transparent 90%), color-mix(in oklch, white, transparent 85%))
+        inset,
+      0px 4px 16px rgba(17, 17, 26, 0.05),
+      0px 8px 24px rgba(17, 17, 26, 0.05),
+      0px 16px 56px rgba(17, 17, 26, 0.05),
+      0px 4px 16px rgba(17, 17, 26, 0.05) inset,
+      0px 8px 24px rgba(17, 17, 26, 0.05) inset,
+      0px 16px 56px rgba(17, 17, 26, 0.05) inset;
+  }
+
+  .glass-surface--fallback {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px 0 rgba(31, 38, 135, 0.2),
+      0 2px 16px 0 rgba(31, 38, 135, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .glass-surface--fallback {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  :global(html[data-theme="dark"]) .glass-surface--fallback {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .glass-surface--fallback {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px 0 rgba(31, 38, 135, 0.2),
+      0 2px 16px 0 rgba(31, 38, 135, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
+  }
+
+  @supports not (backdrop-filter: blur(10px)) {
+    .glass-surface--fallback {
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-surface--fallback::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: inherit;
+      z-index: -1;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(10px)) {
+    @media (prefers-color-scheme: dark) {
+      .glass-surface--fallback {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .glass-surface--fallback::before {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+
+    :global(html[data-theme="dark"]) .glass-surface--fallback {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    :global(html[data-theme="dark"]) .glass-surface--fallback::before {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .glass-surface:focus-visible {
+    outline: 2px solid light-dark(#007aff, #0a84ff);
+    outline-offset: 2px;
   }
 
   .brand-link {
@@ -285,14 +398,6 @@
   :global(html[data-theme="light"]) .moon-icon {
     opacity: 0;
     transform: rotate(90deg) scale(0.5);
-  }
-
-  :global(html[data-theme="light"]) .header-container {
-    background: rgba(255, 255, 255, 0.82);
-    border-color: rgba(0, 0, 0, 0.12);
-    box-shadow:
-      inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.9),
-      0 12px 32px rgba(0, 0, 0, 0.08);
   }
 
   :global(html[data-theme="light"]) .brand-icon {

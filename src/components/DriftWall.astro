@@ -1,0 +1,448 @@
+---
+export interface DriftWallItem {
+  image: string;
+  title?: string;
+  href?: string;
+}
+
+export interface Props {
+  items?: DriftWallItem[];
+  columns?: number;
+  tileWidth?: number;
+  tileHeight?: number;
+  gap?: number;
+  radius?: number;
+  tilt?: number;
+  turn?: number;
+  roll?: number;
+  perspective?: number;
+  depth?: number;
+  speed?: number;
+  direction?: "up" | "down";
+  variance?: number;
+  parallax?: number;
+  pauseOnHover?: boolean;
+  lift?: number;
+  dim?: number;
+  grayscale?: boolean;
+  overlayColor?: string;
+  className?: string;
+}
+
+const {
+  items = [],
+  columns = 5,
+  tileWidth = 230,
+  tileHeight = 150,
+  gap = 20,
+  radius = 16,
+  tilt = 16,
+  turn = -14,
+  roll = 0,
+  perspective = 1200,
+  depth = 120,
+  speed = 42,
+  direction = "up",
+  variance = 0.45,
+  parallax = 0.6,
+  pauseOnHover = false,
+  lift = 0,
+  dim = 0.55,
+  grayscale = false,
+  overlayColor = "rgba(5, 5, 5, 0.2)",
+  className = "",
+} = Astro.props;
+
+const columnItems: DriftWallItem[][] = Array.from({ length: columns }, () => []);
+items.forEach((item, i) => columnItems[i % columns].push(item));
+
+const finalColumnItems = columnItems.map((col) => {
+  let list = col.length ? [...col] : [...items];
+  while (list.length < 8) {
+    list = [...list, ...list];
+  }
+  return list;
+});
+
+const copiesPerCol = 5;
+
+const cssVariables = `
+  --dw-tile-w: ${tileWidth}px;
+  --dw-tile-h: ${tileHeight}px;
+  --dw-gap: ${gap}px;
+  --dw-radius: ${radius}px;
+  --dw-perspective: ${perspective}px;
+  --dw-lift: ${lift}px;
+  --dw-dim: ${dim};
+  --dw-gray: ${grayscale ? 1 : 0};
+  --dw-overlay: ${overlayColor};
+`;
+---
+
+<div
+  class={`drift-wall ${className}`}
+  style={cssVariables}
+  data-tilt={tilt}
+  data-turn={turn}
+  data-roll={roll}
+  data-depth={depth}
+  data-speed={speed}
+  data-direction={direction}
+  data-variance={variance}
+  data-parallax={parallax}
+  data-pause-on-hover={pauseOnHover ? "true" : "false"}
+  data-tile-h={tileHeight}
+  data-gap={gap}
+>
+  <div class="drift-wall__plane">
+    {
+      finalColumnItems.map((col, c) => (
+        <div class="drift-wall__col" data-col={c}>
+          <div class="drift-wall__track">
+            {Array.from({ length: copiesPerCol }).map((_, copyIndex) =>
+              col.map((item, itemIndex) => {
+                const tileId = `${c}-${copyIndex}-${itemIndex}`;
+                return item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="drift-wall__tile"
+                    data-tile-id={tileId}
+                    data-col={c}
+                  >
+                    <span class="drift-wall__inner">
+                      <img
+                        src={item.image}
+                        alt={item.title ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                      />
+                      <span class="drift-wall__overlay" aria-hidden="true" />
+                    </span>
+                  </a>
+                ) : (
+                  <div
+                    tabindex="0"
+                    role="button"
+                    aria-label={item.title ?? "tile"}
+                    class="drift-wall__tile"
+                    data-tile-id={tileId}
+                    data-col={c}
+                  >
+                    <span class="drift-wall__inner">
+                      <img
+                        src={item.image}
+                        alt={item.title ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                      />
+                      <span class="drift-wall__overlay" aria-hidden="true" />
+                    </span>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .drift-wall {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    perspective: var(--dw-perspective, 1200px);
+    perspective-origin: 50% 50%;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 82%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 82%,
+      transparent 100%
+    );
+  }
+
+  .drift-wall::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg-main, #050505) 0%,
+      rgba(5, 5, 5, 0.7) 45%,
+      transparent 100%
+    );
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .drift-wall::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 280px;
+    background: linear-gradient(
+      to top,
+      var(--color-bg-main, #050505) 0%,
+      rgba(5, 5, 5, 0.75) 55%,
+      transparent 100%
+    );
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  @media (min-width: 1441px) {
+    .drift-wall::after {
+      height: 440px;
+      background: linear-gradient(
+        to top,
+        var(--color-bg-main, #050505) 0%,
+        rgba(5, 5, 5, 0.85) 60%,
+        transparent 100%
+      );
+    }
+  }
+
+  :global(html[data-theme="light"]) .drift-wall::before {
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.7) 45%,
+      transparent 100%
+    );
+  }
+
+  :global(html[data-theme="light"]) .drift-wall::after {
+    background: linear-gradient(
+      to top,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.75) 55%,
+      transparent 100%
+    );
+  }
+
+  @media (min-width: 1441px) {
+    :global(html[data-theme="light"]) .drift-wall::after {
+      background: linear-gradient(
+        to top,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.85) 60%,
+        transparent 100%
+      );
+    }
+  }
+
+  .drift-wall__plane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    cursor: default;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .drift-wall__col {
+    position: relative;
+    width: calc(var(--dw-tile-w) + var(--dw-gap));
+    transform-style: preserve-3d;
+  }
+
+  .drift-wall__track {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  .drift-wall__tile {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(var(--dw-tile-h) + var(--dw-gap));
+    flex: 0 0 auto;
+    outline: none;
+    transform-style: preserve-3d;
+  }
+
+  .drift-wall__inner {
+    position: absolute;
+    inset: calc(var(--dw-gap) / 2);
+    display: block;
+    border-radius: var(--dw-radius);
+    overflow: hidden;
+    background: #0b0b12;
+    opacity: var(--dw-dim);
+    transform: translateZ(0);
+    pointer-events: none;
+  }
+
+  .drift-wall__tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: grayscale(var(--dw-gray)) saturate(0.92);
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .drift-wall__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--dw-overlay);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  @media (max-width: 760px) {
+    .drift-wall {
+      --dw-tile-w: 160px;
+      --dw-tile-h: 105px;
+      --dw-gap: 12px;
+    }
+
+    .drift-wall__col:nth-child(n+3) {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  const initDriftWall = () => {
+    const wall = document.querySelector(".drift-wall") as HTMLElement;
+    if (!wall) return;
+
+    const plane = wall.querySelector(".drift-wall__plane") as HTMLElement;
+    const tracks = Array.from(
+      wall.querySelectorAll(".drift-wall__track")
+    ) as HTMLElement[];
+    if (!plane || !tracks.length) return;
+
+    const tilt = parseFloat(wall.dataset.tilt || "16");
+    const turn = parseFloat(wall.dataset.turn || "-14");
+    const roll = parseFloat(wall.dataset.roll || "0");
+    const depth = parseFloat(wall.dataset.depth || "120");
+    const speed = parseFloat(wall.dataset.speed || "42");
+    const direction = wall.dataset.direction || "up";
+    const variance = parseFloat(wall.dataset.variance || "0.45");
+    const parallax = parseFloat(wall.dataset.parallax || "0.6");
+    const pauseOnHover = wall.dataset.pauseOnHover === "true";
+    const tileH = parseFloat(wall.dataset.tileH || "150");
+    const gap = parseFloat(wall.dataset.gap || "20");
+
+    const columnFactor = (index: number, v: number): number => {
+      const pseudo = ((index * 0.6180339887 + 0.35) % 1) * 2 - 1;
+      return 1 + v * pseudo;
+    };
+
+    const dirSign = direction === "up" ? 1 : -1;
+    const baseVelocities = tracks.map((_, c) => {
+      const altSign = c % 2 === 0 ? 1 : -1;
+      return speed * columnFactor(c, variance) * dirSign * altSign;
+    });
+
+    const firstTile = wall.querySelector(".drift-wall__tile") as HTMLElement;
+    const unit = firstTile ? firstTile.offsetHeight : tileH + gap;
+    const colLengths = tracks.map((track) => {
+      const tileEls = track.querySelectorAll(".drift-wall__tile");
+      return tileEls.length / 5;
+    });
+
+    const offsets = tracks.map((_, c) => {
+      const copyHeight = colLengths[c] * unit;
+      return copyHeight * ((c * 0.37) % 1);
+    });
+
+    const velocities = tracks.map(() => 0);
+    let pointerX = 0;
+    let pointerY = 0;
+    let pointerDampedX = 0;
+    let pointerDampedY = 0;
+    let wallHovered = false;
+    let lastTs: number | null = null;
+
+    const updatePlaneTransform = (px: number, py: number) => {
+      plane.style.transform = `scale(1.38) rotateX(${tilt + py}deg) rotateY(${turn + px}deg) rotateZ(${roll}deg) translateZ(${-depth}px) translate(-50%, -50%)`;
+    };
+
+    const animate = (ts: number) => {
+      if (lastTs === null) lastTs = ts;
+      const dt = Math.min(0.05, Math.max(0, ts - lastTs) / 1000);
+      lastTs = ts;
+
+      const maxTilt = parallax * 8;
+      const targetX = pointerX * maxTilt;
+      const targetY = -pointerY * maxTilt;
+      const damp = 1 - Math.exp(-dt / 0.12);
+      pointerDampedX += (targetX - pointerDampedX) * damp;
+      pointerDampedY += (targetY - pointerDampedY) * damp;
+      updatePlaneTransform(pointerDampedX, pointerDampedY);
+
+      tracks.forEach((track, c) => {
+        const copyHeight = colLengths[c] * unit;
+        const paused = wallHovered && pauseOnHover;
+        const factor = paused ? 0 : 1;
+        const target = baseVelocities[c] * factor;
+
+        const ease = 1 - Math.exp(-dt / (target === 0 ? 0.16 : 0.28));
+        velocities[c] += (target - velocities[c]) * ease;
+        let next = offsets[c] + velocities[c] * dt;
+        next = ((next % copyHeight) + copyHeight) % copyHeight;
+        offsets[c] = next;
+
+        track.style.transform = `translate3d(0, ${-next}px, 0)`;
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    wall.addEventListener("pointermove", (e: PointerEvent) => {
+      const rect = wall.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      if (parallax > 0) {
+        pointerX = (e.clientX - rect.left) / rect.width - 0.5;
+        pointerY = (e.clientY - rect.top) / rect.height - 0.5;
+      }
+    });
+
+    wall.addEventListener("pointerenter", () => {
+      wallHovered = true;
+    });
+
+    wall.addEventListener("pointerleave", () => {
+      wallHovered = false;
+      pointerX = 0;
+      pointerY = 0;
+    });
+
+    requestAnimationFrame(animate);
+  };
+
+  initDriftWall();
+</script>

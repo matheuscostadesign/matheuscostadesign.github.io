@@ -1,0 +1,182 @@
+---
+import { Image } from "astro:assets";
+
+import projeto01 from "../assets/carousel/projeto01.webp";
+import projeto02 from "../assets/carousel/projeto02.webp";
+import projeto03 from "../assets/carousel/projeto03.webp";
+import projeto04 from "../assets/carousel/projeto04.webp";
+import projeto05 from "../assets/carousel/projeto05.webp";
+import projeto06 from "../assets/carousel/projeto06.webp";
+import projeto07 from "../assets/carousel/projeto07.webp";
+import projeto08 from "../assets/carousel/projeto08.webp";
+import projeto09 from "../assets/carousel/projeto09.webp";
+import projeto10 from "../assets/carousel/projeto10.webp";
+import projeto11 from "../assets/carousel/projeto11.webp";
+import projeto12 from "../assets/carousel/projeto12.webp";
+import projeto13 from "../assets/carousel/projeto13.webp";
+import projeto14 from "../assets/carousel/projeto14.webp";
+
+const carouselItems = [
+  { id: "v2-arc1", src: projeto01, alt: "projeto 01" },
+  { id: "v2-arc2", src: projeto02, alt: "projeto 02" },
+  { id: "v2-arc3", src: projeto03, alt: "projeto 03" },
+  { id: "v2-arc4", src: projeto04, alt: "projeto 04" },
+  { id: "v2-arc5", src: projeto05, alt: "projeto 05" },
+  { id: "v2-arc6", src: projeto06, alt: "projeto 06" },
+  { id: "v2-arc7", src: projeto07, alt: "projeto 07" },
+  { id: "v2-arc8", src: projeto08, alt: "projeto 08" },
+  { id: "v2-arc9", src: projeto09, alt: "projeto 09" },
+  { id: "v2-arc10", src: projeto10, alt: "projeto 10" },
+  { id: "v2-arc11", src: projeto11, alt: "projeto 11" },
+  { id: "v2-arc12", src: projeto12, alt: "projeto 12" },
+  { id: "v2-arc13", src: projeto13, alt: "projeto 13" },
+  { id: "v2-arc14", src: projeto14, alt: "projeto 14" },
+];
+---
+
+<div data-stage-v2="" class="hero-stage">
+  <div class="hero-ringwrap">
+    <div data-ring-v2="" class="hero-ring">
+      {
+        carouselItems.map((item, index) => {
+          const angle = index * 25.7143;
+          return (
+            <div
+              class="hero-slide"
+              style={`transform: translate(-50%, -50%) rotateY(${angle}deg) translateZ(-1449.3px);`}
+            >
+              <div class="hero-slide-inner">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  class="hero-slide-img"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 520px;
+    z-index: 2;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+  }
+
+  .hero-ringwrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 650px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-ring {
+    position: relative;
+    width: 640px;
+    height: 580px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: translateZ(-470px) scale(0.943) rotateY(0deg);
+  }
+
+  .hero-slide {
+    position: absolute;
+    width: 640px;
+    height: 580px;
+    left: 50%;
+    top: 50%;
+    transform-style: flat;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .hero-slide-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 23px;
+    overflow: hidden;
+  }
+
+  .hero-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 23px;
+  }
+
+  @media (max-height: 850px) and (min-width: 761px) {
+    .hero-stage {
+      height: 460px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero-stage {
+      top: 50%;
+      transform: translateY(-50%);
+      height: 350px;
+    }
+  }
+</style>
+
+<script>
+  const ring = document.querySelector("[data-ring-v2]") as HTMLElement;
+  const stage = document.querySelector("[data-stage-v2]") as HTMLElement;
+  if (ring && stage) {
+    let rot = 0,
+      vel = 0,
+      dragging = false,
+      lastX = 0,
+      last = performance.now();
+    const tick = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (!dragging) {
+        rot += (-4 + vel) * dt;
+        vel *= Math.pow(0.08, dt);
+      }
+      ring.style.transform = `translateZ(-470px) scale(0.943) rotateY(${rot.toFixed(3)}deg)`;
+      requestAnimationFrame(tick);
+    };
+    stage.addEventListener("pointerdown", (e: PointerEvent) => {
+      dragging = true;
+      lastX = e.clientX;
+      vel = 0;
+      stage.style.cursor = "grabbing";
+      try {
+        stage.setPointerCapture(e.pointerId);
+      } catch (_) {}
+    });
+    stage.addEventListener("pointermove", (e: PointerEvent) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      rot += dx * 0.12;
+      vel = dx * 0.12 * 60;
+    });
+    const endDrag = () => {
+      dragging = false;
+      stage.style.cursor = "grab";
+    };
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
+    requestAnimationFrame(tick);
+  }
+</script>

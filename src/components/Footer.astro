@@ -41,7 +41,7 @@ const socialLinks = [
     url: "https://x.com/matheuscdesign",
     icon: twitterIcon,
   },
-  { name: "WhatsApp", url: "https://wa.me/5517991005132", icon: whatsappIcon },
+  // { name: "WhatsApp", url: "https://wa.me/5517991005132", icon: whatsappIcon },
 ];
 ---
 
@@ -98,14 +98,15 @@ const socialLinks = [
           />
           <span>Matheus Costa</span>
         </a>
+        <div class="footer-location">
+          <span class="location-dot"></span>
+          <span>Disponível para novos projetos</span>
+        </div>
         <p class="footer-brand-bio">
           Frontend Developer & UX/UI Designer criando interfaces modernas,
           intuitivas e de alta performance.
         </p>
-        <div class="footer-location">
-          <span class="location-dot"></span>
-          <span>São José do Rio Preto, SP — Brasil</span>
-        </div>
+        <p class="footer-brand-bio">São José do Rio Preto, SP - Brasil</p>
       </div>
 
       <div class="footer-links-col">
@@ -366,7 +367,7 @@ const socialLinks = [
     line-height: 1.6;
     color: var(--color-text-muted);
     max-width: 340px;
-    margin: 0 0 24px;
+    margin: 16px 0px;
   }
 
   .footer-location {

@@ -114,4 +114,12 @@ const tools: Tool[] = [
     font-size: 21px;
     letter-spacing: -0.01em;
   }
+
+  :global(html[data-theme="light"]) .marquee-icon {
+    filter: invert(1);
+  }
+
+  :global(html[data-theme="light"]) .marquee-logo {
+    filter: none;
+  }
 </style>

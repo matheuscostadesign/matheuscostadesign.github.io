@@ -1,45 +1,64 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
+import "../styles/global.css";
+import Header from "../components/Header.astro";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  keywords?: string;
 }
 
 const {
   title = "Matheus Costa — UX/UI Designer e Desenvolvedor Front-end",
-  description = "UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza.",
-  image = "/assets/ogimage.jpg"
+  description = "Web designer e desenvolvedor front-end em São José do Rio Preto/SP. Criação de sites profissionais, landing pages e e-commerces para pequenas empresas, clínicas, lojas e escritórios. Orçamento no WhatsApp.",
+  image = "/assets/ogimage.jpg",
+  keywords = "criação de sites rio preto, web designer rio preto, site profissional são josé do rio preto, desenvolvimento de site rio preto, agência de web design rio preto, landing page profissional rio preto, site para pequenas empresas rio preto, criar site para clínica rio preto, criar site para loja rio preto, criar site para escritório rio preto, quanto custa um site rio preto, web designer são josé do rio preto",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheuscosta.com.br");
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://matheuscostadesign.github.io",
+);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" data-theme="dark">
   <head>
     <script is:inline>
-      (function() {
-        const stored = localStorage.getItem('theme');
-        if (stored === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
+      (function () {
+        const stored = localStorage.getItem("theme");
+        if (stored === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
         } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.setAttribute("data-theme", "dark");
         }
       })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="BLM8JkaGm0f3prLH3_m0eWhv1nM3kWGvJhgCr6kcxiA" />
-    <link rel="icon" type="image/png" href="/assets/favicon/apple-icon-precomposed.png" />
+    <meta
+      name="google-site-verification"
+      content="BLM8JkaGm0f3prLH3_m0eWhv1nM3kWGvJhgCr6kcxiA"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicon/apple-icon-precomposed.png"
+    />
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Matheus Costa" />
     <meta name="theme-color" content="#050505" />
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.placename" content="São José do Rio Preto" />
+    <meta name="geo.position" content="-20.8197;-49.3794" />
+    <meta name="ICBM" content="-20.8197, -49.3794" />
 
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:type" content="website" />
@@ -56,21 +75,94 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Matheus Costa",
-      "url": "https://matheuscosta.com.br"
-    })} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Matheus Costa — Web Designer Rio Preto",
+          url: "https://matheuscostadesign.github.io",
+          potentialAction: {
+            "@type": "SearchAction",
+            target:
+              "https://matheuscostadesign.github.io/?s={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://matheuscostadesign.github.io/#localbusiness",
+          name: "Matheus Costa — Web Design & Desenvolvimento",
+          description:
+            "Criação de sites profissionais, landing pages e e-commerces em São José do Rio Preto/SP para pequenas empresas, clínicas, lojas e escritórios.",
+          url: "https://matheuscostadesign.github.io",
+          telephone: "+55-17-99100-5132",
+          image: "https://matheuscostadesign.github.io/assets/ogimage.jpg",
+          priceRange: "$$",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "São José do Rio Preto",
+            addressRegion: "SP",
+            addressCountry: "BR",
+          },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: -20.8197,
+            longitude: -49.3794,
+          },
+          areaServed: [
+            { "@type": "City", name: "São José do Rio Preto" },
+            { "@type": "State", name: "São Paulo" },
+          ],
+          serviceType: [
+            "Criação de Sites",
+            "Landing Page",
+            "Web Design",
+            "Desenvolvimento Front-end",
+            "Design UI/UX",
+            "E-commerce",
+          ],
+          sameAs: [
+            "https://www.instagram.com/matheuscosta.design/",
+            "https://linkedin.com/in/mattheuscosta",
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Matheus Costa",
+          jobTitle: "Web Designer e Desenvolvedor Front-end",
+          url: "https://matheuscostadesign.github.io",
+          image: "https://matheuscostadesign.github.io/assets/ogimage.jpg",
+          telephone: "+55-17-99100-5132",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "São José do Rio Preto",
+            addressRegion: "SP",
+            addressCountry: "BR",
+          },
+          sameAs: [
+            "https://www.instagram.com/matheuscosta.design/",
+            "https://linkedin.com/in/mattheuscosta",
+          ],
+        },
+      ])}
+    />
   </head>
   <body>
     <Header />
     <slot />
     <script>
-      import Lenis from 'lenis';
-      import 'lenis/dist/lenis.css';
+      import Lenis from "lenis";
+      import "lenis/dist/lenis.css";
 
       function initLenis() {
         const lenis = new Lenis({
@@ -88,37 +180,46 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
 
         const handleAnchorClick = (e: MouseEvent) => {
           const target = e.currentTarget as HTMLAnchorElement;
-          const href = target.getAttribute('href');
+          const href = target.getAttribute("href");
           if (!href) return;
 
           const url = new URL(href, window.location.href);
           if (url.pathname === window.location.pathname && url.hash) {
-            if (url.hash === '#top') {
+            if (url.hash === "#top") {
               e.preventDefault();
               lenis.scrollTo(0, { duration: 1.2 });
             } else {
               const targetEl = document.querySelector(url.hash);
               if (targetEl) {
                 e.preventDefault();
-                lenis.scrollTo(targetEl as HTMLElement, { offset: 0, duration: 1.2 });
+                lenis.scrollTo(targetEl as HTMLElement, {
+                  offset: 0,
+                  duration: 1.2,
+                });
               }
             }
           }
         };
 
         document.querySelectorAll('a[href*="#"]').forEach((anchor) => {
-          anchor.removeEventListener('click', handleAnchorClick as EventListener);
-          anchor.addEventListener('click', handleAnchorClick as EventListener);
+          anchor.removeEventListener(
+            "click",
+            handleAnchorClick as EventListener,
+          );
+          anchor.addEventListener("click", handleAnchorClick as EventListener);
         });
 
         if (window.location.hash) {
           setTimeout(() => {
-            if (window.location.hash === '#top') {
+            if (window.location.hash === "#top") {
               lenis.scrollTo(0, { duration: 1.2 });
             } else {
               const targetEl = document.querySelector(window.location.hash);
               if (targetEl) {
-                lenis.scrollTo(targetEl as HTMLElement, { offset: 0, duration: 1.2 });
+                lenis.scrollTo(targetEl as HTMLElement, {
+                  offset: 0,
+                  duration: 1.2,
+                });
               }
             }
           }, 100);
@@ -126,31 +227,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
       }
 
       function handleExternalLinks() {
-        const links = document.querySelectorAll('a');
+        const links = document.querySelectorAll("a");
         const currentHost = window.location.hostname;
 
         links.forEach((link) => {
           if (link.hostname && link.hostname !== currentHost) {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
           }
         });
       }
 
       function initCustomCursor() {
-        if (window.matchMedia('(pointer: coarse)').matches) return;
+        if (window.matchMedia("(pointer: coarse)").matches) return;
 
-        let dot = document.querySelector('.custom-cursor-dot') as HTMLElement;
-        let ring = document.querySelector('.custom-cursor-ring') as HTMLElement;
+        let dot = document.querySelector(".custom-cursor-dot") as HTMLElement;
+        let ring = document.querySelector(".custom-cursor-ring") as HTMLElement;
 
         if (!dot) {
-          dot = document.createElement('div');
-          dot.className = 'custom-cursor-dot';
+          dot = document.createElement("div");
+          dot.className = "custom-cursor-dot";
           document.body.appendChild(dot);
         }
         if (!ring) {
-          ring = document.createElement('div');
-          ring.className = 'custom-cursor-ring';
+          ring = document.createElement("div");
+          ring.className = "custom-cursor-ring";
           document.body.appendChild(ring);
         }
 
@@ -163,26 +264,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
           mouseX = e.clientX;
           mouseY = e.clientY;
           dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-          document.body.classList.remove('cursor-hidden');
+          document.body.classList.remove("cursor-hidden");
         };
 
         const onMouseLeave = () => {
-          document.body.classList.add('cursor-hidden');
+          document.body.classList.add("cursor-hidden");
         };
 
         const onMouseEnter = () => {
-          document.body.classList.remove('cursor-hidden');
+          document.body.classList.remove("cursor-hidden");
         };
 
-        window.addEventListener('mousemove', onMouseMove, { passive: true });
-        document.addEventListener('mouseleave', onMouseLeave);
-        document.addEventListener('mouseenter', onMouseEnter);
+        window.addEventListener("mousemove", onMouseMove, { passive: true });
+        document.addEventListener("mouseleave", onMouseLeave);
+        document.addEventListener("mouseenter", onMouseEnter);
 
         const addHoverListeners = () => {
-          const interactives = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .svc-card, .post-card, .blog-card');
+          const interactives = document.querySelectorAll(
+            'a, button, input, textarea, select, [role="button"], .svc-card, .post-card, .blog-card',
+          );
           interactives.forEach((el) => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            el.addEventListener("mouseenter", () =>
+              document.body.classList.add("cursor-hover"),
+            );
+            el.addEventListener("mouseleave", () =>
+              document.body.classList.remove("cursor-hover"),
+            );
           });
         };
 
@@ -201,7 +308,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://matheusc
       initLenis();
       initCustomCursor();
       handleExternalLinks();
-      document.addEventListener('astro:page-load', () => {
+      document.addEventListener("astro:page-load", () => {
         initLenis();
         initCustomCursor();
         handleExternalLinks();

@@ -1,0 +1,340 @@
+---
+interface Props {
+  dotRadius?: number;
+  dotSpacing?: number;
+  cursorRadius?: number;
+  cursorForce?: number;
+  bulgeOnly?: boolean;
+  bulgeStrength?: number;
+  glowRadius?: number;
+  sparkle?: boolean;
+  waveAmplitude?: number;
+  gradientFrom?: string;
+  gradientTo?: string;
+  lightGradientFrom?: string;
+  lightGradientTo?: string;
+  glowColor?: string;
+  lightGlowColor?: string;
+  class?: string;
+}
+
+const {
+  dotRadius = 1.5,
+  dotSpacing = 14,
+  cursorRadius = 500,
+  cursorForce = 0.1,
+  bulgeOnly = true,
+  bulgeStrength = 67,
+  glowRadius = 160,
+  sparkle = false,
+  waveAmplitude = 0,
+  gradientFrom = "rgba(192, 132, 252, 0.65)",
+  gradientTo = "rgba(216, 180, 254, 0.55)",
+  lightGradientFrom = "rgba(124, 58, 237, 0.45)",
+  lightGradientTo = "rgba(147, 51, 234, 0.35)",
+  glowColor = "#120F17",
+  lightGlowColor = "rgba(124, 58, 237, 0.15)",
+  class: className = "",
+} = Astro.props;
+---
+
+<div
+  class:list={["dot-field-container", className]}
+  data-dot-radius={dotRadius}
+  data-dot-spacing={dotSpacing}
+  data-cursor-radius={cursorRadius}
+  data-cursor-force={cursorForce}
+  data-bulge-only={bulgeOnly ? "true" : "false"}
+  data-bulge-strength={bulgeStrength}
+  data-glow-radius={glowRadius}
+  data-sparkle={sparkle ? "true" : "false"}
+  data-wave-amplitude={waveAmplitude}
+  data-gradient-from={gradientFrom}
+  data-gradient-to={gradientTo}
+  data-light-gradient-from={lightGradientFrom}
+  data-light-gradient-to={lightGradientTo}
+  data-glow-color={glowColor}
+  data-light-glow-color={lightGlowColor}
+>
+  <canvas class="dot-field-canvas"></canvas>
+  <svg class="dot-field-svg">
+    <defs>
+      <radialGradient id="dot-field-radial-glow">
+        <stop offset="0%" class="glow-stop-0" stop-color={glowColor}></stop>
+        <stop offset="100%" stop-color="transparent"></stop>
+      </radialGradient>
+    </defs>
+    <circle
+      class="dot-field-glow-circle"
+      cx="-9999"
+      cy="-9999"
+      r={glowRadius}
+      fill="url(#dot-field-radial-glow)"
+    ></circle>
+  </svg>
+</div>
+
+<style>
+  .dot-field-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .dot-field-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dot-field-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .dot-field-glow-circle {
+    opacity: 0;
+    will-change: opacity;
+  }
+</style>
+
+<script>
+  interface Dot {
+    ax: number;
+    ay: number;
+    sx: number;
+    sy: number;
+    vx: number;
+    vy: number;
+    x: number;
+    y: number;
+  }
+
+  const TWO_PI = Math.PI * 2;
+
+  const initDotField = (container: HTMLElement) => {
+    const canvas = container.querySelector("canvas") as HTMLCanvasElement;
+    const glowCircle = container.querySelector(".dot-field-glow-circle") as SVGCircleElement;
+    const glowStop0 = container.querySelector(".glow-stop-0") as SVGStopElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    const parseNum = (attr: string, def: number) => {
+      const val = container.getAttribute(attr);
+      return val !== null ? parseFloat(val) : def;
+    };
+
+    const dotRadius = parseNum("data-dot-radius", 1.5);
+    const dotSpacing = parseNum("data-dot-spacing", 14);
+    const cursorRadius = parseNum("data-cursor-radius", 500);
+    const cursorForce = parseNum("data-cursor-force", 0.1);
+    const bulgeOnly = container.getAttribute("data-bulge-only") === "true";
+    const bulgeStrength = parseNum("data-bulge-strength", 67);
+    const sparkle = container.getAttribute("data-sparkle") === "true";
+    const waveAmplitude = parseNum("data-wave-amplitude", 0);
+
+    const darkGradFrom = container.getAttribute("data-gradient-from") || "rgba(192, 132, 252, 0.65)";
+    const darkGradTo = container.getAttribute("data-gradient-to") || "rgba(216, 180, 254, 0.55)";
+    const lightGradFrom = container.getAttribute("data-light-gradient-from") || "rgba(124, 58, 237, 0.45)";
+    const lightGradTo = container.getAttribute("data-light-gradient-to") || "rgba(147, 51, 234, 0.35)";
+
+    const darkGlowColor = container.getAttribute("data-glow-color") || "#120F17";
+    const lightGlowColor = container.getAttribute("data-light-glow-color") || "rgba(124, 58, 237, 0.15)";
+
+    let dots: Dot[] = [];
+    let width = 0;
+    let height = 0;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const mouse = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 };
+    let glowOpacity = 0;
+    let engagement = 0;
+    let currentTheme = "";
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const buildDots = (w: number, h: number) => {
+      const step = dotRadius + dotSpacing;
+      const cols = Math.floor(w / step);
+      const rows = Math.floor(h / step);
+      const padX = (w % step) / 2;
+      const padY = (h % step) / 2;
+      dots = new Array(rows * cols);
+      let idx = 0;
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const ax = padX + col * step + step / 2;
+          const ay = padY + row * step + step / 2;
+          dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay };
+        }
+      }
+    };
+
+    const doResize = () => {
+      const rect = container.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      offsetX = rect.left + window.scrollX;
+      offsetY = rect.top + window.scrollY;
+
+      buildDots(width, height);
+    };
+
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(doResize, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.pageX - offsetX;
+      mouse.y = e.pageY - offsetY;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+    const updateMouseSpeed = () => {
+      const dx = mouse.prevX - mouse.x;
+      const dy = mouse.prevY - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      mouse.speed += (dist - mouse.speed) * 0.5;
+      if (mouse.speed < 0.001) mouse.speed = 0;
+      mouse.prevX = mouse.x;
+      mouse.prevY = mouse.y;
+    };
+
+    setInterval(updateMouseSpeed, 20);
+
+    doResize();
+
+    let frameCount = 0;
+    const crSq = cursorRadius * cursorRadius;
+    const rad = dotRadius / 2;
+
+    const render = () => {
+      frameCount++;
+      const activeTheme = document.documentElement.getAttribute("data-theme") || "dark";
+      if (activeTheme !== currentTheme) {
+        currentTheme = activeTheme;
+        if (glowStop0) {
+          glowStop0.setAttribute(
+            "stop-color",
+            currentTheme === "light" ? lightGlowColor : darkGlowColor,
+          );
+        }
+      }
+
+      const t = frameCount * 0.02;
+
+      const targetEngagement = Math.min(mouse.speed / 5, 1);
+      engagement += (targetEngagement - engagement) * 0.06;
+      if (engagement < 0.001) engagement = 0;
+
+      glowOpacity += (engagement - glowOpacity) * 0.08;
+
+      if (glowCircle) {
+        glowCircle.setAttribute("cx", String(mouse.x));
+        glowCircle.setAttribute("cy", String(mouse.y));
+        glowCircle.style.opacity = String(glowOpacity);
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      const grad = ctx.createLinearGradient(0, 0, width, height);
+      const isLight = currentTheme === "light";
+      grad.addColorStop(0, isLight ? lightGradFrom : darkGradFrom);
+      grad.addColorStop(1, isLight ? lightGradTo : darkGradTo);
+      ctx.fillStyle = grad;
+
+      ctx.beginPath();
+
+      const len = dots.length;
+      for (let i = 0; i < len; i++) {
+        const d = dots[i];
+        const dx = mouse.x - d.ax;
+        const dy = mouse.y - d.ay;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < crSq && engagement > 0.01) {
+          const dist = Math.sqrt(distSq);
+          if (bulgeOnly) {
+            const factor = 1 - dist / cursorRadius;
+            const push = factor * factor * bulgeStrength * engagement;
+            const angle = Math.atan2(dy, dx);
+            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
+            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
+          } else {
+            const angle = Math.atan2(dy, dx);
+            const move = (500 / dist) * (mouse.speed * cursorForce);
+            d.vx += Math.cos(angle) * -move;
+            d.vy += Math.sin(angle) * -move;
+          }
+        } else if (bulgeOnly) {
+          d.sx += (d.ax - d.sx) * 0.1;
+          d.sy += (d.ay - d.sy) * 0.1;
+        }
+
+        if (!bulgeOnly) {
+          d.vx *= 0.9;
+          d.vy *= 0.9;
+          d.x = d.ax + d.vx;
+          d.y = d.ay + d.vy;
+          d.sx += (d.x - d.sx) * 0.1;
+          d.sy += (d.y - d.sy) * 0.1;
+        }
+
+        let drawX = d.sx;
+        let drawY = d.sy;
+        if (waveAmplitude > 0) {
+          drawY += Math.sin(d.ax * 0.03 + t) * waveAmplitude;
+          drawX += Math.cos(d.ay * 0.03 + t * 0.7) * waveAmplitude * 0.5;
+        }
+
+        if (sparkle) {
+          const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
+          if (hash % 100 < 3) {
+            ctx.moveTo(drawX + rad * 1.8, drawY);
+            ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
+          } else {
+            ctx.moveTo(drawX + rad, drawY);
+            ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+          }
+        } else {
+          ctx.moveTo(drawX + rad, drawY);
+          ctx.arc(drawX, drawY, rad, 0, TWO_PI);
+        }
+      }
+
+      ctx.fill();
+
+      requestAnimationFrame(render);
+    };
+
+    requestAnimationFrame(render);
+  };
+
+  document.querySelectorAll(".dot-field-container").forEach((el) => {
+    initDotField(el as HTMLElement);
+  });
+</script>
