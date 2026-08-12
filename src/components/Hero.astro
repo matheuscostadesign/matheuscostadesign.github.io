@@ -88,7 +88,7 @@ const driftWallItems = [
     <div class="hero-bottom">
       <div class="hero-main">
         <h1 class="hero-title">
-          Frontend <span class="italic">D</span>eveloper
+          Frontend<br class="hero-title-break" /> <span class="italic">D</span>eveloper
         </h1>
         <p class="hero-bio">
           Levo ideias do Figma ao código, criando interfaces modernas,
@@ -290,6 +290,31 @@ const driftWallItems = [
     );
   }
 
+  @media (max-width: 760px) {
+    :global(html[data-theme="light"]) .hero-fade-bottom {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 20%,
+        rgba(243, 240, 234, 0.6) 50%,
+        #f3f0ea 72%,
+        #f3f0ea 100%
+      );
+    }
+
+    :global(html[data-theme="dark"]) .hero-fade-bottom,
+    :global(html:not([data-theme])) .hero-fade-bottom {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 20%,
+        rgba(5, 5, 5, 0.55) 50%,
+        var(--color-bg-main) 72%,
+        var(--color-bg-main) 100%
+      );
+    }
+  }
+
   .hero-portrait {
     position: absolute;
     left: 50%;
@@ -384,6 +409,10 @@ const driftWallItems = [
     color: var(--color-text-main);
     text-align: center;
     padding-top: 64px;
+  }
+
+  .hero-title-break {
+    display: none;
   }
 
   .hero-bio {
@@ -552,71 +581,132 @@ const driftWallItems = [
 
   @media (max-width: 760px) {
     .hero {
-      min-height: auto;
-      padding-top: 75px;
-      padding-bottom: 48px;
+      min-height: 100svh;
+      max-height: 100svh;
+      padding: 0;
     }
+
+    .hero-content {
+      min-height: 100svh;
+      max-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 64px;
+      padding-bottom: clamp(28px, 5svh, 48px);
+      box-sizing: border-box;
+    }
+
     .hero-stage--desktop {
       display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
+
     .hero-stage--mobile {
       display: none;
     }
+
+    .hero-fade--left,
+    .hero-fade--right {
+      display: none;
+    }
+
+    .hero-portrait {
+      position: relative;
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      transform: none;
+      width: clamp(280px, 88vw, 420px);
+      height: clamp(300px, 50svh, 420px);
+      z-index: 5;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
+    .hero-portrait-img {
+      object-position: center top;
+      height: 100%;
+      mask-image: linear-gradient(
+        to bottom,
+        #000 50%,
+        rgba(0, 0, 0, 0.6) 82%,
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 50%,
+        rgba(0, 0, 0, 0.6) 82%,
+        transparent 100%
+      );
+    }
+
+    .hero-halo {
+      display: none;
+    }
+
+    .hero-fade-bottom {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      z-index: 4;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 20%,
+        rgba(5, 5, 5, 0.55) 50%,
+        var(--color-bg-main) 72%,
+        var(--color-bg-main) 100%
+      );
+    }
+
     .hero-bottom {
       position: relative;
-      margin-top: 340px;
-      padding-left: var(--spacing-container-px);
-      padding-right: var(--spacing-container-px);
-      padding-bottom: 32px;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      z-index: 6;
+      margin-top: -10px;
+      width: 100%;
+      max-width: none;
+      padding: 0 var(--spacing-container-px) 0;
+      pointer-events: auto;
     }
+
     .hero-main {
       max-width: 100%;
     }
+
     .hero-title {
-      margin-bottom: 16px;
-      font-size: clamp(34px, 8.2vw, 46px);
+      padding-top: 0;
+      margin-bottom: 10px;
+      font-size: clamp(46px, 13.5vw, 64px);
+      line-height: 1.0;
     }
+
+    .hero-title-break {
+      display: inline;
+    }
+
     .hero-bio {
       max-width: 100%;
-      margin-bottom: 24px;
-      font-size: 15px;
+      margin-bottom: 20px;
+      font-size: clamp(15px, 4.2vw, 17px);
     }
-    .hero-portrait {
-      position: absolute;
-      left: 50%;
-      right: auto;
-      top: 60px;
-      bottom: auto;
-      transform: translateX(-50%);
-      width: clamp(230px, 62vw, 300px);
-      height: clamp(250px, 48vh, 340px);
-    }
-    .hero-portrait-img {
-      object-position: center top;
-    }
-    .hero-halo {
-      left: 50%;
-      top: 40%;
-      transform: translate(-50%, -50%);
-      width: 360px;
-      height: 400px;
-    }
-    .hero-fade-bottom {
-      height: 300px;
-    }
+
     .hero-footer-bar {
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+
     .hero-socials {
       display: none;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .hero-bottom {
-      margin-top: 330px;
     }
   }
 </style>
