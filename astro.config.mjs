@@ -7,7 +7,7 @@ export default defineConfig({
   },
   integrations: [
     aeoAstroIntegration({
-      title: "Matheus Costa — UX/UI Designer e Desenvolvedor Front-end",
+      title: "Matheus Costa - UX/UI Designer e Desenvolvedor Front-end",
       description:
         "UX/UI Designer e Desenvolvedor Front-end em São José do Rio Preto/SP. Sites, landing pages e e-commerces com estratégia, estética e clareza.",
       url: "https://matheuscostadesign.github.io",

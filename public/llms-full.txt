@@ -1,4 +1,4 @@
-# Matheus Costa — UX/UI Designer e Desenvolvedor Front-end - Complete Documentation
+# Matheus Costa - UX/UI Designer e Desenvolvedor Front-end - Complete Documentation
 
 This file contains all documentation concatenated into a single file for easy consumption by LLMs.
 
