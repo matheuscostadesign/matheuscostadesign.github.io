@@ -4,7 +4,7 @@ description: "Veja neste post como configurar as importações com '@' (path ali
 slug: como-configurar-path-aliases-em-um-projeto-react-com-vite-typescript-swc
 author: Matheus Costa
 categories: Front-end
-image: /assets/images/posts/2024/06/como-configurar-path-aliases-em-um-projeto-react-com-vite-typescript-swc.jpg
+image: /assets/images/posts/2024/06/como-configurar-path-aliases-em-um-projeto-react-com-vite-typescript-swc.webp
 comments: true
 ---
 

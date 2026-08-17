@@ -4,7 +4,7 @@ description: "Aprenda neste post alguns dos comandos básicos de Git"
 slug: comandos-basicos-de-git
 author: Matheus Costa
 categories: Git
-image: /assets/images/posts/2023/05/comandos-basicos-de-git.jpg
+image: /assets/images/posts/2023/05/comandos-basicos-de-git.webp
 comments: true
 ---
 

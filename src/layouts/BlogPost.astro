@@ -1,6 +1,11 @@
 ---
 import Layout from "./Layout.astro";
 import Footer from "../components/Footer.astro";
+import SocialShare from "../components/blog/SocialShare.astro";
+import AuthorBioCard from "../components/blog/AuthorBioCard.astro";
+import SeoCalculator from "../components/blog/SeoCalculator.astro";
+import NewsletterBox from "../components/blog/NewsletterBox.astro";
+import RichMaterialCard from "../components/blog/RichMaterialCard.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -8,7 +13,29 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, author, categories, image } = post.data;
+const {
+  title,
+  description,
+  author = "Matheus Costa",
+  authorRole = "UX/UI Designer & Dev Front-end",
+  authorAvatar = "/assets/matheus.webp",
+  authorBio,
+  categories,
+  image,
+  imageCaption,
+  slug: customSlug,
+  updatedDate,
+} = post.data;
+
+const slug =
+  customSlug ||
+  post.slug ||
+  post.id
+    .split("/")
+    .pop()
+    ?.replace(/\.mdx?$/, "");
+
+const canonicalUrl = `https://matheuscostadesign.github.io/blog/${slug}`;
 
 const meses = [
   "Janeiro",
@@ -31,6 +58,10 @@ const dia = date.getDate().toString().padStart(2, "0");
 const mes = meses[date.getMonth()];
 const ano = date.getFullYear();
 const dateString = `${dia} de ${mes} de ${ano}`;
+
+const rawBody = post.body || "";
+const wordCount = rawBody.trim().split(/\s+/).filter(Boolean).length;
+const readTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <Layout
@@ -41,57 +72,92 @@ const dateString = `${dia} de ${mes} de ${ano}`;
   <div class="post-page">
     <main class="post-main">
       <article class="post-article">
-        <div class="post-header">
+        <nav aria-label="Breadcrumbs" class="breadcrumbs">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+            <li class="breadcrumb-item">
+              <a href="/blog">Blog</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">&rsaquo;</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {title}
+            </li>
+          </ol>
+        </nav>
+
+        <header class="post-header">
           <div class="post-meta-top">
-            <a href="/blog" class="back-link">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              <span>Voltar ao Blog</span>
-            </a>
             <span class="category-badge">{categories}</span>
+            <div class="post-meta-pills">
+              <span class="meta-pill date-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <time datetime={date.toISOString()}>{dateString}</time>
+              </span>
+              <span class="meta-pill readtime-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>{readTimeMinutes} min de leitura</span>
+              </span>
+            </div>
           </div>
 
           <h1 class="post-title">{title}</h1>
 
+          {description && <p class="post-subtitle">{description}</p>}
+
           <div class="post-author-row">
             <img
               class="author-avatar"
-              src="/assets/matheus.jpg"
-              alt={author}
-              width="44"
-              height="44"
+              src={authorAvatar}
+              alt={`Foto de ${author}`}
+              width="48"
+              height="48"
             />
             <div class="author-info">
+              <span class="author-label">Escrito por</span>
               <span class="author-name">{author}</span>
-              <span class="post-date">
-                <time datetime={date.toISOString()}>{dateString}</time>
-              </span>
+              <span class="author-role">{authorRole}</span>
             </div>
           </div>
-        </div>
+        </header>
 
         {
           image && (
-            <div class="post-cover-wrapper">
+            <figure class="post-cover-figure">
               <img class="post-cover" src={image} alt={title} />
-            </div>
+              {imageCaption && <figcaption class="post-cover-caption">{imageCaption}</figcaption>}
+            </figure>
           )
         }
+
+        <SocialShare title={title} url={canonicalUrl} />
 
         <div class="post-body">
           <slot />
         </div>
+
+        <SeoCalculator />
+
+        <RichMaterialCard />
+
+        <NewsletterBox />
+
+        <AuthorBioCard
+          author={author}
+          authorRole={authorRole}
+          authorAvatar={authorAvatar}
+          authorBio={authorBio}
+        />
 
         <div class="post-footer">
           <a href="/blog" class="back-btn">
@@ -110,7 +176,7 @@ const dateString = `${dia} de ${mes} de ${ano}`;
                 <polyline points="12.5 6 19 12 12.5 18"></polyline>
               </svg>
             </span>
-            <span>Ver todos os artigos</span>
+            <span>Ver todos os artigos do Blog</span>
           </a>
         </div>
       </article>
@@ -122,26 +188,59 @@ const dateString = `${dia} de ${mes} de ${ano}`;
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: title,
-      description: description,
-      image: image,
-      author: {
-        "@type": "Person",
-        name: author,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "Matheus Costa",
-        logo: {
-          "@type": "ImageObject",
-          url: "/assets/favicon/apple-icon-precomposed.png",
+    set:html={JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description: description,
+        image: image ? [image] : [],
+        author: {
+          "@type": "Person",
+          name: author,
+          jobTitle: authorRole,
+          url: "https://matheuscostadesign.github.io",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Matheus Costa",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://matheuscostadesign.github.io/assets/favicon/apple-icon-precomposed.png",
+          },
+        },
+        datePublished: date.toISOString(),
+        dateModified: updatedDate ? new Date(updatedDate).toISOString() : date.toISOString(),
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": canonicalUrl,
         },
       },
-      datePublished: date.toISOString(),
-    })}
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://matheuscostadesign.github.io",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: "https://matheuscostadesign.github.io/blog",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: title,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ])}
   />
 </Layout>
 
@@ -167,32 +266,56 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     width: 100%;
   }
 
+  .breadcrumbs {
+    margin-bottom: 24px;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+  }
+
+  .breadcrumb-item a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb-item a:hover {
+    color: var(--color-text-main);
+  }
+
+  .breadcrumb-item.active {
+    color: var(--color-text-dimmed);
+    font-weight: 500;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .breadcrumb-separator {
+    color: var(--color-text-dimmed);
+  }
+
   .post-header {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 
   .post-meta-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     gap: 16px;
-  }
-
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-text-muted);
-    font-size: var(--text-small);
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .back-link:hover {
-    color: var(--color-text-main);
   }
 
   .category-badge {
@@ -207,19 +330,45 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     color: var(--color-text-main);
   }
 
+  .post-meta-pills {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-dimmed);
+  }
+
   .post-title {
     font-family: var(--font-display);
     font-size: clamp(32px, 4.5vw, 56px);
     font-weight: normal;
     line-height: 1.1;
-    margin: 0 0 28px;
+    margin: 0 0 16px;
     color: var(--color-text-main);
+  }
+
+  .post-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0 0 28px;
+    font-weight: 400;
   }
 
   .post-author-row {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-subtle);
   }
 
   .author-avatar {
@@ -231,7 +380,15 @@ const dateString = `${dia} de ${mes} de ${ano}`;
   .author-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
+  }
+
+  .author-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-dimmed);
   }
 
   .author-name {
@@ -241,27 +398,33 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     color: var(--color-text-main);
   }
 
-  .post-date {
+  .author-role {
     font-family: var(--font-body);
-    font-size: var(--text-mono);
+    font-size: 12.5px;
     color: var(--color-text-dimmed);
   }
 
-  .post-cover-wrapper {
+  .post-cover-figure {
     width: 100%;
-    max-height: 480px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 48px;
-    border: 1px solid var(--color-border-subtle);
+    margin: 0 0 40px;
   }
 
   .post-cover {
     width: 100%;
-    height: 100%;
-    max-height: 480px;
+    max-height: 520px;
     object-fit: cover;
     display: block;
+    border-radius: 20px;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .post-cover-caption {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--color-text-dimmed);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
   }
 
   .post-body {
@@ -273,75 +436,159 @@ const dateString = `${dia} de ${mes} de ${ano}`;
 
   .post-body :global(h2) {
     font-family: var(--font-display);
-    font-size: clamp(24px, 3vw, 36px);
+    font-size: clamp(26px, 3.2vw, 40px);
     font-weight: normal;
     line-height: 1.2;
     color: var(--color-text-main);
-    margin: 44px 0 18px;
+    margin: 52px 0 20px;
+    border-left: 3px solid var(--color-text-main);
+    padding-left: 16px;
   }
 
   .post-body :global(h3) {
     font-family: var(--font-display);
-    font-size: clamp(20px, 2.2vw, 26px);
+    font-size: clamp(20px, 2.4vw, 28px);
     font-weight: normal;
     line-height: 1.25;
     color: var(--color-text-main);
-    margin: 32px 0 14px;
+    margin: 36px 0 16px;
+  }
+
+  .post-body :global(h4) {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: normal;
+    color: var(--color-text-main);
+    margin: 28px 0 12px;
   }
 
   .post-body :global(p) {
-    margin: 0 0 24px;
+    margin: 0 0 28px;
+  }
+
+  .post-body :global(strong),
+  .post-body :global(b) {
+    color: var(--color-text-main);
+    font-weight: 700;
   }
 
   .post-body :global(a) {
     color: var(--color-text-main);
     text-decoration: underline;
     text-underline-offset: 4px;
+    font-weight: 500;
     transition: opacity 0.2s;
   }
 
   .post-body :global(a:hover) {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   .post-body :global(img) {
+    width: 100%;
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
-    margin: 24px 0;
+    border-radius: 16px;
+    margin: 28px 0 8px;
     display: block;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .post-body :global(figure) {
+    width: 100%;
+    margin: 32px 0;
+  }
+
+  .post-body :global(figcaption) {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--color-text-dimmed);
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
   }
 
   .post-body :global(ul),
   .post-body :global(ol) {
-    margin: 0 0 24px;
+    margin: 0 0 28px;
     padding-left: 28px;
+    font-size: 18px;
+    line-height: 1.75;
   }
 
   .post-body :global(li) {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--color-border-hover);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: var(--color-bg-card);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    color: var(--color-text-main);
   }
 
   .post-body :global(code) {
     background: rgba(244, 240, 231, 0.1);
-    padding: 2px 8px;
+    padding: 3px 8px;
     border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 15px;
+    color: var(--color-text-main);
   }
 
   .post-body :global(pre) {
     background: var(--color-bg-card);
-    padding: 20px;
-    border-radius: 12px;
+    padding: 24px;
+    border-radius: 16px;
     overflow-x: auto;
     border: 1px solid var(--color-border-subtle);
-    margin: 24px 0;
+    margin: 32px 0;
   }
 
   .post-body :global(pre code) {
     background: none;
     padding: 0;
+  }
+
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 36px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    font-size: 16px;
+  }
+
+  .post-body :global(th),
+  .post-body :global(td) {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .post-body :global(th) {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  .post-body :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .post-body :global(iframe),
+  .post-body :global(.video-container) {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    border: 1px solid var(--color-border-subtle);
+    margin: 36px 0;
   }
 
   .post-footer {
@@ -400,5 +647,16 @@ const dateString = `${dia} de ${mes} de ${ano}`;
     background: var(--color-text-main);
     color: var(--color-bg-main);
     transform: rotate(45deg);
+  }
+
+  @media (max-width: 640px) {
+    .post-main {
+      padding-top: 100px;
+    }
+    .post-meta-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
   }
 </style>

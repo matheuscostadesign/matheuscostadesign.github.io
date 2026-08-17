@@ -4,7 +4,7 @@ description: "Aprenda neste artigo algumas convenções/padronizações das mens
 slug: padroes-de-mensagens-de-commit
 author: Matheus Costa
 categories: Git
-image: /assets/images/posts/2023/08/padroes-de-mensagens-de-commit.jpg
+image: /assets/images/posts/2023/08/padroes-de-mensagens-de-commit.webp
 comments: true
 ---
 

@@ -102,3 +102,41 @@ The font scale uses fluid typography (`clamp()`) to ensure optimal presentation 
 1. **NO CODE COMMENTS**: Never add comments (`//`, `/* */`, `<!-- -->`) inside code files.
 2. **Language**: User communications and UI text must be in **Brazilian Portuguese (pt-BR)**.
 3. **No Unnecessary Builds**: Do not execute `npm run build` for layout/styling edits. Use `npx astro check` for validation.
+
+---
+
+## 6. Blog Post SEO & Content Standards (28 Rules)
+
+Every new blog article created in `src/content/blog/` must strictly adhere to the following 28 SEO rules and structure:
+
+1. **Title Optimization**: Post title/`<title>` tag must start with the main target keyword as far left as possible.
+2. **URL / Slug**: Use a short, clean, elegant slug representing the primary keyword.
+3. **Logo Navigation**: Logo in Header must link to the main site home (`/`), not the blog home.
+4. **Header CTA**: Header must maintain a Call to Action button (e.g. "Solicitar Orçamento").
+5. **Site Navigation**: Use the main site navigation menu in the header.
+6. **Breadcrumbs**: Include semantic breadcrumb navigation (`Home > Blog > Post Title`) with `BreadcrumbList` Schema.org.
+7. **H1 Tag**: Exactly ONE `<h1>` tag containing the main keyword and an enticing title.
+8. **Subtitle / Summary**: A direct subtitle/summary right below the H1 answering the core concept without fluff.
+9. **Author Signature & Bio**: Posts must be signed by a real person (Author avatar + name at top) and include a full `AuthorBioCard` at the bottom.
+10. **Publication Date**: Always include the visible publication date (`<time datetime="...">`).
+11. **Reading Time**: Compute and display the estimated reading time (e.g. `5 min de leitura`).
+12. **Original Images & ALT Tags**: Use high-quality images with complete, descriptive `alt` tags.
+13. **Captions**: Include image captions (`<figcaption>`) for visual context.
+14. **Typography Size & Line-Height**: Paragraph text must be at least `18px` (`1.125rem`) with `line-height` of at least `1.4` (default `1.75`).
+15. **Short Paragraphs**: Maintain short, readable paragraphs for high scannability.
+16. **Whitespace ("Respiro")**: Ensure generous vertical spacing between paragraphs (`margin-bottom: 28px`).
+17. **Visible Links**: Internal and external links must be visually distinct (underlined, high contrast, hover state).
+18. **Bold Highlights**: Use `<strong>`/`<b>` to highlight key insights, avoiding keyword stuffing.
+19. **Scannable H2 Headings**: Use attractive `<h2>` headings for sub-sections with high visual hierarchy.
+20. **Tables**: Use formatted HTML/Markdown tables for data presentation (ranking factor).
+21. **Lists**: Use bullet (`<ul>`) or numbered (`<ol>`) lists for scannability and snippets.
+22. **Specific Headings**: Use proper hierarchy with `<h3>`, `<h4>` tags.
+23. **Rich Content & Additional Resources**: Provide extra resource links/cards.
+24. **Interactive Calculators**: Include interactive calculator widgets (e.g. ROI / Project estimator) to drive engagement.
+25. **Newsletter Opt-in**: Offer a discreet newsletter subscription box (`<NewsletterBox />`).
+26. **Rich Lead Magnets**: Offer downloadable rich materials (e.g. PDF Checklists / E-books).
+27. **Video Embeds**: Use videos moderately with responsive 16:9 aspect ratios.
+28. **Social Share Buttons**: Include easy 1-click social sharing buttons (WhatsApp, LinkedIn, Twitter/X, Copy Link).
+
+📱 **Mobile-First Directive**: All blog post components and pages must be fully responsive, touch-friendly, and mobile-optimized first.
+

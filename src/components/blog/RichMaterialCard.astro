@@ -1,0 +1,123 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  link?: string;
+}
+
+const {
+  title = "Checklist Definitivo de SEO & Performance Web 2026",
+  description = "Baixe gratuitamente nosso guia prático em PDF com mais de 30 itens para auditoria de SEO, otimização de velocidade de carregamento e boas práticas de UX.",
+  link = "https://wa.me/5517991005132?text=Ol%C3%A1!%20Gostaria%20de%20receber%20o%20Checklist%20de%20SEO%20e%20Performance%20em%20PDF.",
+} = Astro.props;
+---
+
+<div class="rich-material-card">
+  <div class="rich-material-badge">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    <span>Material Rico Gratuito</span>
+  </div>
+
+  <div class="rich-material-content">
+    <h3 class="rich-material-title">{title}</h3>
+    <p class="rich-material-desc">{description}</p>
+  </div>
+
+  <div class="rich-material-action">
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rich-material-btn"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span>Baixar Material em PDF</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .rich-material-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 32px;
+    background: radial-gradient(
+      100% 100% at 0% 0%,
+      var(--color-bg-card) 0%,
+      var(--color-bg-surface) 100%
+    );
+    border: 1px solid var(--color-border-hover);
+    border-radius: 24px;
+    margin: 48px 0;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  }
+
+  .rich-material-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: rgba(244, 240, 231, 0.1);
+    border: 1px solid var(--color-border-subtle);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    align-self: flex-start;
+  }
+
+  .rich-material-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: normal;
+    color: var(--color-text-main);
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+
+  .rich-material-desc {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .rich-material-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    border-radius: 9999px;
+    background: var(--color-text-main);
+    color: var(--color-bg-main);
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-text-main);
+  }
+
+  .rich-material-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .rich-material-card {
+      padding: 24px;
+    }
+  }
+</style>

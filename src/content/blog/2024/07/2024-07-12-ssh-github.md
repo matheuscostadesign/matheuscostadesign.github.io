@@ -4,7 +4,7 @@ description: "Aprenda neste post como configurar chave SSH para o Github"
 slug: como-configurar-chave-ssh-github
 author: Matheus Costa
 categories: Tecnologia
-image: /assets/images/posts/2024/07/como-configurar-chave-ssh-github.jpg
+image: /assets/images/posts/2024/07/como-configurar-chave-ssh-github.webp
 comments: true
 ---
 

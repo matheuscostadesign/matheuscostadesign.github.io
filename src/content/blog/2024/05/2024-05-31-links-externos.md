@@ -4,7 +4,7 @@ description: "Veja neste artigo como fazer com que todos os links externos do se
 slug: como-abrir-todos-links-externos-do-site-em-uma-nova-aba-ou-guia
 author: Matheus Costa
 categories: Front-end
-image: /assets/images/posts/2024/05/como-abrir-todos-links-externos-do-site-em-uma-nova-aba-ou-guia.jpg
+image: /assets/images/posts/2024/05/como-abrir-todos-links-externos-do-site-em-uma-nova-aba-ou-guia.webp
 comments: true
 ---
 

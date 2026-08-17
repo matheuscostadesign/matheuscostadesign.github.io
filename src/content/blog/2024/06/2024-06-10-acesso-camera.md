@@ -20,7 +20,7 @@ Veja neste artigo como ativar.
 
 ### Ativando no Chrome (desktop/mobile)
 
-<img src="/assets/images/posts/2024/06/insecure-origins.jpg" alt="Insecure origins">
+<img src="/assets/images/posts/2024/06/insecure-origins.webp" alt="Insecure origins">
 
 1. Digite o link abaixo na barra de navegação do Chrome:
 
@@ -45,7 +45,7 @@ Veja neste artigo como ativar.
 2. Acessar na página:
    - `Desenvolvedor` > `Mostrar inspetor web` > Tocar no ícone: `Ajustes do Dispositivo` > Habilitar: `WebRTC - Permitir captura de mídia em sites pouco seguros`
 
-<img src="/assets/images/posts/2024/06/como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl.jpg" alt="Safari">
+<img src="/assets/images/posts/2024/06/como-habilitar-acesso-a-camera-em-sites-sem-certificado-https-ssl.webp" alt="Safari">
 
 #### Mobile
 
@@ -57,6 +57,6 @@ Veja neste artigo como ativar.
    - `Ajustes do site` > `Câmera` > `Permitir`
 
 <div style="display: flex; gap: 24px; margin-top: 24px">
-  <img src="/assets/images/posts/2024/06/ios-1.jpg" alt="Safari">
-  <img src="/assets/images/posts/2024/06/ios-2.jpg" alt="Safari">
+  <img src="/assets/images/posts/2024/06/ios-1.webp" alt="Safari">
+  <img src="/assets/images/posts/2024/06/ios-2.webp" alt="Safari">
 <div>

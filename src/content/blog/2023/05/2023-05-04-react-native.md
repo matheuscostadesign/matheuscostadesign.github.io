@@ -4,7 +4,7 @@ description: "Neste post estarei compartilhando e documentando minha experiênci
 slug: como-criar-apps-com-react-native
 author: Matheus Costa
 categories: React Native
-image: /assets/images/posts/2023/05/como-criar-apps-com-react-native.jpg
+image: /assets/images/posts/2023/05/como-criar-apps-com-react-native.webp
 comments: true
 ---
 
@@ -139,7 +139,7 @@ Para aprender React Native é necessário saber os **fundamentos de Javascript, 
 
 ### 2.3.1) Amostra das visualizações no Android x iOS
 
-<img src="/assets/images/posts/2023/05/android-e-ios-react-native.png" alt="Android x iOS">
+<img src="/assets/images/posts/2023/05/android-e-ios-react-native.webp" alt="Android x iOS">
 
 ## 2.4) Fundamentos de React
 

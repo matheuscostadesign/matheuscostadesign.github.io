@@ -161,7 +161,7 @@ Para integrar a semântica HTML ao fluxo de trabalho de UX Writing, algumas prá
 
 - **Testes de acessibilidade:** Utilize ferramentas como o Lighthouse no DevTools para verificar se o HTML atende às diretrizes do WCAG. Uma das maneiras de executar o Lighthouse é usar o [PageSpeed Insights](https://pagespeed.web.dev/), ferramenta oficial do Google para analisar a semântica e a velocidade das páginas da Web. Seguir as recomendações do teste garante que o conteúdo seja acessível a todos os usuários.
 
-<img src="/assets/images/posts/2025/06/pagespeed.png" class="w-full">
+<img src="/assets/images/posts/2025/06/pagespeed.webp" class="w-full">
 
 - **Colaboração com desenvolvedores:** UX Writers devem trabalhar junto com desenvolvedores para garantir que o texto seja implementado com as tags corretas. Ferramentas como Figma podem incluir anotações sobre tags recomendadas.
 

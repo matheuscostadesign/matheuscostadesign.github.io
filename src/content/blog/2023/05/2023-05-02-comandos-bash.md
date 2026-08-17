@@ -4,7 +4,7 @@ description: "Aprenda neste post alguns dos comandos de terminal mais utilizados
 slug: guia-basico-de-comandos-terminal-ssh-bash-putty
 author: Matheus Costa
 categories: Tecnologia
-image: /assets/images/posts/2023/05/guia-basico-de-comandos-terminal-ssh-bash-putty.jpg
+image: /assets/images/posts/2023/05/guia-basico-de-comandos-terminal-ssh-bash-putty.webp
 comments: true
 ---
 

@@ -4,7 +4,7 @@ description: "Ferramenta útil para otimizar imagens em JPG/JPEG"
 slug: como-otimizar-imagens-jpeg
 author: Matheus Costa
 categories: Front-end, UX/UI
-image: /assets/images/posts/2022/otimizando-imagens-jpeg.jpg
+image: /assets/images/posts/2022/otimizando-imagens-jpeg.webp
 comments: true
 ---
 

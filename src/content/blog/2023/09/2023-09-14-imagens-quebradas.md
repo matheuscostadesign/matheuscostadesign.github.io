@@ -4,7 +4,7 @@ description: "Aprenda como detectar e corrigir imagens quebradas de um site"
 slug: como-detectar-imagens-quebradas
 author: Matheus Costa
 categories: Git
-image: /assets/images/posts/2023/09/como-detectar-imagens-quebradas.jpg
+image: /assets/images/posts/2023/09/como-detectar-imagens-quebradas.webp
 comments: true
 ---
 
@@ -16,7 +16,7 @@ Lidamos com muitas imagens em projetos web e muitas vezes esquecemos de tratar q
 
 Exemplo de como uma imagem é exibida no navegador sem tratamento de erros:
 
-![Erro ao carregar o logo](/assets/images/posts/2023/09/exemplo-erro.jpg)
+![Erro ao carregar o logo](/assets/images/posts/2023/09/exemplo-erro.webp)
 
 Erro ao carregar o logo
 

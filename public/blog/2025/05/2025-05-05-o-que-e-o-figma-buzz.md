@@ -4,7 +4,7 @@ description: "Descubra o que é o Figma Buzz, a nova ferramenta do Figma que fac
 slug: o-que-e-o-figma-buzz
 author: Matheus Costa
 categories: Design
-image: /assets/images/posts/2025/05/o-que-e-o-figma-buzz.jpg
+image: /assets/images/posts/2025/05/o-que-e-o-figma-buzz.webp
 comments: true
 ---
 
@@ -36,7 +36,7 @@ Entre os principais tipos de conteúdo que podem ser produzidos estão:
 
 - **Ativos internos**: Como manuais, guias rápidos, templates para RH, entre outros.
 
-<img src="/assets/images/posts/2025/05/o-que-e-possivel-criar-com-o-figma-buzz.jpg">
+<img src="/assets/images/posts/2025/05/o-que-e-possivel-criar-com-o-figma-buzz.webp">
 
 ## Figma Buzz ou Canva?
 

@@ -232,7 +232,6 @@ body.cursor-hover .custom-cursor-ring {
   margin-left: -26px;
   border-color: rgba(244, 240, 231, 0.85);
   background-color: rgba(244, 240, 231, 0.12);
-  backdrop-filter: blur(2px);
 }
 
 body.cursor-hover .custom-cursor-dot {
